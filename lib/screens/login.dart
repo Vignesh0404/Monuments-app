@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:travelapp/screens/signup.dart';
 import 'styles.dart';
 
 class Login extends StatefulWidget {
@@ -105,7 +106,10 @@ class _LoginState extends State<Login> {
                   children: <Widget>[
                     Text('Yet to register?', style: blackTextStyle),
                     GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.of(context).push(new MaterialPageRoute(
+                            builder: (BuildContext context) => new SignUp()));
+                      },
                       child: Text(' Sign up!', style: goldTextStyle),
                     )
                   ],
