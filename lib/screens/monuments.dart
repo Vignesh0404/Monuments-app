@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:travelapp/screens/myReviews.dart';
 import 'styles.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 
@@ -34,7 +35,10 @@ class _MonumentsState extends State<Monuments> {
         body: Padding(
           padding: EdgeInsets.only(left: 10, right: 10, top: 1),
           child: GestureDetector(
-            onTap: () {},
+            onTap: () {
+              Navigator.of(context).push(new MaterialPageRoute(
+                  builder: (BuildContext context) => new MyReviews()));
+            },
             child: Container(
               margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 1.0),
               padding: EdgeInsets.all(10.0),
