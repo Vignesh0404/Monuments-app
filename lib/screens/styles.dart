@@ -1,5 +1,21 @@
 import 'package:flutter/material.dart';
 
+TextStyle subtitleFontStyle = TextStyle(
+    fontFamily: 'OpenSans',
+    fontSize: 14,
+    // color: Color(0xFF565656),
+    fontWeight: FontWeight.w400);
+TextStyle titleFontStyle = TextStyle(
+    fontFamily: 'OpenSans',
+    color: Colors.black,
+    fontSize: 16,
+    fontWeight: FontWeight.w600);
+
+TextStyle greytitleFontStyle = TextStyle(
+    fontFamily: 'OpenSans',
+    color: Colors.grey,
+    fontSize: 16,
+    fontWeight: FontWeight.w600);
 TextStyle loginFormStyle = TextStyle(
     fontFamily: 'OpenSans',
     fontSize: 16,
