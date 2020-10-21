@@ -132,9 +132,15 @@ class _ProfileState extends State<Profile> {
               ListTile(
                 leading: Text(''),
                 title: TextField(
+                  cursorColor: Colors.black,
+                  onChanged: (text) => setState(() {
+                    print(text);
+                  }),
                   maxLines: 5,
                   controller: _feedback,
                   decoration: InputDecoration(
+                    filled: true,
+                    fillColor: Colors.grey[200],
                     contentPadding: EdgeInsets.all(8),
                     isDense: true,
                     labelStyle: loginFormStyle,
@@ -146,17 +152,20 @@ class _ProfileState extends State<Profile> {
                 subtitle: Padding(
                   child: GestureDetector(
                     onTap: () {
-                      print(_feedback.text.toString());
-                      print('Submit Clicked');
+                      _feedback.text.toString() == ''
+                          ? print('Empty Submit Clicked')
+                          : print('Non-empty submit clicked');
                     },
                     child: Text(
                       'SUBMIT',
-                      // TODO:implement validation
-                      // style: TextStyle(color: _feedback.text.toString()==''?Colors.grey:Colors.black),
+                      style: TextStyle(
+                          color: _feedback.text.toString() == ''
+                              ? Colors.grey
+                              : Colors.black),
                       textAlign: TextAlign.end,
                     ),
                   ),
-                  padding: EdgeInsets.only(top: 8),
+                  padding: EdgeInsets.only(top: 8, bottom: 8),
                 ),
               ),
               ListTile(
