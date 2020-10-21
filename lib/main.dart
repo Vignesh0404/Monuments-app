@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:travelapp/screens/signup.dart';
+import 'package:travelapp/screens/welcome.dart';
 
 void main() {
   runApp(MyApp());
@@ -14,6 +15,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
+      debugShowCheckedModeBanner: false,
       home: MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
@@ -28,10 +30,10 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-@override
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SignUp(),
+      body: Welcome(),
     );
   }
 }

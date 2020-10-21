@@ -112,8 +112,14 @@ class _SignUpState extends State<SignUp> {
                       child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
-                            Text("Registered User? ",style: blackTextStyle,),
-                            Text("Log in!",style: goldTextStyle,)
+                            Text(
+                              "Registered User? ",
+                              style: blackTextStyle,
+                            ),
+                            Text(
+                              "Log in!",
+                              style: goldTextStyle,
+                            )
                           ]),
                     ),
                     Container(
