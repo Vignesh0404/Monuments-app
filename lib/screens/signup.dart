@@ -91,6 +91,9 @@ class _SignUpState extends State<SignUp> {
                 height: 50,
               ),
               FlatButton(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
                   color: Color(0xFFCEAF41),
                   // color: Colors.black87,
                   onPressed: () {},

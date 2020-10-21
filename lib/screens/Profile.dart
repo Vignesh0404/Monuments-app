@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:travelapp/screens/styles.dart';
+import 'package:travelapp/screens/editprofile.dart';
 
 class Profile extends StatefulWidget {
   Profile({Key key}) : super(key: key);
@@ -41,6 +42,9 @@ class _ProfileState extends State<Profile> {
                         borderRadius: BorderRadius.circular(10.0)),
                     onPressed: () {
                       print('Edit Profile clicked');
+                      Navigator.of(context).push(new MaterialPageRoute(
+                                  builder: (BuildContext context) =>
+                                      EditProfile()));
                     },
                     child: Text(
                       'Edit',

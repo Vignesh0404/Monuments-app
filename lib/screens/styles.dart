@@ -10,6 +10,11 @@ TextStyle titleFontStyle = TextStyle(
     color: Colors.black,
     fontSize: 16,
     fontWeight: FontWeight.w600);
+TextStyle largeTitleFontStyle = TextStyle(
+    fontSize: 20,
+    color: Colors.black,
+    fontFamily: 'OpenSans',
+    fontWeight: FontWeight.w600);
 
 TextStyle greytitleFontStyle = TextStyle(
     fontFamily: 'OpenSans',
@@ -31,6 +36,12 @@ TextStyle blackTextStyle = TextStyle(
     fontSize: 14,
     color: Colors.black,
     fontWeight: FontWeight.w600);
+TextStyle greyTextStyle = TextStyle(
+    fontFamily: 'OpenSans',
+    fontSize: 16,
+    color: Color(0xFF565656),
+    fontWeight: FontWeight.w600);
+
 TextStyle appBarTextStyle = TextStyle(
     fontFamily: 'OpenSans',
     fontSize: 20,
