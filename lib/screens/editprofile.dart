@@ -9,7 +9,7 @@ class EditProfile extends StatefulWidget {
 }
 
 class _EditProfileState extends State<EditProfile> {
-  bool _showSaveChanges = true;
+  bool _showSaveChanges = false;
   bool _emailpass = true;
   final TextEditingController _loginName =
       TextEditingController(text: ("Just a text"));
@@ -19,18 +19,24 @@ class _EditProfileState extends State<EditProfile> {
     return SafeArea(
         child: Scaffold(
             backgroundColor: Colors.white,
-            body: ListView(children: <Widget>[
-              ListTile(
-                leading: IconButton(
-                  // padding: EdgeInsets.all(-1),
-                  icon: Icon(Icons.arrow_back),
+            appBar: AppBar(
+              elevation: 0,
+              bottomOpacity: 4,
+              backgroundColor: Colors.white,
+              title: Text(
+                'Edit Profile',
+                style: largeTitleFontStyle,),
+              leading: IconButton(
+                icon: Icon(
+                  Icons.arrow_back,
                   color: Colors.black,
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
                 ),
-                title: Text('Edit Profile', style: largeTitleFontStyle),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
               ),
+            ),
+            body: ListView(children: <Widget>[
               Container(height: 20),
               ListTile(
                   leading: CircleAvatar(

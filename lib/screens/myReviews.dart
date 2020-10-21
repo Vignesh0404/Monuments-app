@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:travelapp/screens/styles.dart';
 
 class MyReviews extends StatefulWidget {
   MyReviews({Key key}) : super(key: key);
@@ -18,11 +19,8 @@ class _MyReviewsState extends State<MyReviews> {
         backgroundColor: Colors.white,
         title: Text(
           'My Reviews',
-          style: TextStyle(
-              fontFamily: 'OpenSans',
-              color: Colors.black,
-              fontWeight: FontWeight.w800),
-        ),
+          style: largeTitleFontStyle
+          ),
         leading: IconButton(
           icon: Icon(
             Icons.arrow_back,
@@ -113,31 +111,36 @@ class _MyReviewsState extends State<MyReviews> {
                                         CrossAxisAlignment.start,
                                     children: <Widget>[
                                       SizedBox(height: 15),
-                                      Text(
-                                        ' Confirm delete',
+                                      Padding(
+                                        padding: EdgeInsets.only(left:15),
+                                        child:Text(
+                                      
+                                        'Confirm delete',
                                         style: TextStyle(
                                             fontSize: 18,
                                             fontFamily: 'OpenSans',
                                             fontWeight: FontWeight.w700,
                                             color: Colors.black),
-                                      ),
+                                      ),),
                                       SizedBox(
                                         height: 15,
                                       ),
-                                      Container(
+                                      Padding(
+                                        padding: EdgeInsets.only(left:15,right:15),
+                                        child:Container(
                                         width: double.infinity,
                                         child: Text(
-                                          ' Are you sure you want to delete the review?',
+                                          'Are you sure you want to delete the review?',
                                           style: TextStyle(
                                               fontFamily: 'OpenSans',
                                               color: Colors.grey.shade400,
                                               fontWeight: FontWeight.w600),
                                         ),
-                                      ),
-                                      SizedBox(
-                                        height: 27,
-                                      ),
-                                      Row(
+                                      ),),
+                                      Spacer(),
+                                      Padding(
+                                        padding: EdgeInsets.only(right: 15.0),
+                                        child:Row(
                                         children: <Widget>[
                                           Spacer(),
                                           Text(
@@ -156,7 +159,9 @@ class _MyReviewsState extends State<MyReviews> {
                                                 fontFamily: 'OpenSans'),
                                           )
                                         ],
-                                      )
+                                      ),),
+                                      SizedBox(height:15)
+                                      
                                     ],
                                   ),
                                 ),
