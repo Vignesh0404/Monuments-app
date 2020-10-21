@@ -23,7 +23,7 @@ class _SignUpState extends State<SignUp> {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Padding(
-            padding: EdgeInsets.only(top: 14, right: 15, left: 15),
+            padding: EdgeInsets.only(top: 24, right: 15, left: 15),
             child: Stack(children: <Widget>[
               Column(
                   crossAxisAlignment: CrossAxisAlignment.start,

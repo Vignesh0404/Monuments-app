@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:travelapp/screens/login.dart';
 import 'package:travelapp/screens/signup.dart';
 import 'package:travelapp/screens/welcome.dart';
 
@@ -33,7 +34,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Welcome(),
+      body: Login(),
     );
   }
 }
