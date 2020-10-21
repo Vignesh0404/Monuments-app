@@ -7,12 +7,17 @@ TextStyle loginFormStyle = TextStyle(
     fontWeight: FontWeight.w400);
 TextStyle normalTextStyle = TextStyle(
     fontFamily: 'OpenSans',
-    fontSize: 14,
+    fontSize: 12,
     color: Colors.black,
     fontWeight: FontWeight.w400);
 TextStyle blackTextStyle = TextStyle(
     fontFamily: 'OpenSans',
     fontSize: 14,
+    color: Colors.black,
+    fontWeight: FontWeight.w600);
+TextStyle appBarTextStyle = TextStyle(
+    fontFamily: 'OpenSans',
+    fontSize: 20,
     color: Colors.black,
     fontWeight: FontWeight.w600);
 TextStyle goldTextStyle = TextStyle(

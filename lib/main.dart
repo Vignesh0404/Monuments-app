@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:travelapp/screens/login.dart';
 import 'package:travelapp/screens/signup.dart';
 import 'package:travelapp/screens/welcome.dart';
+import 'package:travelapp/widgets/bottomNavigation.dart';
 
 void main() {
   runApp(MyApp());
@@ -34,7 +35,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Welcome(),
+      body: BottomNavigation(),
     );
   }
 }
