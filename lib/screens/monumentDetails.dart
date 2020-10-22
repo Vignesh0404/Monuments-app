@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'styles.dart';
 import 'package:video_player/video_player.dart';
+import 'dart:async';
 
 class MonumentDetails extends StatefulWidget {
   MonumentDetails({Key key}) : super(key: key);
@@ -40,119 +41,146 @@ class _MonumentDetailsState extends State<MonumentDetails> {
     super.dispose();
   }
 
+  Timer _timer;
+  bool showPause = false;
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
           body: ListView(children: <Widget>[
-        //Video Code starts
-        Padding(
-          padding: EdgeInsets.all(15),
-          child: FutureBuilder(
-            future: _initializeVideoPlayerFuture,
-            builder: (context, snapshot) {
-              if (snapshot.connectionState == ConnectionState.done) {
-                // If the VideoPlayerController has finished initialization, use
-                // the data it provides to limit the aspect ratio of the video.
-                return AspectRatio(
-                  aspectRatio: _controller.value.aspectRatio,
-                  // Use the VideoPlayer widget to display the video.
-                  child: Stack(
-                    alignment: Alignment.center,
+        Stack(children: <Widget>[
+          Container(
+            height: 220,
+            width: double.infinity,
+            decoration: BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage('images/caveTemple.jpg'),
+                    fit: BoxFit.cover,
+                    colorFilter: new ColorFilter.mode(
+                        Colors.black.withOpacity(0.55), BlendMode.hardLight))),
+            child: Column(
+              children: <Widget>[
+                Row(
+                  children: <Widget>[
+                    IconButton(
+                        icon: Icon(
+                          Icons.arrow_back,
+                          size: 24,
+                          color: Colors.white,
+                        ),
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        }),
+                    Spacer(),
+                    IconButton(
+                        icon: Icon(
+                          FlutterIcons.download_ant,
+                          color: Colors.white,
+                          size: 24,
+                        ),
+                        onPressed: null),
+                    IconButton(
+                        icon: Icon(
+                          FlutterIcons.share_2_fea,
+                          color: Colors.white,
+                          size: 24,
+                        ),
+                        onPressed: null)
+                  ],
+                ),
+                Center(child: Text('Cave Temple', style: white16)),
+                SizedBox(
+                  height: 6,
+                ),
+                Center(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                    VideoPlayer(_controller),
-                    Align(
-
-                      child:FlatButton(
-                      onPressed: () {
-                        setState(() {
-                          // If the video is playing, pause it.
-                          if (_controller.value.isPlaying) {
-                            _controller.pause();
-                          } else {
-                            // If the video is paused, play it.
-                            _controller.play();
-                          }
-                        });
-                      },
-                      child: Icon(
-                        _controller.value.isPlaying
-                            ? Icons.pause
-                            : Icons.play_arrow,
+                      Text('Mahabalipuram', style: white14w400),
+                      Text(' • ', style: white17bold),
+                      Text('310 CE - 630 CE', style: white14w400)
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+          //Video Code starts
+          Padding(
+            padding: EdgeInsets.only(right: 15, left: 15, bottom: 15, top: 120),
+            // child:BoxDecoration(
+            child: FutureBuilder(
+              future: _initializeVideoPlayerFuture,
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.done) {
+                  // If the VideoPlayerController has finished initialization, use
+                  // the data it provides to limit the aspect ratio of the video.
+                  return AspectRatio(
+                    aspectRatio: _controller.value.aspectRatio,
+                    // Use the VideoPlayer widget to display the video.
+                    child:
+                        Stack(alignment: Alignment.center, children: <Widget>[
+                      GestureDetector(
+                          onTap: () {
+                            print('Video Clicked');
+                            setState(() {
+                              showPause = true;
+                            });
+                            _timer = new Timer(
+                                const Duration(milliseconds: 800), () {
+                              setState(() {
+                                showPause = false;
+                              });
+                            });
+                          },
+                          child: ClipRRect(
+                              borderRadius: BorderRadius.circular(5),
+                              child: VideoPlayer(_controller))),
+                      Align(
+                        child: FlatButton(
+                          onPressed: () {
+                            setState(() {
+                              // If the video is playing, pause it.
+                              if (_controller.value.isPlaying) {
+                                _controller.pause();
+                              } else {
+                                // If the video is paused, play it.
+                                _controller.play();
+                                showPause = true;
+                                _timer = new Timer(
+                                    const Duration(milliseconds: 800), () {
+                                  setState(() {
+                                    showPause = false;
+                                  });
+                                });
+                              }
+                            });
+                          },
+                          child: Icon(
+                            !_controller.value.isPlaying
+                                ? Icons.play_arrow
+                                : showPause == true ? Icons.pause : Icons.mail,//TODO: change the http to blank!!
                             size: 50,
                             color: Colors.white,
+                          ),
+                        ),
                       ),
-                    ),),
-                  ]),
-                );
-              } else {
-                // If the VideoPlayerController is still initializing, show a
-                // loading spinner.
-                return Center(child: CircularProgressIndicator());
-              }
-            },
+                    ]),
+                  );
+                } else {
+                  // If the VideoPlayerController is still initializing, show a
+                  // loading spinner.
+                  return Center(child: CircularProgressIndicator());
+                }
+              },
+            ),
           ),
-        ),
+          // )
+        ]),
         // Video Code Ends
         Column(
           children: <Widget>[
-            Container(
-              height: 220,
-              width: double.infinity,
-              decoration: BoxDecoration(
-                  image: DecorationImage(
-                      image: AssetImage('images/caveTemple.jpg'),
-                      fit: BoxFit.cover,
-                      colorFilter: new ColorFilter.mode(
-                          Colors.black.withOpacity(0.55),
-                          BlendMode.hardLight))),
-              child: Column(
-                children: <Widget>[
-                  Row(
-                    children: <Widget>[
-                      IconButton(
-                          icon: Icon(
-                            Icons.arrow_back,
-                            size: 24,
-                            color: Colors.white,
-                          ),
-                          onPressed: () {
-                            Navigator.of(context).pop();
-                          }),
-                      Spacer(),
-                      IconButton(
-                          icon: Icon(
-                            FlutterIcons.download_ant,
-                            color: Colors.white,
-                            size: 24,
-                          ),
-                          onPressed: null),
-                      IconButton(
-                          icon: Icon(
-                            FlutterIcons.share_2_fea,
-                            color: Colors.white,
-                            size: 24,
-                          ),
-                          onPressed: null)
-                    ],
-                  ),
-                  Center(child: Text('Cave Temple', style: white16)),
-                  SizedBox(
-                    height: 6,
-                  ),
-                  Center(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Text('Mahabalipuram', style: white14w400),
-                        Text(' • ', style: white17bold),
-                        Text('310 CE - 630 CE', style: white14w400)
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
             Padding(
               padding: EdgeInsets.all(16),
               child: Column(
