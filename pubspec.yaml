@@ -24,6 +24,7 @@ dependencies:
   flutter:
     sdk: flutter
   google_fonts: ^1.1.1
+  video_player: ^0.11.1+2
 
 
 

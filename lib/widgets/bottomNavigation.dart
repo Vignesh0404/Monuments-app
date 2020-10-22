@@ -5,7 +5,7 @@ import 'package:travelapp/screens/regions.dart';
 import 'package:travelapp/screens/search.dart';
 import 'package:travelapp/screens/styles.dart';
 import 'package:flutter_icons/flutter_icons.dart';
-import 'package:travelapp/screens/timePeriodSearch.dart';
+import 'package:travelapp/screens/videoplayer.dart';
 
 class BottomNavigation extends StatefulWidget {
   BottomNavigation({Key key}) : super(key: key);
@@ -18,7 +18,8 @@ class _BottomNavigationState extends State<BottomNavigation> {
   int currentIndex = 0;
   final List<Widget> children = [
     Monuments(),
-    Regions(),
+    VideoPlayerApp(),
+    // Regions(),
     // TimePeriodSearch(),
     Search(),
     Profile(),

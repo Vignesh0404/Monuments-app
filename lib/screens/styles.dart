@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 
+TextStyle white12 =
+    TextStyle(fontFamily: "OpenSans", color: Colors.white, fontSize: 12);
+TextStyle white16 =
+    TextStyle(fontFamily: "OpenSans", color: Colors.white, fontSize: 16);
 TextStyle white14w200 = TextStyle(
     color: Colors.white,
     fontSize: 14,
-     fontFamily: 'OpenSans', fontWeight: FontWeight.w200);
+    fontFamily: 'OpenSans',
+    fontWeight: FontWeight.w200);
 TextStyle white17w600 = TextStyle(
     color: Colors.white,
     fontSize: 17,
@@ -19,11 +24,13 @@ TextStyle white14w400 = TextStyle(
     fontSize: 14,
     fontFamily: 'OpenSans',
     fontWeight: FontWeight.w400);
-TextStyle subtitleFontStyle = TextStyle(
+TextStyle grey14w400 = TextStyle(
     fontFamily: 'OpenSans',
     fontSize: 14,
-    // color: Color(0xFF565656),
+    color: Colors.grey[500],
     fontWeight: FontWeight.w400);
+TextStyle subtitleFontStyle = TextStyle(
+    fontFamily: 'OpenSans', fontSize: 14, fontWeight: FontWeight.w400);
 TextStyle titleFontStyle = TextStyle(
     fontFamily: 'OpenSans',
     color: Colors.black,
@@ -34,7 +41,6 @@ TextStyle largeTitleFontStyle = TextStyle(
     color: Colors.black,
     fontFamily: 'OpenSans',
     fontWeight: FontWeight.w600);
-
 TextStyle greytitleFontStyle = TextStyle(
     fontFamily: 'OpenSans',
     color: Colors.grey,
@@ -55,7 +61,6 @@ TextStyle normalTextStyle600 = TextStyle(
     fontSize: 12,
     color: Colors.black,
     fontWeight: FontWeight.w600);
-
 TextStyle blackTextStyle = TextStyle(
     fontFamily: 'OpenSans',
     fontSize: 14,
@@ -66,7 +71,6 @@ TextStyle greyTextStyle = TextStyle(
     fontSize: 16,
     color: Color(0xFF565656),
     fontWeight: FontWeight.w600);
-
 TextStyle appBarTextStyle = TextStyle(
     fontFamily: 'OpenSans',
     fontSize: 20,
@@ -84,3 +88,5 @@ OutlineInputBorder greyCirclularBorder = OutlineInputBorder(
 OutlineInputBorder greyBorder = OutlineInputBorder(
   borderSide: BorderSide(color: Color(0xFFCFCFCF)),
 );
+BoxDecoration greenReviewBox = BoxDecoration(
+    color: Color(0xFF6ECA4B), borderRadius: BorderRadius.circular(5.0));
