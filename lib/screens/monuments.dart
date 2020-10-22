@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:travelapp/screens/monumentDetails.dart';
 import 'package:travelapp/screens/myReviews.dart';
 import 'styles.dart';
 import 'package:flutter_icons/flutter_icons.dart';
@@ -29,7 +30,10 @@ class _MonumentsState extends State<Monuments> {
                   color: Colors.black,
                   size: 28,
                 ),
-                onPressed: null)
+                onPressed: () {
+                  Navigator.of(context).push(new MaterialPageRoute(
+                      builder: (BuildContext context) => new MyReviews()));
+                })
           ],
         ),
         body: Padding(
@@ -37,7 +41,7 @@ class _MonumentsState extends State<Monuments> {
           child: GestureDetector(
             onTap: () {
               Navigator.of(context).push(new MaterialPageRoute(
-                  builder: (BuildContext context) => new MyReviews()));
+                  builder: (BuildContext context) => new MonumentDetails()));
             },
             child: Container(
               margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 1.0),
