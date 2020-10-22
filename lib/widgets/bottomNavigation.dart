@@ -19,7 +19,8 @@ class _BottomNavigationState extends State<BottomNavigation> {
   final List<Widget> children = [
     Monuments(),
     Regions(),
-    TimePeriodSearch(),
+    // TimePeriodSearch(),
+    Search(),
     Profile(),
   ];
   void OntappedBar(int index) {

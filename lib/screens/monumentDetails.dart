@@ -181,7 +181,7 @@ class _MonumentDetailsState extends State<MonumentDetails> {
                         boxShadow: [
                           BoxShadow(blurRadius: 1, color: Colors.white10)
                         ],
-                        borderRadius: BorderRadius.circular(20.0),
+                        borderRadius: BorderRadius.circular(5.0),
                         image: DecorationImage(
                             image: AssetImage('images/caveTemple.jpg'),
                             fit: BoxFit.cover,
@@ -195,21 +195,19 @@ class _MonumentDetailsState extends State<MonumentDetails> {
                             width: double.infinity,
                             height: 40,
                             decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(20.0),
+                                borderRadius: BorderRadius.circular(5.0),
                                 color: Colors.grey.shade800.withOpacity(0.6),
                                 backgroundBlendMode: BlendMode.hardLight),
                             child: Container(
-                              width: 40,
-                              child: Padding(
-                                padding:
-                                    const EdgeInsets.only(left: 13, top: 6),
-                                child: Text('Facade - Corbells',
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontFamily: 'OpenSans',
-                                        fontWeight: FontWeight.w200)),
-                              ),
-                            ))
+                                width: 40,
+                                child: Padding(
+                                  padding:
+                                      const EdgeInsets.only(left: 13, top: 6),
+                                  child: Text(
+                                    'Facade - Corbells',
+                                    style: white14w200,
+                                  ),
+                                )))
                       ],
                     ),
                   ),
@@ -220,7 +218,7 @@ class _MonumentDetailsState extends State<MonumentDetails> {
                         boxShadow: [
                           BoxShadow(blurRadius: 1, color: Colors.white10)
                         ],
-                        borderRadius: BorderRadius.circular(20.0),
+                        borderRadius: BorderRadius.circular(5.0),
                         image: DecorationImage(
                             image: AssetImage('images/shoreTemple.jpg'),
                             fit: BoxFit.cover,
@@ -234,7 +232,7 @@ class _MonumentDetailsState extends State<MonumentDetails> {
                             width: double.infinity,
                             height: 40,
                             decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(20.0),
+                                borderRadius: BorderRadius.circular(5.0),
                                 color: Colors.grey.shade800.withOpacity(0.6),
                                 backgroundBlendMode: BlendMode.hardLight),
                             child: Container(
@@ -242,11 +240,10 @@ class _MonumentDetailsState extends State<MonumentDetails> {
                               child: Padding(
                                 padding:
                                     const EdgeInsets.only(left: 13, top: 2),
-                                child: Text('Facade - Shafts and Square Bases',
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontFamily: 'OpenSans',
-                                        fontWeight: FontWeight.w200)),
+                                child: Text(
+                                  'Facade - Shafts and Square Bases',
+                                  style: white14w200,
+                                ),
                               ),
                             ))
                       ],
@@ -267,7 +264,7 @@ class _MonumentDetailsState extends State<MonumentDetails> {
                         boxShadow: [
                           BoxShadow(blurRadius: 1, color: Colors.white10)
                         ],
-                        borderRadius: BorderRadius.circular(20.0),
+                        borderRadius: BorderRadius.circular(5.0),
                         image: DecorationImage(
                             image: AssetImage('images/sanctum.jpg'),
                             fit: BoxFit.cover,
@@ -281,20 +278,18 @@ class _MonumentDetailsState extends State<MonumentDetails> {
                             width: double.infinity,
                             height: 40,
                             decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(20.0),
+                                borderRadius: BorderRadius.circular(5.0),
                                 color: Colors.grey.shade800.withOpacity(0.6),
                                 backgroundBlendMode: BlendMode.hardLight),
                             child: Container(
                               width: 40,
                               child: Padding(
-                                padding:
-                                    const EdgeInsets.only(left: 13, top: 6),
-                                child: Text('Sanctums',
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontFamily: 'OpenSans',
-                                        fontWeight: FontWeight.w200)),
-                              ),
+                                  padding:
+                                      const EdgeInsets.only(left: 13, top: 6),
+                                  child: Text(
+                                    'Sanctums',
+                                    style: white14w200,
+                                  )),
                             ))
                       ],
                     ),
@@ -306,7 +301,7 @@ class _MonumentDetailsState extends State<MonumentDetails> {
                         boxShadow: [
                           BoxShadow(blurRadius: 1, color: Colors.white10)
                         ],
-                        borderRadius: BorderRadius.circular(20.0),
+                        borderRadius: BorderRadius.circular(5.0),
                         image: DecorationImage(
                             image: AssetImage('images/wall.jpg'),
                             fit: BoxFit.cover,
@@ -320,21 +315,19 @@ class _MonumentDetailsState extends State<MonumentDetails> {
                             width: double.infinity,
                             height: 40,
                             decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(20.0),
+                                borderRadius: BorderRadius.circular(5.0),
                                 color: Colors.grey.shade800.withOpacity(0.6),
                                 backgroundBlendMode: BlendMode.hardLight),
                             child: Container(
-                              width: 40,
-                              child: Padding(
-                                padding:
-                                    const EdgeInsets.only(left: 13, top: 2),
-                                child: Text('Sanctum Wall Paintings',
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontFamily: 'OpenSans',
-                                        fontWeight: FontWeight.w200)),
-                              ),
-                            ))
+                                width: 40,
+                                child: Padding(
+                                  padding: const EdgeInsets.only(
+                                      left: 10, top: 2, right: 10),
+                                  child: Text(
+                                    'Sanctum Wall Paintings',
+                                    style: white14w200,
+                                  ),
+                                )))
                       ],
                     ),
                   ),

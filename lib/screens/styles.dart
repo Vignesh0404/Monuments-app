@@ -1,5 +1,24 @@
 import 'package:flutter/material.dart';
 
+TextStyle white14w200 = TextStyle(
+    color: Colors.white,
+    fontSize: 14,
+     fontFamily: 'OpenSans', fontWeight: FontWeight.w200);
+TextStyle white17w600 = TextStyle(
+    color: Colors.white,
+    fontSize: 17,
+    fontFamily: 'OpenSans',
+    fontWeight: FontWeight.w600);
+TextStyle white17bold = TextStyle(
+    color: Colors.white,
+    fontSize: 17,
+    fontFamily: 'OpenSans',
+    fontWeight: FontWeight.bold);
+TextStyle white14w400 = TextStyle(
+    color: Colors.white,
+    fontSize: 14,
+    fontFamily: 'OpenSans',
+    fontWeight: FontWeight.w400);
 TextStyle subtitleFontStyle = TextStyle(
     fontFamily: 'OpenSans',
     fontSize: 14,
@@ -31,6 +50,12 @@ TextStyle normalTextStyle = TextStyle(
     fontSize: 12,
     color: Colors.black,
     fontWeight: FontWeight.w400);
+TextStyle normalTextStyle600 = TextStyle(
+    fontFamily: 'OpenSans',
+    fontSize: 12,
+    color: Colors.black,
+    fontWeight: FontWeight.w600);
+
 TextStyle blackTextStyle = TextStyle(
     fontFamily: 'OpenSans',
     fontSize: 14,
