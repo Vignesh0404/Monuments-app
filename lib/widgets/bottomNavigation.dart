@@ -5,6 +5,7 @@ import 'package:travelapp/screens/regions.dart';
 import 'package:travelapp/screens/search.dart';
 import 'package:travelapp/screens/styles.dart';
 import 'package:flutter_icons/flutter_icons.dart';
+import 'package:travelapp/screens/timePeriodSearch.dart';
 
 class BottomNavigation extends StatefulWidget {
   BottomNavigation({Key key}) : super(key: key);
@@ -18,7 +19,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
   final List<Widget> children = [
     Monuments(),
     Regions(),
-    Search(),
+    TimePeriodSearch(),
     Profile(),
   ];
   void OntappedBar(int index) {
