@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:travelapp/screens/styles.dart';
 
-_showDeleteAlert(BuildContext context) {
+Widget showDeleteAlert(BuildContext context) {
   showDialog(
       context: context,
       builder: (BuildContext context) {
