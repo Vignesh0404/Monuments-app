@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:travelapp/screens/Profile.dart';
 import 'package:travelapp/screens/monuments.dart';
+import 'package:travelapp/screens/myReviews.dart';
 import 'package:travelapp/screens/regions.dart';
 import 'package:travelapp/screens/search.dart';
 import 'package:travelapp/screens/styles.dart';
@@ -18,7 +19,8 @@ class _BottomNavigationState extends State<BottomNavigation> {
   int currentIndex = 0;
   final List<Widget> children = [
     Monuments(),
-    VideoPlayerApp(),
+    MyReviews(),
+    // VideoPlayerApp(),
     // Regions(),
     // TimePeriodSearch(),
     Search(),

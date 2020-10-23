@@ -160,7 +160,7 @@ class _MonumentDetailsState extends State<MonumentDetails> {
                           child: Icon(
                             !_controller.value.isPlaying
                                 ? Icons.play_arrow
-                                : showPause == true ? Icons.pause : Icons.mail,//TODO: change the http to blank!!
+                                : showPause == true ? Icons.pause : null ,
                             size: 50,
                             color: Colors.white,
                           ),

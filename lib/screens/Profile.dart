@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:travelapp/screens/bookmarks.dart';
 import 'package:travelapp/screens/styles.dart';
 import 'package:travelapp/screens/editprofile.dart';
 
@@ -56,6 +57,9 @@ class _ProfileState extends State<Profile> {
               ),
               ListTile(
                 onTap: () {
+                  Navigator.of(context).push(new MaterialPageRoute(
+                                  builder: (BuildContext context) =>
+                                      Bookmarks()));
                   print('Bookmarks clicked');
                 },
                 dense: true,

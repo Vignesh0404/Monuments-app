@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+TextStyle cancelButtonText =
+    TextStyle(color: Colors.grey.shade500, fontFamily: 'OpenSans');
+TextStyle deleteButtonText =
+    TextStyle(color: Colors.red.shade500, fontFamily: 'OpenSans');
 TextStyle white12 =
     TextStyle(fontFamily: "OpenSans", color: Colors.white, fontSize: 12);
 TextStyle white16 =
