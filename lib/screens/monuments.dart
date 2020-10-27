@@ -50,14 +50,12 @@ class _MonumentsState extends State<Monuments> {
               width: double.infinity,
               decoration: BoxDecoration(
                   boxShadow: [BoxShadow(blurRadius: 1)],
-                  //border: Border.all(width: 0.5),
                   image: DecorationImage(
                       image: AssetImage('images/shoreTemple.jpg'),
                       fit: BoxFit.cover,
                       colorFilter: new ColorFilter.mode(
                           Colors.black.withOpacity(0.3), BlendMode.hardLight)),
-                  //color: Colors.orangeAccent,
-                  borderRadius: BorderRadius.circular(20.0)),
+                  borderRadius: BorderRadius.circular(5.0)),
               child: Column(
                 children: <Widget>[
                   Align(

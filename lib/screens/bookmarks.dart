@@ -37,6 +37,12 @@ class _BookmarksState extends State<Bookmarks> {
   ];
   int _selectedCount = 0;
   bool _manageClicked = false;
+  void handleClick(String value) {
+    setState(() {
+      _manageClicked = !_manageClicked;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -46,6 +52,21 @@ class _BookmarksState extends State<Bookmarks> {
               elevation: 0,
               bottomOpacity: 4,
               backgroundColor: Colors.white,
+              actions: <Widget>[
+                (_selectedCount == 0)
+                    ? PopupMenuButton<String>(
+                        onSelected: handleClick,
+                        itemBuilder: (BuildContext context) {
+                          return {(!_manageClicked)?'Manage':'Cancel'}.map((String choice) {
+                            return PopupMenuItem<String>(
+                              value: choice,
+                              child: Text(choice),
+                            );
+                          }).toList();
+                        },
+                      )
+                    : Container(),
+              ],
               title: (_selectedCount == 0)
                   ? Row(
                       children: <Widget>[
@@ -53,19 +74,19 @@ class _BookmarksState extends State<Bookmarks> {
                           'My Bookmarks',
                           style: largeTitleFontStyle,
                         ),
-                        Spacer(),
-                        GestureDetector(
-                            child: Icon(
-                              Icons.more_vert,
-                              color: (_manageClicked)
-                                  ? Colors.deepOrange
-                                  : Colors.black,
-                            ),
-                            onTap: () {
-                              setState(() {
-                                _manageClicked = !_manageClicked;
-                              });
-                            })
+                        // Spacer(),
+                        // GestureDetector(
+                        //     child: Icon(
+                        //       Icons.more_vert,
+                        //       color: (_manageClicked)
+                        //           ? Colors.deepOrange
+                        //           : Colors.black,
+                        //     ),
+                        //     onTap: () {
+                        //                   setState(() {
+                        //         _manageClicked = !_manageClicked;
+                        //       });
+                        //     })
                       ],
                     )
                   : Row(
@@ -162,10 +183,6 @@ class _BookmarksState extends State<Bookmarks> {
                   },
                 ),
               ),
-              Text("Count:" + _selectedCount.toString()),
-              Text("Selected:" + _selected.toString())
             ])));
   }
 }
-
-// Widget _showDeleteAlert(){}

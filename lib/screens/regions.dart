@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:video_player/video_player.dart';
 
 class Regions extends StatefulWidget {
   Regions({Key key}) : super(key: key);
