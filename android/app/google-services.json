@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "913114091011",
+    "firebase_url": "https://nfn-monuments.firebaseio.com",
+    "project_id": "nfn-monuments",
+    "storage_bucket": "nfn-monuments.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:913114091011:android:6d09ff4b38de43b7d08836",
+        "android_client_info": {
+          "package_name": "com.example.travelapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "913114091011-uq5agp49mvnm7b1pvev6bto5lg899fna.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.travelapp",
+            "certificate_hash": "6e64448372b9364bb045303a9a7327a02317c599"
+          }
+        },
+        {
+          "client_id": "913114091011-sco1h2avm58ah4qbkjs8lfkneiitch9h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBatPvOYd7b0-VsPE11LtZQmllYxSGFb9Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "913114091011-sco1h2avm58ah4qbkjs8lfkneiitch9h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
