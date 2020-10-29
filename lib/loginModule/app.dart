@@ -1,10 +1,10 @@
-import 'package:authentication_repository/authentication_repository.dart';
+import 'package:travelapp/loginModule/authentication_repository/lib/authentication_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:travelapp/authentication/authentication.dart';
-import 'package:travelapp/home/home.dart';
-import 'package:travelapp/login/login.dart';
-import 'package:travelapp/splash/splash.dart';
+import 'package:travelapp/loginModule/authentication/authentication.dart';
+import 'package:travelapp/loginModule/home/home.dart';
+import 'package:travelapp/loginModule/login/login.dart';
+import 'package:travelapp/loginModule/splash/splash.dart';
 import 'package:travelapp/theme.dart';
 
 class App extends StatelessWidget {

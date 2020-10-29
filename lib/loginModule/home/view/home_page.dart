@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:travelapp/authentication/authentication.dart';
-import 'package:travelapp/home/home.dart';
+import 'package:travelapp/loginModule/authentication/authentication.dart';
+import 'package:travelapp/loginModule/home/home.dart';
 
 class HomePage extends StatelessWidget {
   static Route route() {
