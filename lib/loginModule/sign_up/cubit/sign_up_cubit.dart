@@ -13,12 +13,27 @@ class SignUpCubit extends Cubit<SignUpState> {
 
   final AuthenticationRepository _authenticationRepository;
 
+  void nameChanged(String value) {
+    final name = Name.dirty(value);
+    emit(state.copyWith(
+      name: name,
+      status: Formz.validate([
+        name,
+        state.email,
+        state.password,
+        state.confirmedPassword,
+      ]),
+    ));
+  }
+
+
   void emailChanged(String value) {
     final email = Email.dirty(value);
     emit(state.copyWith(
       email: email,
       status: Formz.validate([
         email,
+        state.name,
         state.password,
         state.confirmedPassword,
       ]),
@@ -36,6 +51,7 @@ class SignUpCubit extends Cubit<SignUpState> {
       confirmedPassword: confirmedPassword,
       status: Formz.validate([
         state.email,
+        state.name,
         password,
         state.confirmedPassword,
       ]),
@@ -51,6 +67,7 @@ class SignUpCubit extends Cubit<SignUpState> {
       confirmedPassword: confirmedPassword,
       status: Formz.validate([
         state.email,
+        state.name,
         state.password,
         confirmedPassword,
       ]),
@@ -62,6 +79,7 @@ class SignUpCubit extends Cubit<SignUpState> {
     emit(state.copyWith(status: FormzStatus.submissionInProgress));
     try {
       await _authenticationRepository.signUp(
+        // userName: state.name.value, TODO:check firebase stuff
         email: state.email.value,
         password: state.password.value,
       );

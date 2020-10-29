@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:travelapp/loginModule/sign_up/sign_up.dart';
 import 'package:formz/formz.dart';
+import 'package:travelapp/screens/styles.dart';
+
 
 class SignUpForm extends StatelessWidget {
   @override
@@ -16,13 +18,16 @@ class SignUpForm extends StatelessWidget {
             );
         }
       },
-      child: Align(
-        alignment: const Alignment(0, -1 / 3),
-        child: Column(
+      child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
+            const SizedBox(height: 26),
+            // Add Image for Profile
+            const SizedBox(height: 26),
+            _NameInput(),
+            const SizedBox(height: 26),
             _EmailInput(),
-            const SizedBox(height: 8.0),
+            const SizedBox(height: 30.0),
             _PasswordInput(),
             const SizedBox(height: 8.0),
             _ConfirmPasswordInput(),
@@ -30,10 +35,35 @@ class SignUpForm extends StatelessWidget {
             _SignUpButton(),
           ],
         ),
-      ),
+      
     );
   }
 }
+
+
+class _NameInput extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<SignUpCubit, SignUpState>(
+      buildWhen: (previous, current) => previous.name != current.name,
+      builder: (context, state) {
+        return TextField(
+          key: const Key('signUpForm_nameInput_textField'),
+          onChanged: (name) => context.bloc<SignUpCubit>().nameChanged(name),
+          keyboardType: TextInputType.emailAddress,
+          decoration: InputDecoration(
+                  labelText: 'Name',
+                  labelStyle: loginFormStyle,
+                  focusedBorder: greyBorder,
+                  enabledBorder: greyBorder,
+                  border: greyCirclularBorder,
+                ),
+        );
+      },
+    );
+  }
+}
+
 
 class _EmailInput extends StatelessWidget {
   @override
@@ -46,10 +76,12 @@ class _EmailInput extends StatelessWidget {
           onChanged: (email) => context.bloc<SignUpCubit>().emailChanged(email),
           keyboardType: TextInputType.emailAddress,
           decoration: InputDecoration(
-            labelText: 'email',
-            helperText: '',
-            errorText: state.email.invalid ? 'invalid email' : null,
-          ),
+                  labelText: 'Email',
+                  labelStyle: loginFormStyle,
+                  focusedBorder: greyBorder,
+                  enabledBorder: greyBorder,
+                  border: greyCirclularBorder,
+                ),
         );
       },
     );

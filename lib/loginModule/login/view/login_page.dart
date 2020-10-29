@@ -2,6 +2,7 @@ import 'package:travelapp/loginModule/authentication_repository/lib/authenticati
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:travelapp/loginModule/login/login.dart';
+import 'package:travelapp/screens/styles.dart';
 
 class LoginPage extends StatelessWidget {
   static Route route() {
@@ -11,9 +12,14 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Login')),
+
+      appBar: AppBar(
+        elevation: 0,
+        title:
+                Text('Log In',
+                style: largeTitleFontStyle),),
       body: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.only(left:15.0,right:15,top:15),
         child: BlocProvider(
           create: (_) => LoginCubit(
             context.repository<AuthenticationRepository>(),
