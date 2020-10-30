@@ -6,6 +6,7 @@ import 'package:travelapp/screens/styles.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'dart:io';
+import 'package:travelapp/photo.dart' as photo;
 
 class SignUpForm extends StatelessWidget {
   @override
@@ -97,6 +98,7 @@ class _ProfilePictureState extends State<_ProfilePicture> {
         ));
     if (croppedFile != null) {
       imageFile = croppedFile;
+      photo.photo = imageFile;
       setState(() {
         state = AppState.cropped;
       });
@@ -284,7 +286,7 @@ class _ConfirmPasswordInput extends State<_ConfirmPassword> {
           obscureText: _obscureText,
           decoration: InputDecoration(
             errorText: state.confirmedPassword.invalid
-                ?'Passwords do not match'
+                ? 'Passwords do not match'
                 : null,
             // errorStyle: ,
             suffixIcon: IconButton(

@@ -3,6 +3,10 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:travelapp/loginModule/authentication/authentication.dart';
 import 'package:formz/formz.dart';
+import 'dart:io';
+import 'package:travelapp/photo.dart' as photo;
+import 'package:flutter/material.dart';
+
 
 part 'sign_up_state.dart';
 
@@ -78,12 +82,9 @@ class SignUpCubit extends Cubit<SignUpState> {
     if (!state.status.isValidated) return;
     emit(state.copyWith(status: FormzStatus.submissionInProgress));
     try {
-      await UserDatabase(uid: state.email.value).updateUserData(
-            state.email.value, state.password.hashCode, null);
-        await user.sendEmailVerification();
-        storeToken();
       await _authenticationRepository.signUp(
-        // userName: state.name.value, TODO:check firebase stuff
+        photo: photo.photo,
+        name: state.name.value, // TODO:check firebase stuff
         email: state.email.value,
         password: state.password.value,
       );

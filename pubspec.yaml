@@ -36,8 +36,10 @@ dependencies:
   graphql: ^3.0.0
   meta: ^1.1.8
   pedantic: ^1.9.0
+  cloud_firestore: ^0.14.2
+  
   authentication_repository:
-    path: lib/authentication_repository
+    path: lib/loginModule/authentication_repository
 
 
 

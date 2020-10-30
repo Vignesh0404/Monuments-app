@@ -1,5 +1,8 @@
 import 'dart:async';
-
+import 'dart:io';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:meta/meta.dart';
@@ -42,14 +45,23 @@ class AuthenticationRepository {
     });
   }
 
+  String url;
+
+  final CollectionReference users =
+      FirebaseFirestore.instance.collection('users');
+
   /// Creates a new user with the provided [email] and [password].
   ///
   /// Throws a [SignUpFailure] if an exception occurs.
   Future<void> signUp({
+    @required String name,
     @required String email,
     @required String password,
+    File photo,
   }) async {
     assert(email != null && password != null);
+    uploadImage(email,photo);
+    updateUserData(email, name, email,url);
     try {
       await _firebaseAuth.createUserWithEmailAndPassword(
         email: email,
@@ -58,6 +70,49 @@ class AuthenticationRepository {
     } on Exception {
       throw SignUpFailure();
     }
+  }
+
+  Future updateUserData(
+    String uid,
+    String name,
+    String emailid,
+    //String phonenum, 
+    String photo
+  ) async {
+    return await users.doc(uid).set({
+      'uid': uid,
+      'name': name,
+      'emailid': emailid,
+      'photo': photo,
+    });
+  }
+
+  Future uploadImage(email,image) async{
+    print(image.toString());
+    FirebaseStorage storage = FirebaseStorage.instance;
+    StorageReference reference = storage.ref().child("$email/");
+    StorageUploadTask uploadTask = reference.putFile(image);
+
+    StorageTaskSnapshot taskSnapshot = await uploadTask.onComplete;
+
+    // Waits till the file is uploaded then stores the download url
+    url = await taskSnapshot.ref.getDownloadURL();
+    print('Image URL:');
+
+    print(url);
+    print('-----------------------------------------------------------------------------');
+    updateWithImage(email,url);
+  }
+
+
+  Future updateWithImage(
+    String emailid,
+    //String phonenum, 
+    String photo
+  ) async {
+    return await users.doc(emailid).update({
+      'photo': photo,
+    });
   }
 
   /// Starts the Sign In with Google Flow.
