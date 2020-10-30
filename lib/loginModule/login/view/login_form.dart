@@ -102,6 +102,7 @@ class _PasswordInput extends State<_Password> {
                 });
               },
             ),
+            errorText: state.password.invalid?'Password must contain min 8 characters':null,
             labelText: 'Password',
             labelStyle: loginFormStyle,
             focusedBorder: greyBorder,

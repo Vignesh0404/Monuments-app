@@ -78,6 +78,10 @@ class SignUpCubit extends Cubit<SignUpState> {
     if (!state.status.isValidated) return;
     emit(state.copyWith(status: FormzStatus.submissionInProgress));
     try {
+      await UserDatabase(uid: state.email.value).updateUserData(
+            state.email.value, state.password.hashCode, null);
+        await user.sendEmailVerification();
+        storeToken();
       await _authenticationRepository.signUp(
         // userName: state.name.value, TODO:check firebase stuff
         email: state.email.value,

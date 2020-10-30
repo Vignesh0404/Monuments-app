@@ -28,6 +28,7 @@ class SignUpState extends Equatable {
     FormzStatus status,
   }) {
     return SignUpState(
+      name: name?? this.name,
       email: email ?? this.email,
       password: password ?? this.password,
       confirmedPassword: confirmedPassword ?? this.confirmedPassword,
