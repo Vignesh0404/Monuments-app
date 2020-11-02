@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:travelapp/screens/styles.dart';
+import 'package:travelapp/profileModule/editProfile/streams/editPicStream.dart';
 
 class EditProfile extends StatefulWidget {
   EditProfile({Key key}) : super(key: key);
@@ -38,17 +39,7 @@ class _EditProfileState extends State<EditProfile> {
             ),
             body: ListView(children: <Widget>[
               Container(height: 20),
-              ListTile(
-                  leading: CircleAvatar(
-                    radius: 30.0,
-                    backgroundImage:
-                        NetworkImage('https://via.placeholder.com/150'),
-                    backgroundColor: Colors.transparent,
-                  ),
-                  title: Text(
-                    'Update Photo',
-                    style: titleFontStyle,
-                  )),
+              EditPicStream(),
               Container(
                 height: 10,
               ),

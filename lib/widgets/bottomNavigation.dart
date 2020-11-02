@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:travelapp/screens/Profile.dart';
+import 'package:travelapp/profileModule/Profile.dart';
 import 'package:travelapp/screens/monuments.dart';
 import 'package:travelapp/screens/myReviews.dart';
 import 'package:travelapp/screens/regions.dart';
