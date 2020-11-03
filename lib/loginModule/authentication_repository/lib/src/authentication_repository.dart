@@ -60,25 +60,31 @@ class AuthenticationRepository {
     File photo,
   }) async {
     assert(email != null && password != null);
-    uploadImage(email,photo);
-    updateUserData(email, name, email,url);
     try {
       await _firebaseAuth.createUserWithEmailAndPassword(
         email: email,
         password: password,
       );
+
+      uploadImage(email, photo);
+      updateUserData(email, name, email, url);
+
+      final user = await _firebaseAuth.currentUser;
+      print(user.getIdToken());
+      // final idToken = await user.getIdToken();
+      // final token = idToken.token;
+
     } on Exception {
       throw SignUpFailure();
     }
   }
 
   Future updateUserData(
-    String uid,
-    String name,
-    String emailid,
-    //String phonenum, 
-    String photo
-  ) async {
+      String uid,
+      String name,
+      String emailid,
+      //String phonenum,
+      String photo) async {
     return await users.doc(uid).set({
       'uid': uid,
       'name': name,
@@ -87,29 +93,30 @@ class AuthenticationRepository {
     });
   }
 
-  Future uploadImage(email,image) async{
+  Future uploadImage(email, image) async {
     print(image.toString());
-    FirebaseStorage storage = FirebaseStorage.instance;
-    StorageReference reference = storage.ref().child("$email/");
-    StorageUploadTask uploadTask = reference.putFile(image);
+    if (image != null) {
+      FirebaseStorage storage = FirebaseStorage.instance;
+      StorageReference reference = storage.ref().child("$email/");
+      StorageUploadTask uploadTask = reference.putFile(image);
 
-    StorageTaskSnapshot taskSnapshot = await uploadTask.onComplete;
+      StorageTaskSnapshot taskSnapshot = await uploadTask.onComplete;
 
-    // Waits till the file is uploaded then stores the download url
-    url = await taskSnapshot.ref.getDownloadURL();
-    print('Image URL:');
+      // Waits till the file is uploaded then stores the download url
+      url = await taskSnapshot.ref.getDownloadURL();
+      print('Image URL:');
 
-    print(url);
-    print('-----------------------------------------------------------------------------');
-    updateWithImage(email,url);
+      print(url);
+      print(
+          '-----------------------------------------------------------------------------');
+      updateWithImage(email, url);
+    }
   }
 
-
   Future updateWithImage(
-    String emailid,
-    //String phonenum, 
-    String photo
-  ) async {
+      String emailid,
+      //String phonenum,
+      String photo) async {
     return await users.doc(emailid).update({
       'photo': photo,
     });
@@ -145,6 +152,9 @@ class AuthenticationRepository {
         email: email,
         password: password,
       );
+      var token =
+          await firebase_auth.FirebaseAuth.instance.currentUser.getIdToken();
+      print('Token ' + token);
     } on Exception {
       throw LogInWithEmailAndPasswordFailure();
     }

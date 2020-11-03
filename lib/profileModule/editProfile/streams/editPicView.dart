@@ -61,7 +61,9 @@ class EditPicState extends State<EditPic> {
                     subtitle: Text(imageFile.toString()),
                     leading: CircleAvatar(
                       radius: 30.0,
-                      backgroundImage: (imageFile==null)?NetworkImage(photoUrl):FileImage(imageFile),
+                      backgroundImage: (imageFile == null)
+                          ? NetworkImage(photoUrl)
+                          : FileImage(imageFile),
                       backgroundColor: Colors.transparent,
                     ),
                   );

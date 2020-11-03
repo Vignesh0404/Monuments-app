@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:travelapp/loginModule/authentication/authentication.dart';
 import 'package:travelapp/profileModule/streams/profilePicStream.dart';
 import 'package:travelapp/profileModule/streams/profileNameStream.dart';
+import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
 
 class Profile extends StatefulWidget {
   Profile({Key key}) : super(key: key);
@@ -15,7 +16,12 @@ class Profile extends StatefulWidget {
 
 class _ProfileState extends State<Profile> {
   final TextEditingController _feedback = TextEditingController();
+  String token = '';
   @override
+  void initState(){
+    getToken();
+    super.initState();
+  }
   Widget build(BuildContext context) {
     final user = context.bloc<AuthenticationBloc>().state.user;
     return SafeArea(
@@ -28,7 +34,7 @@ class _ProfileState extends State<Profile> {
               Container(
                 height: 15,
               ),
-              ProfilePicStream(),
+              // ProfilePicStream(),
               ProfileNameStream(),
               ListTile(
                 onTap: () {
@@ -194,8 +200,12 @@ class _ProfileState extends State<Profile> {
                   color: Colors.black,
                 ),
               ),
+              Text(token),
               ListTile(
                 onTap: () {
+                  context
+                      .bloc<AuthenticationBloc>()
+                      .add(AuthenticationLogoutRequested());
                   print('Logout clicked');
                 },
                 dense: true,
@@ -232,5 +242,21 @@ class _ProfileState extends State<Profile> {
         ),
       ),
     );
+  }
+
+  Future<void> getToken() async {
+    String authToken =
+        await firebase_auth.FirebaseAuth.instance.currentUser.getIdToken();
+    var user = await firebase_auth.FirebaseAuth.instance.currentUser.getIdTokenResult();
+    setState(() {
+      print(user.toString());
+      token = authToken;
+      int n = token.length;
+      print(n);
+      print('-------');
+      print(token);
+      return;
+    });
+    return;
   }
 }
