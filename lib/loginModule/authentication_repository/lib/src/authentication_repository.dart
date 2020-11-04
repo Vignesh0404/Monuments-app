@@ -6,6 +6,8 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:meta/meta.dart';
+// import '';
+
 
 import 'models/models.dart';
 
@@ -70,6 +72,7 @@ class AuthenticationRepository {
       updateUserData(email, name, email, url);
 
       final user = await _firebaseAuth.currentUser;
+      // shared.token = user.getIdToken();
       print(user.getIdToken());
       // final idToken = await user.getIdToken();
       // final token = idToken.token;

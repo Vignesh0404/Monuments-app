@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:travelapp/blocTry/main.dart';
+// import 'package:travelapp/blocTry/main.dart';
 import 'package:travelapp/profileModule/Profile.dart';
 import 'package:travelapp/screens/monuments.dart';
 import 'package:travelapp/screens/myReviews.dart';
@@ -9,6 +9,7 @@ import 'package:travelapp/screens/signup.dart';
 import 'package:travelapp/screens/styles.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:travelapp/screens/videoplayer.dart';
+import 'package:travelapp/blocTry/main.dart';
 
 class BottomNavigation extends StatefulWidget {
   BottomNavigation({Key key}) : super(key: key);

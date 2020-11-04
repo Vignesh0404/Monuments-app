@@ -28,21 +28,33 @@ class _HomeScreenState extends State<HomeScreen> {
     return BlocBuilder<HomeBloc, HomeStates>(
       builder: (BuildContext context, HomeStates state) {
         if (state is Loading) {
-          return Scaffold(
-            appBar: _buildAppBar(),
-            body: LinearProgressIndicator(),
-          );
+          // return Scaffold(
+            // appBar: _buildAppBar(),
+            // body:
+            return LinearProgressIndicator();
+          // );
         } else if (state is LoadDataFail) {
-          return Scaffold(
-            appBar: _buildAppBar(),
-            body: Center(child: Text(state.error)),
-          );
+          data = (state as LoadDataSuccess).data;
+          print('Data1'+data.toString());
+          print('State1'+state.toString());
+          return 
+          // Scaffold(
+            // appBar: _buildAppBar(),
+            // body:
+             Center(child: Text(state.error));
+            //  ,
+          // );
         } else {
-          data = (state as LoadDataSuccess).data['characters']['results'];
-          return Scaffold(
-            appBar: _buildAppBar(),
-            body: _buildBody(),
-          );
+          data = (state as LoadDataSuccess).data;
+          // print('Data '+data[0]);
+          return Text('uewenip');
+          // return Text(data.toString());
+          // Scaffold(
+            // appBar: _buildAppBar(),
+            // body: 
+            // _buildBody();
+            // ,
+          // );
         }
       },
     );
