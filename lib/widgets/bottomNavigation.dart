@@ -22,7 +22,8 @@ class _BottomNavigationState extends State<BottomNavigation> {
   int currentIndex = 0;
   final List<Widget> children = [
     Monuments(),
-    MyApp2(),
+    Era(),
+    // MyApp2(),
     // SignUp(),
     // MyReviews(),
     // VideoPlayerApp(),

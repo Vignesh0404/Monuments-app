@@ -9,7 +9,7 @@ abstract class HomeEvents extends Equatable {
 
 class FetchHomeData extends HomeEvents {
   final String query;
-  final Map<String, dynamic> variables ;
+  final Map<String, dynamic> variables;
 
   FetchHomeData(this.query, {this.variables}) : super();
 

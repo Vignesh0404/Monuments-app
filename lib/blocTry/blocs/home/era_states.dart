@@ -1,24 +1,26 @@
 import 'package:equatable/equatable.dart';
-import 'package:flutter/material.dart';
 
-abstract class HomeStates extends Equatable {
-  HomeStates();
+abstract class HomeStatesEra extends Equatable {
+  HomeStatesEra();
 
   @override
   List<Object> get props => null;
 }
 
-class Loading extends HomeStates {
+class Loading extends HomeStatesEra {
   Loading() : super();
 }
 
-class LoadDataSuccess extends HomeStates {
+class LoadDataSuccess extends HomeStatesEra {
   final dynamic data;
+
   LoadDataSuccess(this.data) : super();
+
   @override
-  List<Object> get props => data;
+  List<Object> get props => data['era'];
 }
-class LoadDataFail extends HomeStates {
+
+class LoadDataFail extends HomeStatesEra {
   final dynamic error;
 
   LoadDataFail(this.error) : super();

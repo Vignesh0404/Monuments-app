@@ -5,9 +5,8 @@ import 'package:travelapp/blocTry/services/graphql_service.dart';
 class HomeBloc extends Bloc<HomeEvents, HomeStates> {
   GraphQLService service;
 
-  HomeBloc() : super(null) {
+  HomeBloc() : super(Loading()) {
     service = GraphQLService();
-    Loading();
   }
 
   // @override
@@ -32,6 +31,7 @@ class HomeBloc extends Bloc<HomeEvents, HomeStates> {
         print('clientErrors: ${result.exception.clientException.toString()}');
         yield LoadDataFail(result.exception.graphqlErrors[0]);
       } else {
+        print(result.data);
         yield LoadDataSuccess(result.data);
       }
     } catch (e) {
