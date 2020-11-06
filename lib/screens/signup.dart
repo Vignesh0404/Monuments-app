@@ -97,16 +97,7 @@ class _SignUpState extends State<SignUp> {
           child: Column(children: <Widget>[
             Column(crossAxisAlignment: CrossAxisAlignment.start, children: <
                 Widget>[
-              Text(
-                'Sign up',
-                style: TextStyle(
-                    fontFamily: 'OpenSans',
-                    fontWeight: FontWeight.w600,
-                    fontSize: 20.0),
-              ),
-              Container(
-                height: 26,
-              ),
+              
               Stack(
                   alignment: Alignment.center,
                   overflow: Overflow.visible,
@@ -155,34 +146,6 @@ class _SignUpState extends State<SignUp> {
                                     size: iconSize,
                                   )))
                   ]),
-              Container(height: 30),
-              TextField(
-                controller: _loginName,
-                decoration: InputDecoration(
-                  labelText: 'Name',
-                  labelStyle: loginFormStyle,
-                  focusedBorder: greyBorder,
-                  enabledBorder: greyBorder,
-                  border: greyCirclularBorder,
-                ),
-              ),
-              Container(
-                height: 26,
-              ),
-              //Email TextField
-              TextField(
-                controller: _loginEmail,
-                decoration: InputDecoration(
-                  labelText: 'Email',
-                  labelStyle: loginFormStyle,
-                  focusedBorder: greyBorder,
-                  enabledBorder: greyBorder,
-                  border: greyCirclularBorder,
-                ),
-              ),
-              Container(
-                height: 26,
-              ),
               TextField(
                 obscureText: _obscureText,
                 controller: _loginPassword,

@@ -38,24 +38,24 @@ class _LoginState extends State<Login> {
                     fontSize: 20.0),
               )),
               SizedBox(
-                height: 75,
+                height: 60,
               ),
               TextField(
                 controller: _loginEmail,
-                decoration: InputDecoration(
-                  labelText: 'Email',
-                  labelStyle: loginFormStyle,
-                  focusedBorder: greyBorder,
-                  enabledBorder: greyBorder,
-                  border: greyCirclularBorder,
-                ),
+                // decoration: InputDecoration(
+                //   labelText: 'Email',
+                //   labelStyle: loginFormStyle,
+                //   focusedBorder: greyBorder,
+                //   enabledBorder: greyBorder,
+                //   border: greyCirclularBorder,
+                // ),
               ),
               SizedBox(
                 height: 25,
               ),
               TextField(
-                obscureText: _obscureText,
-                controller: _loginPassword,
+                // obscureText: _obscureText,
+                // controller: _loginPassword,
                 decoration: InputDecoration(
                   suffixIcon: IconButton(
                     icon: Icon(

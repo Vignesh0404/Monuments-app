@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:travelapp/screens/bookmarks.dart';
 import 'package:travelapp/screens/styles.dart';
-import 'package:travelapp/screens/editprofile.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:travelapp/loginModule/authentication/authentication.dart';
+import 'package:travelapp/profileModule/streams/profilePicStream.dart';
+import 'package:travelapp/profileModule/streams/profileNameStream.dart';
+import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
 
 class Profile extends StatefulWidget {
   Profile({Key key}) : super(key: key);
@@ -12,8 +16,14 @@ class Profile extends StatefulWidget {
 
 class _ProfileState extends State<Profile> {
   final TextEditingController _feedback = TextEditingController();
+  String token = '';
   @override
+  void initState(){
+    getToken();
+    super.initState();
+  }
   Widget build(BuildContext context) {
+    final user = context.bloc<AuthenticationBloc>().state.user;
     return SafeArea(
       child: Scaffold(
         body: Padding(
@@ -24,42 +34,12 @@ class _ProfileState extends State<Profile> {
               Container(
                 height: 15,
               ),
-              ListTile(
-                title: Align(
-                  alignment: Alignment.centerLeft,
-                  child: CircleAvatar(
-                    radius: 25.0,
-                    backgroundImage:
-                        NetworkImage('https://via.placeholder.com/150'),
-                    backgroundColor: Colors.transparent,
-                  ),
-                ),
-              ),
-              ListTile(
-                title: Text('A Long Name', style: appBarTextStyle),
-                trailing: FlatButton(
-                    color: Color(0xFFCEAF41),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10.0)),
-                    onPressed: () {
-                      print('Edit Profile clicked');
-                      Navigator.of(context).push(new MaterialPageRoute(
-                                  builder: (BuildContext context) =>
-                                      EditProfile()));
-                    },
-                    child: Text(
-                      'Edit',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 14,
-                      ),
-                    )),
-              ),
+              // ProfilePicStream(),
+              ProfileNameStream(),
               ListTile(
                 onTap: () {
                   Navigator.of(context).push(new MaterialPageRoute(
-                                  builder: (BuildContext context) =>
-                                      Bookmarks()));
+                      builder: (BuildContext context) => Bookmarks()));
                   print('Bookmarks clicked');
                 },
                 dense: true,
@@ -220,8 +200,12 @@ class _ProfileState extends State<Profile> {
                   color: Colors.black,
                 ),
               ),
+              Text(token),
               ListTile(
                 onTap: () {
+                  context
+                      .bloc<AuthenticationBloc>()
+                      .add(AuthenticationLogoutRequested());
                   print('Logout clicked');
                 },
                 dense: true,
@@ -258,5 +242,21 @@ class _ProfileState extends State<Profile> {
         ),
       ),
     );
+  }
+
+  Future<void> getToken() async {
+    String authToken =
+        await firebase_auth.FirebaseAuth.instance.currentUser.getIdToken();
+    var user = await firebase_auth.FirebaseAuth.instance.currentUser.getIdTokenResult();
+    setState(() {
+      print(user.toString());
+      token = authToken;
+      int n = token.length;
+      print(n);
+      print('-------');
+      print(token);
+      return;
+    });
+    return;
   }
 }
