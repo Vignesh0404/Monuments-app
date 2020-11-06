@@ -1,8 +1,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:travelapp/blocTry copy/blocs/home/home.dart';
-import 'package:travelapp/blocTry copy/services/graphql_service.dart';
+import 'package:travelapp/MonumentBloc/blocs/home/monument.dart';
+import 'package:travelapp/services/graphql_service.dart';
 
-class HomeBloc extends Bloc<HomeEvents, HomeStates> {
+class HomeBloc extends Bloc<HomeEvents, HomeStatesMonument> {
   GraphQLService service;
 
   HomeBloc() : super(Loading()) {
@@ -13,13 +13,13 @@ class HomeBloc extends Bloc<HomeEvents, HomeStates> {
   // HomeStates get initialState => Loading();
 
   @override
-  Stream<HomeStates> mapEventToState(HomeEvents event) async* {
+  Stream<HomeStatesMonument> mapEventToState(HomeEvents event) async* {
     if (event is FetchHomeData) {
       yield* _mapFetchHomeDataToStates(event);
     }
   }
 
-  Stream<HomeStates> _mapFetchHomeDataToStates(FetchHomeData event) async* {
+  Stream<HomeStatesMonument> _mapFetchHomeDataToStates(FetchHomeData event) async* {
     final query = event.query;
     final variables = event.variables ?? null;
 
@@ -31,7 +31,7 @@ class HomeBloc extends Bloc<HomeEvents, HomeStates> {
         print('clientErrors: ${result.exception.clientException.toString()}');
         yield LoadDataFail(result.exception.graphqlErrors[0]);
       } else {
-        print(result.data);
+        // print(result.data);
         yield LoadDataSuccess(result.data);
       }
     } catch (e) {

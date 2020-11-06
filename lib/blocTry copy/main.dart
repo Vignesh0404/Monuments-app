@@ -1,10 +1,10 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:travelapp/blocTry/blocs/home/home.dart';
-import 'package:travelapp/blocTry/blocs/simple_delegate.dart';
-import 'package:travelapp/blocTry/screens/home_screen.dart';
-import 'package:travelapp/blocTry/services/graphql_service.dart';
+import 'package:travelapp/blocTry copy/blocs/home/home.dart';
+import 'package:travelapp/blocTry copy/blocs/simple_delegate.dart';
+import 'package:travelapp/blocTry copy/screens/home_screen.dart';
+import 'package:travelapp/blocTry copy/services/graphql_service.dart';
 
 void main() {
   // BlocSupervisor.delegate = MySimpleBlocDelegate();

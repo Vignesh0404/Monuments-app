@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:travelapp/blocTry/blocs/home/era.dart';
-import 'package:travelapp/blocTry/services/graphql_service.dart';
+import 'package:travelapp/eraBloc/blocs/home/era.dart';
+import 'package:travelapp/services/graphql_service.dart';
 
 class HomeBloc extends Bloc<HomeEvents, HomeStatesEra> {
   GraphQLService service;

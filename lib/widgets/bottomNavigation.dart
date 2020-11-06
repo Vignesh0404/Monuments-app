@@ -9,7 +9,9 @@ import 'package:travelapp/screens/signup.dart';
 import 'package:travelapp/screens/styles.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:travelapp/screens/videoplayer.dart';
-import 'package:travelapp/blocTry/main.dart';
+import 'package:travelapp/MonumentBloc/Monument.dart';
+import 'package:travelapp/chipBloc/chip.dart';
+import 'package:travelapp/screens/simpleSearch.dart';
 
 class BottomNavigation extends StatefulWidget {
   BottomNavigation({Key key}) : super(key: key);
@@ -22,13 +24,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
   int currentIndex = 0;
   final List<Widget> children = [
     Monuments(),
-    Era(),
-    // MyApp2(),
-    // SignUp(),
-    // MyReviews(),
-    // VideoPlayerApp(),
-    // Regions(),
-    // TimePeriodSearch(),
+    SearchTry(),
     Search(),
     Profile(),
   ];

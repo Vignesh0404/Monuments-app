@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:travelapp/blocTry/blocs/home/era.dart';
+import 'package:travelapp/eraBloc/blocs/home/era.dart';
 import 'package:travelapp/screens/styles.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -17,33 +17,18 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
   }
 
-  AppBar _buildAppBar() {
-    return AppBar(
-      title: Text('GraphQL Demo'),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<HomeBloc, HomeStatesEra>(
       builder: (BuildContext context, HomeStatesEra state) {
         if (state is Loading) {
-          return Scaffold(
-            appBar: _buildAppBar(),
-            body: LinearProgressIndicator(),
-          );
+          return Text('Loading..');
         } else if (state is LoadDataFail) {
-          return Scaffold(
-            appBar: _buildAppBar(),
-            body: Center(child: Text(state.error)),
-          );
+          return Text(state.error);
         } else {
           data = (state as LoadDataSuccess).data['era'];
 
-          return Scaffold(
-            // appBar: _buildAppBar(),
-            body: _buildEraWidget(),
-          );
+          return Container(child: _buildEraWidget());
         }
       },
     );
@@ -51,8 +36,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Widget _buildEraWidget() {
     return Container(
-      padding: EdgeInsets.all(5),
       child: GridView.builder(
+        physics: NeverScrollableScrollPhysics(),
+        shrinkWrap: true,
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
             childAspectRatio: MediaQuery.of(context).size.width /
