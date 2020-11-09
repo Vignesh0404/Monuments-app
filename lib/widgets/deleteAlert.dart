@@ -29,7 +29,7 @@ Widget showDeleteAlert(BuildContext context) {
                     padding: EdgeInsets.only(left: 15, right: 15),
                     child: Container(
                       width: double.infinity,
-                      child: Text('Are you sure you want to delete the review?',
+                      child: Text('Are you sure you want to delete the bookmark?',
                           style: grey14w400),
                     ),
                   ),

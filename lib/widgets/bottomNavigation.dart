@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:travelapp/bookmarkBloc/monument.dart';
+import 'package:travelapp/monumentBloc/search.dart';
 // import 'package:travelapp/blocTry/main.dart';
 import 'package:travelapp/profileModule/Profile.dart';
 import 'package:travelapp/screens/monuments.dart';
@@ -24,7 +26,8 @@ class _BottomNavigationState extends State<BottomNavigation> {
   int currentIndex = 0;
   final List<Widget> children = [
     Monuments(),
-    SearchTry(),
+    // SearchTab(),
+    Monument1(),
     Search(),
     Profile(),
   ];

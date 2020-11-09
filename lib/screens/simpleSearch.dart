@@ -19,47 +19,47 @@ class _SearchState extends State<SearchTry> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Column(children: <Widget>[
-      Container(
-        color: Colors.white,
-        child: Material(
-          elevation: 5,
-          child: Row(
-            children: <Widget>[
-              Expanded(
-                child: TextField(
-                  controller: _searchText,
-                  cursorColor: Colors.black,
-                  keyboardType: TextInputType.text,
-                  textInputAction: TextInputAction.go,
-                  onChanged: (text) {
-                    setState(() {
-                      // print(text);
+      // Container(
+      //   color: Colors.white,
+      //   child: Material(
+      //     elevation: 5,
+      //     child: Row(
+      //       children: <Widget>[
+      //         Expanded(
+      //           child: TextField(
+      //             controller: _searchText,
+      //             cursorColor: Colors.black,
+      //             keyboardType: TextInputType.text,
+      //             textInputAction: TextInputAction.go,
+      //             onChanged: (text) {
+      //               setState(() {
+      //                 // print(text);
                       
-                    });
-                  },
-                  decoration: InputDecoration(
-                      border: InputBorder.none,
-                      contentPadding: EdgeInsets.symmetric(horizontal: 15),
-                      hintText: "Search"),
-                ),
-              ),
-              Padding(
-                  padding: const EdgeInsets.only(right: 8.0),
-                  child: IconButton(
-                    icon: (_searchText.text.isEmpty)
-                        ? Icon(Icons.search)
-                        : Icon(Icons.close),
-                    onPressed: () {
-                     setState(() {
-                        if (_searchText.text.isNotEmpty) _searchText.text = '';
-                     });
-                    },
-                  ))
-            ],
-          ),
-        ),
-      ),
-      Text(_searchText.text),
+      //               });
+      //             },
+      //             decoration: InputDecoration(
+      //                 border: InputBorder.none,
+      //                 contentPadding: EdgeInsets.symmetric(horizontal: 15),
+      //                 hintText: "Search"),
+      //           ),
+      //         ),
+      //         Padding(
+      //             padding: const EdgeInsets.only(right: 8.0),
+      //             child: IconButton(
+      //               icon: (_searchText.text.isEmpty)
+      //                   ? Icon(Icons.search)
+      //                   : Icon(Icons.close),
+      //               onPressed: () {
+      //                setState(() {
+      //                   if (_searchText.text.isNotEmpty) _searchText.text = '';
+      //                });
+      //               },
+      //             ))
+      //       ],
+      //     ),
+      //   ),
+      // ),
+      // Text(_searchText.text),
     //   SingleChildScrollView(child:Container(
     //   child: BlocProvider<HomeBloc>(
     //     create: (BuildContext context) => HomeBloc()..add(FetchHomeData(basicSearch,variables: {"text":_searchText.text.toString()})),
@@ -67,7 +67,7 @@ class _SearchState extends State<SearchTry> {
     //   ),
     // )),
     // Container(child:FetchHomeData(basicSearch,variables: variables),),
-      SearchTab({"text":_searchText.text.toString()}),
+      // SearchTab({"text":_searchText.text.toString()}),
     ]));
   }
 }

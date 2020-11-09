@@ -58,3 +58,73 @@ query search($text: String){
     }
   }
 }''';
+
+String bookmarkQuerynew = r'''
+query BookmarkList($bookmarkOffset: Int, $bookmarkLimit: Int) {
+  bookmark(limit: $bookmarkLimit, offset: $bookmarkOffset, where: {user_id: {_eq: "OpiSdcxGQvVizCZRauIAO7sSx3Q2"}}, order_by: {id: desc}) {
+    id
+    type
+    monument_id
+    micro_monument_id
+    micro_monument {
+      hero_image
+      name
+      id
+      is_active
+    }
+    }
+  }
+''';
+
+String bookmarkQuery = r'''
+query BookmarkList($bookmarkOffset:Int,$bookmarkLimit:Int){
+  bookmark(limit:$bookmarkLimit,offset:$bookmarkOffset, where:{ monument:{
+    status:{ _eq:true}, details:{_contains:{mt_isActiveOnApp:"yes"}}}}, order_by:{id:desc}){
+      id
+      type
+      monument_id
+      micro_monument_id
+    }
+    micro_monuments{
+      hero_image
+      name
+      id
+      is_active
+    }
+    monuments{
+      id
+      is_active
+      name
+      location_name
+      details
+      era{
+        id 
+        name
+      }
+    }
+}''';
+String deleteMultipleBookmark = r'''
+mutation DeleteMultipleBookmark(
+  $bookmarkId :[Int!]
+){
+  delete_bookmark(where: {id:{_in: $bookmarkId }}){
+    returning {
+      id
+    }
+  }
+}''';
+String insertMonument = r'''
+mutation InsertMonumentBookmark(
+  $monumentId : Int,
+  $type : String
+){
+  insert_bookmark(objects:{
+    monument_id: $monumentId, 
+    type:$type}){
+      affected_rows
+      returning {
+        id
+      }
+    }
+  }
+''';
