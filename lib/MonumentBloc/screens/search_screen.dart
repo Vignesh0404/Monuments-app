@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:travelapp/MonumentBloc/blocs/home/Monument.dart';
+import 'package:travelapp/MonumentBloc/blocs/home/monument.dart';
 import 'package:travelapp/screens/styles.dart';
 
-class HomeScreen extends StatefulWidget {
-  HomeScreen({Key key}) : super(key: key);
+class SearchScreen extends StatefulWidget {
+  SearchScreen({Key key}) : super(key: key);
 
   @override
-  _HomeScreenState createState() => _HomeScreenState();
+  _SearchScreenState createState() => _SearchScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _SearchScreenState extends State<SearchScreen> {
   var data;
   @override
   void initState() {
@@ -36,13 +36,13 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Widget _buildMonumentWidget() {
     return Container(
-      child: GridView.builder(
+      child: ListView.builder(
         physics: NeverScrollableScrollPhysics(),
         shrinkWrap: true,
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          childAspectRatio: 1,
-        ),
+        // gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        //   crossAxisCount: 2,
+        // childAspectRatio: 1,
+        // ),
         itemCount: data.length,
         itemBuilder: (BuildContext context, int index) {
           var item = data[index];
@@ -52,17 +52,16 @@ class _HomeScreenState extends State<HomeScreen> {
                 print('Monument ' + item['name'].toString() + ' clicked');
               },
               child: Container(
-                height: 30,
                 margin: EdgeInsets.symmetric(vertical: 7.0, horizontal: 7.0),
                 padding: EdgeInsets.all(10.0),
                 decoration: BoxDecoration(
                     boxShadow: [BoxShadow(blurRadius: 1)],
-                    image: DecorationImage(
-                        image: NetworkImage(item['details']['mt_heroImg'][0]),
-                        fit: BoxFit.cover,
-                        colorFilter: ColorFilter.mode(
-                            Colors.black.withOpacity(0.3),
-                            BlendMode.hardLight)),
+                    // image: DecorationImage(
+                    //     // image: NetworkImage(item['details']['mt_heroImg'][0]),
+                    //     fit: BoxFit.cover,
+                    //     colorFilter: ColorFilter.mode(
+                    //         Colors.black.withOpacity(0.3),
+                    //         BlendMode.hardLight)),
                     borderRadius: BorderRadius.circular(5.0)),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.end,
@@ -91,14 +90,6 @@ class _HomeScreenState extends State<HomeScreen> {
         },
       ),
     );
-  }
-
-  int _convertToColor(String hexColor) {
-    hexColor = hexColor.toUpperCase().replaceAll("#", "");
-    if (hexColor.length == 6) {
-      hexColor = "FF" + hexColor;
-    }
-    return int.parse(hexColor, radix: 16);
   }
 
   @override

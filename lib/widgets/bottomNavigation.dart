@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:travelapp/bookmarkBloc/monument.dart';
-import 'package:travelapp/monumentBloc/search.dart';
+import 'package:travelapp/MonumentBloc/search.dart';
 // import 'package:travelapp/blocTry/main.dart';
 import 'package:travelapp/profileModule/Profile.dart';
 import 'package:travelapp/screens/monuments.dart';

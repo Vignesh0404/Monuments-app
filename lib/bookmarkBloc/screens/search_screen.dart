@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:travelapp/bookmarkBloc/blocs/home/Monument.dart';
+import 'package:travelapp/bookmarkBloc/blocs/home/monument.dart';
 import 'package:travelapp/screens/styles.dart';
 
 class SearchScreen extends StatefulWidget {
@@ -41,7 +41,7 @@ class _SearchScreenState extends State<SearchScreen> {
         shrinkWrap: true,
         // gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         //   crossAxisCount: 2,
-          // childAspectRatio: 1,
+        // childAspectRatio: 1,
         // ),
         itemCount: data.length,
         itemBuilder: (BuildContext context, int index) {
@@ -91,7 +91,6 @@ class _SearchScreenState extends State<SearchScreen> {
       ),
     );
   }
-
 
   @override
   void dispose() {
