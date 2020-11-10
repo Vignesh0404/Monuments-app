@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:travelapp/bookmarkBloc/blocs/home/monument.dart';
+import 'package:travelapp/queries.dart';
 import 'package:travelapp/screens/styles.dart';
 import 'package:travelapp/widgets/deleteAlert.dart';
 
@@ -27,9 +28,9 @@ class _HomeScreenState extends State<HomeScreen> {
         } else if (state is LoadDataFail) {
           return Text(state.error);
         } else {
-          data = (state as LoadDataSuccess).data['monuments'];
+          data = (state as LoadDataSuccess).data['bookmark'];
           // data = (state as LoadDataSuccess).data;
-          // print(data);
+          print(data);
           // print(data);
           // return Container();
           return Container(child: _buildMonumentWidget());
@@ -57,10 +58,11 @@ class _HomeScreenState extends State<HomeScreen> {
           shrinkWrap: true,
           itemCount: data.length,
           itemBuilder: (BuildContext context, int index) {
-            var item = data[index];
+            var item = data[index]['monument'];
             // print(item);
             // print(item);
             // print(_selected);
+            if(!_selectedID.contains(data[index]['id']))
             return GestureDetector(
                 // onTap: () {
                 //   print('Monument ' + item['id'].toString() + ' clicked');
@@ -133,6 +135,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     });
                   }),
             ));
+            else
+            return Container();
           },
         ),
       )
@@ -197,8 +201,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                 _showForDelete();
                                 _selectedCount = 0;
                                 _selected = List.generate(100, (i) => false);
-                                _selectedID = [];
                                 Navigator.of(context).pop();
+                                HomeBloc()..add(FetchHomeData(deleteMultipleBookmarks,variables:{"bookmarkId":_selectedID}));
                                 setState(() {});
                               },
                               child: Text(

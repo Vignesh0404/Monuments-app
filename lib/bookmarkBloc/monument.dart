@@ -17,7 +17,7 @@ class Monument1 extends StatelessWidget {
   Widget build(BuildContext context) {
     return SingleChildScrollView(child:Container(
       child: BlocProvider<HomeBloc>(
-        create: (BuildContext context) => HomeBloc()..add(FetchHomeData(bookmarkQuery)),
+        create: (BuildContext context) => HomeBloc()..add(FetchHomeData(bookmarkList)),
         child: HomeScreen(),
       ),
     ));
