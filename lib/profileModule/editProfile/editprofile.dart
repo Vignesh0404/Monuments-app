@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:travelapp/profileModule/editProfile/streams/editProfileNameStream.dart';
+import 'package:travelapp/profileModule/streams/profileNameStream.dart';
 import 'package:travelapp/screens/styles.dart';
 import 'package:travelapp/profileModule/editProfile/streams/editPicStream.dart';
+import 'package:travelapp/loginModule/authentication/authentication.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class EditProfile extends StatefulWidget {
   EditProfile({Key key}) : super(key: key);
@@ -15,8 +19,12 @@ class _EditProfileState extends State<EditProfile> {
   final TextEditingController _loginName =
       TextEditingController(text: ("Just a text"));
   String oldLoginName = "Just a text";
+  
   @override
   Widget build(BuildContext context) {
+    final user = context.bloc<AuthenticationBloc>().state.user;  
+    print(user);
+    _loginName.text = user.name;
     return SafeArea(
         child: Scaffold(
             backgroundColor: Colors.white,
@@ -43,37 +51,38 @@ class _EditProfileState extends State<EditProfile> {
               Container(
                 height: 10,
               ),
-              ListTile(
-                title: Text('Name', style: subtitleFontStyle),
-                subtitle: TextField(
-                  cursorColor: Colors.black,
-                  decoration: InputDecoration(
-                      enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                        color: Color(0xFFCFCFCF),
-                      )),
-                      focusedBorder: UnderlineInputBorder(
-                          borderSide:
-                              BorderSide(color: Colors.grey, width: 2))),
-                  controller: _loginName,
-                  onChanged: (text) {
-                    setState(() {
-                      if (_loginName.text == oldLoginName)
-                        _showSaveChanges = false;
-                      else
-                        _showSaveChanges = true;
-                      if (_loginName.text == '') _showSaveChanges = false;
-                    });
-                  },
-                ),
-              ),
+              EditProfileNameStream(),
+              // ListTile(
+              //   title: Text('Name', style: subtitleFontStyle),
+              //   subtitle: TextField(
+              //     cursorColor: Colors.black,
+              //     decoration: InputDecoration(
+              //         enabledBorder: UnderlineInputBorder(
+              //             borderSide: BorderSide(
+              //           color: Color(0xFFCFCFCF),
+              //         )),
+              //         focusedBorder: UnderlineInputBorder(
+              //             borderSide:
+              //                 BorderSide(color: Colors.grey, width: 2))),
+              //     controller: _loginName,
+              //     onChanged: (text) {
+              //       setState(() {
+              //         if (_loginName.text == oldLoginName)
+              //           _showSaveChanges = false;
+              //         else
+              //           _showSaveChanges = true;
+              //         if (_loginName.text == '') _showSaveChanges = false;
+              //       });
+              //     },
+              //   ),
+              // ),
               ListTile(
                 title: Text(
                   'Email',
                   style: subtitleFontStyle,
                 ),
                 subtitle: Text(
-                  'Email from user',
+                  user.email,
                   style: blackTextStyle,
                 ),
               ),
@@ -90,8 +99,9 @@ class _EditProfileState extends State<EditProfile> {
                   }
                 },
               )),
-              _showSaveChanges ? displaySaveButton() : Container()
-            ])));
+              // _showSaveChanges ? displaySaveButton() : Container()
+            ])
+            ));
   }
 
   Widget displaySaveButton() {

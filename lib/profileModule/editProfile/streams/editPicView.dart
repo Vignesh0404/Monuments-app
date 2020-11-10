@@ -58,7 +58,7 @@ class EditPicState extends State<EditPic> {
                         style: titleFontStyle,
                       ),
                     ),
-                    subtitle: Text(imageFile.toString()),
+                    // subtitle: Text(imageFile.toString()),
                     leading: CircleAvatar(
                       radius: 30.0,
                       backgroundImage: (imageFile == null)

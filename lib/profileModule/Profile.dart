@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:travelapp/loginModule/authentication/authentication.dart';
 import 'package:travelapp/profileModule/streams/profilePicStream.dart';
 import 'package:travelapp/profileModule/streams/profileNameStream.dart';
+import 'package:travelapp/bookmarkBloc/bookmark.dart';
 import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
 
 class Profile extends StatefulWidget {
@@ -34,12 +35,12 @@ class _ProfileState extends State<Profile> {
               Container(
                 height: 15,
               ),
-              // ProfilePicStream(),
+              ProfilePicStream(),
               ProfileNameStream(),
               ListTile(
                 onTap: () {
                   Navigator.of(context).push(new MaterialPageRoute(
-                      builder: (BuildContext context) => Bookmarks()));
+                      builder: (BuildContext context) => Bookmark()));
                   print('Bookmarks clicked');
                 },
                 dense: true,
@@ -200,7 +201,7 @@ class _ProfileState extends State<Profile> {
                   color: Colors.black,
                 ),
               ),
-              Text(token),
+              // Text(token),
               ListTile(
                 onTap: () {
                   context

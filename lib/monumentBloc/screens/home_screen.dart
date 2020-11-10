@@ -22,7 +22,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return BlocBuilder<HomeBloc, HomeStatesMonument>(
       builder: (BuildContext context, HomeStatesMonument state) {
         if (state is Loading) {
-          return LinearProgressIndicator();
+          return Text("Loading..");
         } else if (state is LoadDataFail) {
           return Text(state.error);
         } else {
