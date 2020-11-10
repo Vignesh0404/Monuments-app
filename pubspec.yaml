@@ -38,6 +38,7 @@ dependencies:
   pedantic: ^1.9.0
   cloud_firestore: ^0.14.2
   
+  
   # graphql_flutter: 1.0.1
   authentication_repository:
     path: lib/loginModule/authentication_repository
