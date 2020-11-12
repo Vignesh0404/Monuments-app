@@ -17,7 +17,7 @@ class _SearchScreenState extends State<SearchScreen> {
   void initState() {
     super.initState();
   }
-final TextEditingController _searchText = TextEditingController();
+TextEditingController _searchText = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<HomeBloc, HomeStatesMonument>(
