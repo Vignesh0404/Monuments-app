@@ -17,7 +17,7 @@ class LoadDataSuccess extends HomeStatesMonument {
   LoadDataSuccess(this.data) : super();
 
   @override
-  List<Object> get props => [data];
+  List<Object> get props => data['monuments'];
 }
 
 class LoadDataFail extends HomeStatesMonument {
