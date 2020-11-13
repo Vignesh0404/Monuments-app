@@ -12,7 +12,6 @@ class Search extends StatefulWidget {
 }
 
 class _SearchState extends State<Search> {
-  bool _displaySearch = false;
   final TextEditingController _searchText = TextEditingController();
   @override
   Widget build(BuildContext context) {

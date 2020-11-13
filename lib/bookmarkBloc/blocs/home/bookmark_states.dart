@@ -1,5 +1,4 @@
 import 'package:equatable/equatable.dart';
-import 'dart:convert';
 
 abstract class HomeStatesMonument extends Equatable {
   HomeStatesMonument();

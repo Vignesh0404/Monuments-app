@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:travelapp/profileModule/editProfile/streams/editProfileNameStream.dart';
-import 'package:travelapp/profileModule/streams/profileNameStream.dart';
 import 'package:travelapp/screens/styles.dart';
 import 'package:travelapp/profileModule/editProfile/streams/editPicStream.dart';
 import 'package:travelapp/loginModule/authentication/authentication.dart';

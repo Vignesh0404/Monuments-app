@@ -45,14 +45,6 @@ TextEditingController _searchText = TextEditingController();
     );
   }
 
-  Widget _getData(HomeStatesMonument state){
-    data = (state as LoadDataSuccess).data['monuments'];
-    print('****************');
-    print(data);
-    print('****************');
-    return Text(data.toString(),style: TextStyle(color:Colors.red),);
-  }
-
   Widget _buildMonumentWidget() {
     return Container(
       child: ListView.builder(

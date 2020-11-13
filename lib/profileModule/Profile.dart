@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:travelapp/screens/bookmarks.dart';
 import 'package:travelapp/screens/styles.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:travelapp/loginModule/authentication/authentication.dart';

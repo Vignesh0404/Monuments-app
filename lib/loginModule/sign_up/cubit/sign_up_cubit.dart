@@ -5,7 +5,6 @@ import 'package:travelapp/loginModule/authentication/authentication.dart';
 import 'package:formz/formz.dart';
 import 'dart:io';
 import 'package:travelapp/photo.dart' as photo;
-import 'package:flutter/material.dart';
 
 
 part 'sign_up_state.dart';

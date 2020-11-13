@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:travelapp/bookmarkBloc/blocs/home/bookmark.dart';
 import 'package:travelapp/queries.dart';
 import 'package:travelapp/screens/styles.dart';
-import 'package:travelapp/widgets/deleteAlert.dart';
 
 class HomeScreen extends StatefulWidget {
   HomeScreen({Key key}) : super(key: key);
