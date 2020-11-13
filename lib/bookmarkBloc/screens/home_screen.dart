@@ -54,7 +54,18 @@ class _HomeScreenState extends State<HomeScreen> {
   List<bool> _selected = List.generate(100, (i) => false);
   List<int> _selectedID = [];
   Widget _buildMonumentWidget() {
+      // print("------------------------------");
+      // print(data.length);
+      // print(_selectedID.length);
+      // print("------------------------------");
+    if(data.length==_selectedID.length)
+    {
+      // print('Empty');
+      return Center(child: Text("You haven't added any bookmarks yet"));
+    }
     if(data.toString()!="[]")
+    {
+      print("Not empty");
     return 
       Container(
         child:
@@ -145,7 +156,7 @@ class _HomeScreenState extends State<HomeScreen> {
           },
          
          )
-    );
+    );}
     else 
     return 
     Center(child: Text("You haven't added any bookmarks yet"),);
