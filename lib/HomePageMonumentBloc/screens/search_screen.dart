@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:travelapp/MonumentBloc/blocs/home/Monument.dart';
+import 'package:travelapp/MonumentBloc/blocs/home/monument.dart';
 import 'package:travelapp/screens/styles.dart';
 import 'package:travelapp/queries.dart';
 
@@ -17,28 +17,32 @@ class _SearchScreenState extends State<SearchScreen> {
   void initState() {
     super.initState();
   }
-TextEditingController _searchText = TextEditingController();
+
+  TextEditingController _searchText = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<HomeBloc, HomeStatesMonument>(
       builder: (BuildContext context, HomeStatesMonument state) {
         if (state is Loading) {
-          return Scaffold(body:LinearProgressIndicator(),
-          // appBar: _searchBar(),
+          return Scaffold(
+            body: LinearProgressIndicator(),
+            // appBar: _searchBar(),
           );
         } else if (state is LoadDataFail) {
           return Text(state.error);
         } else {
           data = (state as LoadDataSuccess).data['monuments'];
-          
+
           // print(data);
-          return Scaffold(body:SingleChildScrollView(child:Column(children: [
+          return Scaffold(
+              body: SingleChildScrollView(
+                  child: Column(children: [
             _searchBar(),
             // _getData(state),
             // Text(data.toString()),
-            _buildMonumentWidget() ,
-          ]))); 
-          // appBar: 
+            _buildMonumentWidget(),
+          ])));
+          // appBar:
           // );
         }
       },
@@ -52,7 +56,7 @@ TextEditingController _searchText = TextEditingController();
         shrinkWrap: true,
         // gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         //   crossAxisCount: 2,
-          // childAspectRatio: 1,
+        // childAspectRatio: 1,
         // ),
         itemCount: data.length,
         itemBuilder: (BuildContext context, int index) {
@@ -103,14 +107,12 @@ TextEditingController _searchText = TextEditingController();
     );
   }
 
-Widget _searchBar() {
-    return 
-    Container(
+  Widget _searchBar() {
+    return Container(
       color: Colors.white,
       child: Material(
         elevation: 5,
-        child: 
-        Row(
+        child: Row(
           children: <Widget>[
             Expanded(
               child: TextField(
@@ -122,7 +124,9 @@ Widget _searchBar() {
                   setState(() {
                     print(text.toString());
                     print('---------------');
-                    print(HomeBloc()..add(FetchHomeData(basicSearch,variables:{"text":_searchText.text})));
+                    print(HomeBloc()
+                      ..add(FetchHomeData(basicSearch,
+                          variables: {"text": _searchText.text})));
                     // var data1 = (LoadDataSuccess);
                   });
                 },
@@ -147,7 +151,9 @@ Widget _searchBar() {
           ],
         ),
       ),
-    );}
+    );
+  }
+
   @override
   void dispose() {
     super.dispose();

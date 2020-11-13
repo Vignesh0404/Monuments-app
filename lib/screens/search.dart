@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:travelapp/monumentBloc/monument.dart';
-import 'package:travelapp/monumentBloc/search.dart';
+import 'package:travelapp/MonumentBloc/Monument.dart';
+import 'package:travelapp/MonumentBloc/search.dart';
 import 'package:travelapp/screens/styles.dart';
 import 'package:travelapp/eraBloc/era.dart';
 
@@ -48,7 +48,6 @@ class _SearchState extends State<Search> {
                                 child: Text(
                                   'Search..',
                                 ),
-                              
                               ),
                               Spacer(),
                               Padding(
