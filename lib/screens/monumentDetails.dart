@@ -511,12 +511,24 @@ class _MonumentDetailsState extends State<MonumentDetails> {
               decoration: BoxDecoration(
                   boxShadow: [BoxShadow(blurRadius: 1, color: Colors.white10)],
                   borderRadius: BorderRadius.circular(5.0),
-                  image: DecorationImage(
-                      image: NetworkImage(imageLocation),
-                      fit: BoxFit.cover,
-                      colorFilter: new ColorFilter.mode(
-                          Colors.black.withOpacity(0.15),
-                          BlendMode.hardLight))),
+                  image: (imageLocation != null &&
+                          imageLocation.length != 0 &&
+                          imageLocation.toString() != "[null]")
+                      ? DecorationImage(
+                          image: NetworkImage(imageLocation),
+                          fit: BoxFit.cover,
+                          colorFilter: new ColorFilter.mode(
+                              Colors.black.withOpacity(0.5),
+                              BlendMode.hardLight))
+                      : DecorationImage(
+                          image:
+                              // NetworkImage(item['details']['mt_heroImg'][0]),
+                              NetworkImage(
+                                  'https://images.pexels.com/photos/213780/pexels-photo-213780.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'),
+                          fit: BoxFit.cover,
+                          colorFilter: new ColorFilter.mode(
+                              Colors.black.withOpacity(0.5),
+                              BlendMode.hardLight))),
               child: Column(
                 children: <Widget>[
                   Spacer(),

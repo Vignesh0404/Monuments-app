@@ -55,7 +55,9 @@ class _TimePeriodSearchState extends State<TimePeriodSearch> {
                 ],
               ),
             ),
-            EraBasedMonuments()
+            EraBasedMonuments(
+              id: widget.id,
+            )
             // Monument()
           ],
         ),
