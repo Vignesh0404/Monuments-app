@@ -14,14 +14,10 @@ import 'package:travelapp/Queries1.dart';
 class EraBasedMonuments extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Container(
-        child: BlocProvider<HomeBloc>(
+    return  BlocProvider<HomeBloc>(
           create: (BuildContext context) =>
               HomeBloc()..add(FetchHomeData(eraBasedMonuments)),
           child: HomeScreen(),
-        ),
-      ),
     );
   }
 }
