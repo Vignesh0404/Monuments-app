@@ -19,8 +19,8 @@ query MonumentsList($limit: Int,$offset: Int){
 ''';
 
 String eraBasedMonuments = r'''
-query MyQuery($limit: Int,$offset: Int,$id:Int!) {
-  era(where: {id: {_eq: $id}},limit:$limit,offset:$offset) {
+query MyQuery($id: Int) {
+  era(where: {id: {_eq: $id}}) {
     monuments {
       location
       name
