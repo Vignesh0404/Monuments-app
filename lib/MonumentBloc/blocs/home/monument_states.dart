@@ -1,26 +1,26 @@
 import 'package:equatable/equatable.dart';
 
-abstract class HomeStates extends Equatable {
-  HomeStates();
+abstract class HomeStatesMonument extends Equatable {
+  HomeStatesMonument();
 
   @override
   List<Object> get props => null;
 }
 
-class Loading extends HomeStates {
+class Loading extends HomeStatesMonument {
   Loading() : super();
 }
 
-class LoadDataSuccess extends HomeStates {
+class LoadDataSuccess extends HomeStatesMonument {
   final dynamic data;
 
   LoadDataSuccess(this.data) : super();
 
   @override
-  List<Object> get props => data['users'];
+  List<Object> get props => data['monuments'];
 }
 
-class LoadDataFail extends HomeStates {
+class LoadDataFail extends HomeStatesMonument {
   final dynamic error;
 
   LoadDataFail(this.error) : super();

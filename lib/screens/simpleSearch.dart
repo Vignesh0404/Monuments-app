@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:travelapp/monumentBloc/search.dart';
+import 'package:travelapp/MonumentBloc/search.dart';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -34,7 +34,7 @@ class _SearchState extends State<SearchTry> {
       //             onChanged: (text) {
       //               setState(() {
       //                 // print(text);
-                      
+
       //               });
       //             },
       //             decoration: InputDecoration(
@@ -60,13 +60,13 @@ class _SearchState extends State<SearchTry> {
       //   ),
       // ),
       // Text(_searchText.text),
-    //   SingleChildScrollView(child:Container(
-    //   child: BlocProvider<HomeBloc>(
-    //     create: (BuildContext context) => HomeBloc()..add(FetchHomeData(basicSearch,variables: {"text":_searchText.text.toString()})),
-    //     child: SearchScreen(),
-    //   ),
-    // )),
-    // Container(child:FetchHomeData(basicSearch,variables: variables),),
+      //   SingleChildScrollView(child:Container(
+      //   child: BlocProvider<HomeBloc>(
+      //     create: (BuildContext context) => HomeBloc()..add(FetchHomeData(basicSearch,variables: {"text":_searchText.text.toString()})),
+      //     child: SearchScreen(),
+      //   ),
+      // )),
+      // Container(child:FetchHomeData(basicSearch,variables: variables),),
       // SearchTab({"text":_searchText.text.toString()}),
     ]));
   }

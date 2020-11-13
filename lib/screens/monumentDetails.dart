@@ -5,7 +5,36 @@ import 'package:video_player/video_player.dart';
 import 'dart:async';
 
 class MonumentDetails extends StatefulWidget {
-  MonumentDetails({Key key}) : super(key: key);
+  MonumentDetails(
+      {this.name,
+      this.desc,
+      // this.index,
+      this.eraName,
+      this.galleryImage,
+      this.heroImg,
+      this.location,
+      //this.mapLocation,
+
+      // this.numberType,
+      // this.openFrom,
+      // this.openTill,
+      // this.phonNum,
+      this.video});
+  final String name;
+  final String heroImg;
+  final String location;
+  final String eraName;
+  final String video;
+  // final List openFrom;
+  // final List openTill;
+  // final List numberType;
+  // final List mapLocation;
+  final String desc;
+  // final List phonNum;
+  final List galleryImage;
+  //final index;
+
+  //List<String> streetsList = new List<String>.from(name);
 
   @override
   _MonumentDetailsState createState() => _MonumentDetailsState();
@@ -55,7 +84,7 @@ class _MonumentDetailsState extends State<MonumentDetails> {
             width: double.infinity,
             decoration: BoxDecoration(
                 image: DecorationImage(
-                    image: AssetImage('images/caveTemple.jpg'),
+                    image: NetworkImage(widget.heroImg),
                     fit: BoxFit.cover,
                     colorFilter: new ColorFilter.mode(
                         Colors.black.withOpacity(0.55), BlendMode.hardLight))),
@@ -89,7 +118,7 @@ class _MonumentDetailsState extends State<MonumentDetails> {
                         onPressed: null)
                   ],
                 ),
-                Center(child: Text('Cave Temple', style: white16)),
+                Center(child: Text(widget.name, style: white16)),
                 SizedBox(
                   height: 6,
                 ),
@@ -97,9 +126,9 @@ class _MonumentDetailsState extends State<MonumentDetails> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      Text('Mahabalipuram', style: white14w400),
+                      Text(widget.location, style: white14w400),
                       Text(' • ', style: white17bold),
-                      Text('310 CE - 630 CE', style: white14w400)
+                      Text(widget.eraName, style: white14w400)
                     ],
                   ),
                 ),
@@ -160,7 +189,7 @@ class _MonumentDetailsState extends State<MonumentDetails> {
                           child: Icon(
                             !_controller.value.isPlaying
                                 ? Icons.play_arrow
-                                : showPause == true ? Icons.pause : null ,
+                                : showPause == true ? Icons.pause : null,
                             size: 50,
                             color: Colors.white,
                           ),
@@ -186,12 +215,15 @@ class _MonumentDetailsState extends State<MonumentDetails> {
               child: Column(
                 children: <Widget>[
                   Text(
-                      'Mandagapattu was known for its Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec Proin gravida nibh vel velit auctor. Read more...'),
+                    widget.desc,
+                    maxLines: 4,
+                    overflow: TextOverflow.ellipsis,
+                  )
                 ],
               ),
             ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
                 FlatButton(
                     onPressed: () {
@@ -202,9 +234,9 @@ class _MonumentDetailsState extends State<MonumentDetails> {
                         Icon(
                           FlutterIcons.bookmark_border_mdi,
                           color: Colors.black,
-                          size: 20,
+                          size: 18,
                         ),
-                        SizedBox(width: 5),
+                        SizedBox(width: 1),
                         Text('Bookmark', style: blackTextStyle)
                       ],
                     )),
@@ -217,9 +249,9 @@ class _MonumentDetailsState extends State<MonumentDetails> {
                         Icon(
                           FlutterIcons.direction_ent,
                           color: Colors.black,
-                          size: 20,
+                          size: 18,
                         ),
-                        SizedBox(width: 5),
+                        SizedBox(width: 1),
                         Text('Directions', style: blackTextStyle)
                       ],
                     )),
@@ -232,7 +264,7 @@ class _MonumentDetailsState extends State<MonumentDetails> {
                         Icon(
                           FlutterIcons.add_to_list_ent,
                           color: Colors.black,
-                          size: 20,
+                          size: 18,
                         ),
                         SizedBox(width: 5),
                         Text('Add Review', style: blackTextStyle)
@@ -244,10 +276,9 @@ class _MonumentDetailsState extends State<MonumentDetails> {
               padding: EdgeInsets.only(top: 10, right: 15, left: 15),
               child: Row(
                 children: <Widget>[
-                  _returnMonument(
-                      'images/caveTemple.jpg', 'images/caveTemple.jpg'),
+                  _returnMonument(widget.galleryImage[0], 'desc'),
                   SizedBox(width: 15),
-                  _returnMonument('images/shoreTemple.jpg',
+                  _returnMonument(widget.galleryImage[1],
                       'Facade - Shafts and Square Bases')
                 ],
               ),
@@ -256,9 +287,10 @@ class _MonumentDetailsState extends State<MonumentDetails> {
               padding: EdgeInsets.only(top: 10, right: 15, left: 15),
               child: Row(
                 children: <Widget>[
-                  _returnMonument('images/sanctum.jpg', 'Sanctums'),
+                  _returnMonument(widget.galleryImage[2], 'Sanctums'),
                   SizedBox(width: 15),
-                  _returnMonument('images/wall.jpg', 'Sanctum Wall Paintings')
+                  _returnMonument(
+                      widget.galleryImage[3], 'Sanctum Wall Paintings')
                 ],
               ),
             ),
@@ -396,15 +428,7 @@ class _MonumentDetailsState extends State<MonumentDetails> {
                   SizedBox(
                     height: 12,
                   ),
-                  Container(
-                    width: 170,
-                    height: 100,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5.0),
-                        image: DecorationImage(
-                            image: AssetImage('images/sanctum.jpg'),
-                            fit: BoxFit.cover)),
-                  ),
+                  _returnGalleryImage(),
                   SizedBox(
                     height: 15,
                   ),
@@ -453,6 +477,32 @@ class _MonumentDetailsState extends State<MonumentDetails> {
     );
   }
 
+  Widget _returnGalleryImage() {
+    return SizedBox(
+      height: 100,
+      child: ListView.builder(
+        shrinkWrap: true,
+        physics: ScrollPhysics(),
+        itemCount: widget.galleryImage.length,
+        scrollDirection: Axis.horizontal,
+        itemBuilder: (BuildContext context, int index) {
+          return Padding(
+            padding: const EdgeInsets.only(left: 4.0, right: 4.0),
+            child: Container(
+              width: 170,
+              height: 100,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(5.0),
+                  image: DecorationImage(
+                      image: NetworkImage(widget.galleryImage[index]),
+                      fit: BoxFit.cover)),
+            ),
+          );
+        },
+      ),
+    );
+  }
+
   Widget _returnMonument(String imageLocation, String imageDesc) {
     return Expanded(
         child: AspectRatio(
@@ -462,7 +512,7 @@ class _MonumentDetailsState extends State<MonumentDetails> {
                   boxShadow: [BoxShadow(blurRadius: 1, color: Colors.white10)],
                   borderRadius: BorderRadius.circular(5.0),
                   image: DecorationImage(
-                      image: AssetImage(imageLocation),
+                      image: NetworkImage(imageLocation),
                       fit: BoxFit.cover,
                       colorFilter: new ColorFilter.mode(
                           Colors.black.withOpacity(0.15),
