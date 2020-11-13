@@ -26,10 +26,10 @@ class EraBasedMonuments extends StatelessWidget {
             } else if (state is LoadDataFail) {
               return Text(state.error);
             } else {
-              data = (state as LoadDataSuccess).data['era'];
+              data = (state as LoadDataSuccess).data['era'][0]['monuments'];
               // print(data);
-
-              //return Text(data.toString());
+              // print(data[0]['monuments'].length);
+              // return Text(data.toString());
 
               return Container(child: _buildMonumentWidget());
             }
@@ -39,7 +39,8 @@ class EraBasedMonuments extends StatelessWidget {
 
   Widget _buildMonumentWidget() {
     return Container(
-      child: ListView.builder(
+      child: ListView.separated(
+      separatorBuilder: (BuildContext context, int index) => Divider(height: 1,color: Colors.black,),
         physics: NeverScrollableScrollPhysics(),
         shrinkWrap: true,
         itemCount: data.length,
