@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:travelapp/eraBloc/blocs/home/era.dart';
 import 'package:travelapp/screens/styles.dart';
+import 'package:travelapp/screens/timePeriodSearch.dart';
 
 class HomeScreen extends StatefulWidget {
   HomeScreen({Key key}) : super(key: key);
@@ -46,9 +47,20 @@ class _HomeScreenState extends State<HomeScreen> {
         itemCount: data.length,
         itemBuilder: (BuildContext context, int index) {
           var item = data[index];
+          var id = item['id'];
+          var name = item['name'];
+          var desc = item['description'];
+          var colorCode = item['color_code'];
           return GestureDetector(
               onTap: () {
                 print(item['id'].toString() + ' clicked');
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (BuildContext context) => TimePeriodSearch(
+                          id: id,
+                          name: name,
+                          desc: desc,
+                          colorCode: colorCode,
+                        )));
               },
               child: Container(
                   // height: 70,

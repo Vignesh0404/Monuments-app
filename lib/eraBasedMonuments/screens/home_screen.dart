@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:travelapp/MonumentBloc/blocs/home/monument.dart';
 import 'package:travelapp/screens/monumentDetails.dart';
+import 'package:travelapp/screens/styles.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 
 class HomeScreen extends StatefulWidget {
