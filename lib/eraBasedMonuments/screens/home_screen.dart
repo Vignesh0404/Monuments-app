@@ -30,8 +30,9 @@ class _HomeScreenState extends State<HomeScreen> {
         } else {
           data = (state as LoadDataSuccess).data['era'];
           // print(data);
+
           return Text(data.toString());
-          
+
           // return Container(child: _buildMonumentWidget());
         }
       },
