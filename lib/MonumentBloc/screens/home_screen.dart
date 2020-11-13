@@ -23,7 +23,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return BlocBuilder<HomeBloc, HomeStatesMonument>(
       builder: (BuildContext context, HomeStatesMonument state) {
         if (state is Loading) {
-          return LinearProgressIndicator();
+          return Text("Loading..");
         } else if (state is LoadDataFail) {
           return Text(state.error);
         } else {
@@ -122,13 +122,6 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  int _convertToColor(String hexColor) {
-    hexColor = hexColor.toUpperCase().replaceAll("#", "");
-    if (hexColor.length == 6) {
-      hexColor = "FF" + hexColor;
-    }
-    return int.parse(hexColor, radix: 16);
-  }
 
   @override
   void dispose() {

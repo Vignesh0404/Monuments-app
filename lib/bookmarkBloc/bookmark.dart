@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:travelapp/eraBloc/blocs/home/era.dart';
-import 'package:travelapp/eraBloc/screens/home_screen.dart';
+import 'package:travelapp/bookmarkBloc/blocs/home/bookmark.dart';
+import 'package:travelapp/bookmarkBloc/screens/home_screen.dart';
 import 'package:travelapp/queries.dart';
 
 // void main() {
@@ -10,14 +10,12 @@ import 'package:travelapp/queries.dart';
 // }
 
 
-class Era extends StatelessWidget {
+class Bookmark extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: BlocProvider<HomeBloc>(
-        create: (BuildContext context) => HomeBloc()..add(FetchHomeData(searchPageQueryEra)),
+    return  BlocProvider<HomeBloc>(
+        create: (BuildContext context) => HomeBloc()..add(FetchHomeData(bookmarkList)),
         child: HomeScreen(),
-      ),
     );
   }
 }

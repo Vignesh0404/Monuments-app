@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:travelapp/HomePageMonumentBloc/Monument.dart';
-
-import 'package:travelapp/screens/monumentDetails.dart';
 import 'package:travelapp/screens/myReviews.dart';
 import 'styles.dart';
 import 'package:flutter_icons/flutter_icons.dart';

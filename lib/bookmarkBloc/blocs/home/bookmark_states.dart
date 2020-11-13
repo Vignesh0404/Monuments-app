@@ -1,5 +1,4 @@
 import 'package:equatable/equatable.dart';
-import 'dart:convert';
 
 abstract class HomeStatesMonument extends Equatable {
   HomeStatesMonument();
@@ -19,7 +18,8 @@ class LoadDataSuccess extends HomeStatesMonument {
 
   @override
   // List<Object> get props => data;
-  List<Object> get props => data['monuments'];
+  // List<Object> get props => data['monuments'];
+  List<Object> get props => [data];
   // List<Object> get props => json.decode(data.toString());
   // Map<String,dynamic> get props => data;
 

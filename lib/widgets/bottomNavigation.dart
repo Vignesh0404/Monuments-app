@@ -1,19 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:travelapp/bookmarkBloc/monument.dart';
-import 'package:travelapp/MonumentBloc/search.dart';
-// import 'package:travelapp/blocTry/main.dart';
+import 'package:travelapp/monumentBloc/search.dart';
 import 'package:travelapp/profileModule/Profile.dart';
 import 'package:travelapp/screens/monuments.dart';
-import 'package:travelapp/screens/myReviews.dart';
-import 'package:travelapp/screens/regions.dart';
 import 'package:travelapp/screens/search.dart';
-import 'package:travelapp/screens/signup.dart';
 import 'package:travelapp/screens/styles.dart';
 import 'package:flutter_icons/flutter_icons.dart';
-import 'package:travelapp/screens/videoplayer.dart';
-import 'package:travelapp/MonumentBloc/Monument.dart';
-import 'package:travelapp/chipBloc/chip.dart';
-import 'package:travelapp/screens/simpleSearch.dart';
 
 class BottomNavigation extends StatefulWidget {
   BottomNavigation({Key key}) : super(key: key);
@@ -26,8 +17,8 @@ class _BottomNavigationState extends State<BottomNavigation> {
   int currentIndex = 0;
   final List<Widget> children = [
     Monuments(),
-    // SearchTab(),
-    Monument1(),
+    SearchTab(),
+    // Bookmark(),
     Search(),
     Profile(),
   ];

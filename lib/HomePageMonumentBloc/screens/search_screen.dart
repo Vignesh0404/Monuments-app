@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:travelapp/MonumentBloc/blocs/home/monument.dart';
+import 'package:travelapp/MonumentBloc/blocs/home/Monument.dart';
 import 'package:travelapp/screens/styles.dart';
+import 'package:travelapp/queries.dart';
 
 class SearchScreen extends StatefulWidget {
   SearchScreen({Key key}) : super(key: key);
@@ -16,19 +17,29 @@ class _SearchScreenState extends State<SearchScreen> {
   void initState() {
     super.initState();
   }
-
+TextEditingController _searchText = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<HomeBloc, HomeStatesMonument>(
       builder: (BuildContext context, HomeStatesMonument state) {
         if (state is Loading) {
-          return LinearProgressIndicator();
+          return Scaffold(body:LinearProgressIndicator(),
+          // appBar: _searchBar(),
+          );
         } else if (state is LoadDataFail) {
           return Text(state.error);
         } else {
           data = (state as LoadDataSuccess).data['monuments'];
+          
           // print(data);
-          return Container(child: _buildMonumentWidget());
+          return Scaffold(body:SingleChildScrollView(child:Column(children: [
+            _searchBar(),
+            // _getData(state),
+            // Text(data.toString()),
+            _buildMonumentWidget() ,
+          ]))); 
+          // appBar: 
+          // );
         }
       },
     );
@@ -37,11 +48,11 @@ class _SearchScreenState extends State<SearchScreen> {
   Widget _buildMonumentWidget() {
     return Container(
       child: ListView.builder(
-        physics: NeverScrollableScrollPhysics(),
+        // physics: NeverScrollableScrollPhysics(),
         shrinkWrap: true,
         // gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         //   crossAxisCount: 2,
-        // childAspectRatio: 1,
+          // childAspectRatio: 1,
         // ),
         itemCount: data.length,
         itemBuilder: (BuildContext context, int index) {
@@ -92,6 +103,51 @@ class _SearchScreenState extends State<SearchScreen> {
     );
   }
 
+Widget _searchBar() {
+    return 
+    Container(
+      color: Colors.white,
+      child: Material(
+        elevation: 5,
+        child: 
+        Row(
+          children: <Widget>[
+            Expanded(
+              child: TextField(
+                controller: _searchText,
+                cursorColor: Colors.black,
+                keyboardType: TextInputType.text,
+                textInputAction: TextInputAction.go,
+                onChanged: (text) {
+                  setState(() {
+                    print(text.toString());
+                    print('---------------');
+                    print(HomeBloc()..add(FetchHomeData(basicSearch,variables:{"text":_searchText.text})));
+                    // var data1 = (LoadDataSuccess);
+                  });
+                },
+                decoration: InputDecoration(
+                    border: InputBorder.none,
+                    contentPadding: EdgeInsets.symmetric(horizontal: 15),
+                    hintText: "Search"),
+              ),
+            ),
+            Padding(
+                padding: const EdgeInsets.only(right: 8.0),
+                child: IconButton(
+                  icon: (_searchText.text.isEmpty)
+                      ? Icon(Icons.search)
+                      : Icon(Icons.close),
+                  onPressed: () {
+                    setState(() {
+                      if (_searchText.text.isNotEmpty) _searchText.text = '';
+                    });
+                  },
+                ))
+          ],
+        ),
+      ),
+    );}
   @override
   void dispose() {
     super.dispose();

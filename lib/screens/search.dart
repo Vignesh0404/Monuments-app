@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:travelapp/MonumentBloc/Monument.dart';
+import 'package:travelapp/monumentBloc/monument.dart';
+import 'package:travelapp/monumentBloc/search.dart';
 import 'package:travelapp/screens/styles.dart';
 import 'package:travelapp/eraBloc/era.dart';
 
@@ -11,7 +12,6 @@ class Search extends StatefulWidget {
 }
 
 class _SearchState extends State<Search> {
-  bool _displaySearch = false;
   final TextEditingController _searchText = TextEditingController();
   @override
   Widget build(BuildContext context) {
@@ -33,36 +33,37 @@ class _SearchState extends State<Search> {
                       color: Colors.white,
                       child: Material(
                         elevation: 5,
-                        child: Row(
-                          children: <Widget>[
-                            Expanded(
-                              child: TextField(
-                                controller: _searchText,
-                                cursorColor: Colors.black,
-                                keyboardType: TextInputType.text,
-                                textInputAction: TextInputAction.go,
-                                onChanged: (text) {
-                                  setState(() {});
-                                },
-                                decoration: InputDecoration(
-                                    border: InputBorder.none,
-                                    contentPadding:
-                                        EdgeInsets.symmetric(horizontal: 15),
-                                    hintText: "Search"),
+                        child: InkWell(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => SearchTab()),
+                            );
+                          },
+                          child: Row(
+                            children: <Widget>[
+                              Padding(
+                                padding: EdgeInsets.only(left: 12),
+                                child: Text(
+                                  'Search..',
+                                ),
+                              
                               ),
-                            ),
-                            Padding(
-                                padding: const EdgeInsets.only(right: 8.0),
-                                child: IconButton(
-                                  icon: (_searchText.text.isEmpty)
-                                      ? Icon(Icons.search)
-                                      : Icon(Icons.close),
-                                  onPressed: () {
-                                    if (_searchText.text.isNotEmpty)
-                                      _searchText.text = '';
-                                  },
-                                ))
-                          ],
+                              Spacer(),
+                              Padding(
+                                  padding: const EdgeInsets.only(right: 8.0),
+                                  child: IconButton(
+                                    icon: (_searchText.text.isEmpty)
+                                        ? Icon(Icons.search)
+                                        : Icon(Icons.close),
+                                    onPressed: () {
+                                      if (_searchText.text.isNotEmpty)
+                                        _searchText.text = '';
+                                    },
+                                  ))
+                            ],
+                          ),
                         ),
                       ),
                     ),

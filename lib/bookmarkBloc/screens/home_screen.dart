@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:travelapp/bookmarkBloc/blocs/home/monument.dart';
+import 'package:travelapp/bookmarkBloc/blocs/home/bookmark.dart';
+import 'package:travelapp/queries.dart';
 import 'package:travelapp/screens/styles.dart';
-import 'package:travelapp/widgets/deleteAlert.dart';
 
 class HomeScreen extends StatefulWidget {
   HomeScreen({Key key}) : super(key: key);
@@ -20,19 +20,24 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<HomeBloc, HomeStatesMonument>(
+    return 
+    BlocBuilder<HomeBloc, HomeStatesMonument>(
       builder: (BuildContext context, HomeStatesMonument state) {
         if (state is Loading) {
-          return LinearProgressIndicator();
+          return Scaffold(
+            appBar: _appBar(),
+            body:LinearProgressIndicator());
         } else if (state is LoadDataFail) {
-          return Text(state.error);
+          return Scaffold(body:Text(state.error));
         } else {
-          data = (state as LoadDataSuccess).data['monuments'];
+          data = (state as LoadDataSuccess).data['bookmark'];
           // data = (state as LoadDataSuccess).data;
-          // print(data);
+          print(data);
           // print(data);
           // return Container();
-          return Container(child: _buildMonumentWidget());
+          return Scaffold(
+            appBar: _appBar(),
+            body: _buildMonumentWidget());
         }
       },
     );
@@ -49,18 +54,20 @@ class _HomeScreenState extends State<HomeScreen> {
   List<bool> _selected = List.generate(100, (i) => false);
   List<int> _selectedID = [];
   Widget _buildMonumentWidget() {
-    return Column(children: [
-      _appBar(),
+    if(data.toString()!="[]")
+    return 
       Container(
-        child: ListView.builder(
-          physics: NeverScrollableScrollPhysics(),
-          shrinkWrap: true,
+        child:
+         ListView.builder(
+          // physics: NeverScrollableScrollPhysics(),
+          // shrinkWrap: true,
           itemCount: data.length,
           itemBuilder: (BuildContext context, int index) {
-            var item = data[index];
+            var item = data[index]['monument'];
             // print(item);
             // print(item);
             // print(_selected);
+            if(!_selectedID.contains(data[index]['id']))
             return GestureDetector(
                 // onTap: () {
                 //   print('Monument ' + item['id'].toString() + ' clicked');
@@ -133,10 +140,15 @@ class _HomeScreenState extends State<HomeScreen> {
                     });
                   }),
             ));
+            else
+            return Container();
           },
-        ),
-      )
-    ]);
+         
+         )
+    );
+    else 
+    return 
+    Center(child: Text("You haven't added any bookmarks yet"),);
   }
 
   @override
@@ -197,8 +209,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                 _showForDelete();
                                 _selectedCount = 0;
                                 _selected = List.generate(100, (i) => false);
-                                _selectedID = [];
                                 Navigator.of(context).pop();
+                                HomeBloc()..add(FetchHomeData(deleteMultipleBookmarks,variables:{"bookmarkId":_selectedID}));
                                 setState(() {});
                               },
                               child: Text(

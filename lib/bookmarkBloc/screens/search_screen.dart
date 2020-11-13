@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:travelapp/bookmarkBloc/blocs/home/monument.dart';
+import 'package:travelapp/bookmarkBloc/blocs/home/bookmark.dart';
 import 'package:travelapp/screens/styles.dart';
 
 class SearchScreen extends StatefulWidget {
