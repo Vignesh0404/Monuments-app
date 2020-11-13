@@ -25,6 +25,9 @@ query MyQuery($limit: Int,$offset: Int) {
       location
       name
       details
+      era{
+        name
+      }
     }
   }
 }

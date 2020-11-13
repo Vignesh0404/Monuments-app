@@ -18,7 +18,7 @@ class EraBasedMonuments extends StatelessWidget {
       child: Container(
         child: BlocProvider<HomeBloc>(
           create: (BuildContext context) =>
-              HomeBloc()..add(FetchHomeData(monumentList)),
+              HomeBloc()..add(FetchHomeData(eraBasedMonuments)),
           child: HomeScreen(),
         ),
       ),
