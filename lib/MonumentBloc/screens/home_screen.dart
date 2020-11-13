@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:travelapp/MonumentBloc/blocs/home/monument.dart';
+import 'package:travelapp/screens/monumentDetails.dart';
 import 'package:travelapp/screens/styles.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -46,9 +47,37 @@ class _HomeScreenState extends State<HomeScreen> {
         itemCount: data.length,
         itemBuilder: (BuildContext context, int index) {
           var item = data[index];
+          var name = item['name'];
+          var heroImg = item['details']['mt_heroImg'][0];
+          var location = item["location_name"];
+          var video = item['details']['mt_video'];
+          var galleryImage = item['details']['mt_gallery'];
+          var openFrom = item['details']['mt_openFrom'];
+          var openTill = item['details']['mt_openTill'];
+          var numberType = item['details']['mt_numberType'];
+          var mapLocation = item['details']['mt_mapLocation'];
+          var desc = item['details']['mt_description'];
+          var phoneNum = item['details']['phoneNumber'];
+          var eraName = item['era']['name'];
           // print(item['details']['mt_heroImg']);
           return GestureDetector(
               onTap: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (BuildContext context) => MonumentDetails(
+                          name: name,
+                          //index: item,
+                          heroImg: heroImg,
+                          location: location,
+                          eraName: eraName,
+                          video: video,
+                          galleryImage: galleryImage,
+                          // openFrom: openFrom,
+                          // openTill: openTill,
+                          // numberType: numberType,
+                          // mapLocation: mapLocation,
+                          desc: desc,
+                          // phonNum: phoneNum,
+                        )));
                 print('Monument ' + item['name'].toString() + ' clicked');
               },
               child: Container(

@@ -19,6 +19,9 @@ monuments(order_by:{view_count:desc},limit:4,where:{is_active:{_eq:true},
         location_name
         details
         status
+        era{
+          name
+        }
     }    
 }''';
 String searchPageQueryChip = r'''
