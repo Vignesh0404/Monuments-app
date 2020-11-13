@@ -132,3 +132,43 @@ mutation InsertMonumentBookmark(
   }
 ''';
 
+
+String deleteMultipleBookmarks = r'''
+mutation DeleteMultipleBookmark($bookmarkId: [Int!]) {
+  delete_bookmark(where: {id: {_in: $bookmarkId}, user_id: {_eq: "OpiSdcxGQvVizCZRauIAO7sSx3Q2"}}) {
+    returning {
+      id
+    }
+  }
+}
+''';
+
+String bookmarkList = r'''
+query BookmarkList($bookmarkOffset: Int, $bookmarkLimit: Int) {
+  bookmark(limit: $bookmarkLimit, offset: $bookmarkOffset, where: {user_id: {_eq: "OpiSdcxGQvVizCZRauIAO7sSx3Q2"}}, order_by: {id: desc}) {
+    id
+    type
+    monument_id
+    micro_monument_id
+    micro_monument {
+      hero_image
+      name
+      id
+      is_active
+    }
+    monument {
+      id
+      is_active
+      name
+      location_name
+      details
+      era {
+        id
+        name
+      }
+    }
+  }
+}
+''';
+
+
