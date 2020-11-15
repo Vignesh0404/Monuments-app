@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
+import 'package:travelapp/addReviewBloc/addReview.dart';
+import 'package:travelapp/addReviewBloc/screens/home_screen.dart';
+import 'package:travelapp/monumentDetailsReviewsBloc/monumentDetailsReview.dart';
+import 'package:travelapp/monumentReviewsBloc/monumentReview.dart';
+
 import 'styles.dart';
 import 'package:video_player/video_player.dart';
 import 'dart:async';
@@ -8,6 +13,7 @@ class MonumentDetails extends StatefulWidget {
   MonumentDetails(
       {this.name,
       this.desc,
+      this.id,
       // this.index,
       this.eraName,
       this.galleryImage,
@@ -20,6 +26,7 @@ class MonumentDetails extends StatefulWidget {
       // this.openTill,
       // this.phonNum,
       this.video});
+  final int id;
   final String name;
   final String heroImg;
   final String location;
@@ -118,7 +125,9 @@ class _MonumentDetailsState extends State<MonumentDetails> {
                         onPressed: null)
                   ],
                 ),
-                Center(child: Text(widget.name, style: white16)),
+                Center(
+                    child: Text(widget.name + '-' + widget.id.toString(),
+                        style: white16)),
                 SizedBox(
                   height: 6,
                 ),
@@ -257,7 +266,11 @@ class _MonumentDetailsState extends State<MonumentDetails> {
                     )),
                 FlatButton(
                     onPressed: () {
-                      print('addreview clicked');
+                      print(widget.id);
+                      Navigator.of(context).push(new MaterialPageRoute(
+                          builder: (BuildContext context) => new AddReview(
+                                id: widget.id,
+                              )));
                     },
                     child: Row(
                       children: <Widget>[
@@ -267,7 +280,8 @@ class _MonumentDetailsState extends State<MonumentDetails> {
                           size: 18,
                         ),
                         SizedBox(width: 5),
-                        Text('Add Review', style: blackTextStyle)
+                        GestureDetector(
+                            child: Text('Add Review', style: blackTextStyle))
                       ],
                     ))
               ],
@@ -276,10 +290,9 @@ class _MonumentDetailsState extends State<MonumentDetails> {
               padding: EdgeInsets.only(top: 10, right: 15, left: 15),
               child: Row(
                 children: <Widget>[
-                  _returnMonument(widget.galleryImage[0], 'desc'),
+                  _returnMonument(widget.galleryImage[0], 'description'),
                   SizedBox(width: 15),
-                  _returnMonument(widget.galleryImage[1],
-                      'Facade - Shafts and Square Bases')
+                  _returnMonument(widget.galleryImage[1], 'description')
                 ],
               ),
             ),
@@ -287,10 +300,9 @@ class _MonumentDetailsState extends State<MonumentDetails> {
               padding: EdgeInsets.only(top: 10, right: 15, left: 15),
               child: Row(
                 children: <Widget>[
-                  _returnMonument(widget.galleryImage[2], 'Sanctums'),
+                  _returnMonument(widget.galleryImage[2], 'description'),
                   SizedBox(width: 15),
-                  _returnMonument(
-                      widget.galleryImage[3], 'Sanctum Wall Paintings')
+                  _returnMonument(widget.galleryImage[3], 'description')
                 ],
               ),
             ),
@@ -304,82 +316,15 @@ class _MonumentDetailsState extends State<MonumentDetails> {
                   width: double.infinity,
                   color: Colors.grey.shade400),
             ),
+            //Text('hello'),
+            MonumentDetailsReview(
+              id: widget.id,
+            ),
             Padding(
               padding: const EdgeInsets.only(left: 16.0, right: 16),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Row(
-                    children: <Widget>[
-                      Text('Reviews And Ratings', style: blackTextStyle),
-                      Spacer(),
-                      Container(
-                        height: 25,
-                        width: 25,
-                        decoration: greenReviewBox,
-                        child: Center(
-                            child: Text(
-                          '4.8',
-                          style: white12,
-                        )),
-                      )
-                    ],
-                  ),
-                  SizedBox(
-                    height: 15,
-                  ),
-                  Row(
-                    children: <Widget>[
-                      CircleAvatar(
-                        radius: 25.0,
-                        backgroundImage:
-                            NetworkImage('https://via.placeholder.com/150'),
-                        backgroundColor: Colors.transparent,
-                      ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Text(
-                            'Venky',
-                            style: blackTextStyle,
-                          ),
-                          Text("8 days ago", style: grey14w400)
-                        ],
-                      ),
-                      Spacer(),
-                      Container(
-                        height: 25,
-                        width: 25,
-                        decoration: greenReviewBox,
-                        child: Center(
-                            child: Text(
-                          '5.0',
-                          style: white12,
-                        )),
-                      )
-                    ],
-                  ),
-                  SizedBox(
-                    height: 9,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 55.0),
-                    child: Container(
-                        height: 1,
-                        width: double.infinity,
-                        color: Colors.grey.shade400),
-                  ),
-                  SizedBox(height: 10),
-                  Text(
-                    'Mandagapatu was known for its Proin gravida nibh vel velit auctor aliquet. Aenesollicitudin, lorem quis bibendauctor, nisi elit consequat ipsum, nec. Read more...',
-                    style: subtitleFontStyle,
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
                   Container(
                       height: 1.5,
                       width: double.infinity,
@@ -390,19 +335,29 @@ class _MonumentDetailsState extends State<MonumentDetails> {
                       SizedBox(
                         width: 10,
                       ),
-                      Text(
-                        'Add Review',
-                        style: blackTextStyle,
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.of(context).push(new MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  new AddReview(id: widget.id)));
+                        },
+                        child: Text(
+                          'Add Review',
+                          style: blackTextStyle,
+                        ),
                       ),
                       Spacer(),
                       FlatButton(
                           onPressed: () {
-                            print('read all reviews pressed');
+                            Navigator.of(context).push(new MaterialPageRoute(
+                                builder: (BuildContext context) =>
+                                    new MonumentReview(
+                                        id: widget.id, name: widget.name)));
                           },
                           child: Row(
                             children: <Widget>[
                               Text(
-                                'Read all reviews(15)',
+                                'Read all reviews',
                                 style: grey14w400,
                               ),
                               Icon(

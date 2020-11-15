@@ -17,7 +17,12 @@ class LoadDataSuccess extends HomeStatesMonument {
   LoadDataSuccess(this.data) : super();
 
   @override
-  List<Object> get props => data['monuments'];
+  // List<Object> get props => data;
+  // List<Object> get props => data['monuments'];
+  List<Object> get props => [data];
+  // List<Object> get props => json.decode(data.toString());
+  // Map<String,dynamic> get props => data;
+
 }
 
 class LoadDataFail extends HomeStatesMonument {

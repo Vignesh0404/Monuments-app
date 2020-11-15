@@ -47,6 +47,7 @@ class _HomeScreenState extends State<HomeScreen> {
         itemCount: data.length,
         itemBuilder: (BuildContext context, int index) {
           var item = data[index];
+          var id = item['id'];
           var heroImg = item['details']['mt_heroImg'][0];
           var name = item["name"];
           var location = item["location_name"];
@@ -69,6 +70,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 Navigator.of(context).push(MaterialPageRoute(
                     builder: (BuildContext context) => MonumentDetails(
                           name: name,
+                          id: id,
                           //index: item,
                           heroImg: heroImg,
                           location: location,

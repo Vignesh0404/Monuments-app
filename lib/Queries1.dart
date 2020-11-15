@@ -32,3 +32,76 @@ query MyQuery($id: Int) {
   }
 }
 ''';
+
+String insertReview = r'''
+mutation InsertReview($monumentId: Int, $comment: String, $rating: Int) {
+ insert_reviews(objects: {comment: $comment, rating: $rating, monument_id: $monumentId, user_id: "OpiSdcxGQvVizCZRauIAO7sSx3Q2"}) {
+   returning {
+     id,
+   }
+ }
+}
+''';
+
+String fetchReview = r'''
+query UserReview($reviewOffset: Int, $reviewLimit: Int,$mID: Int) {
+  reviews(limit: $reviewLimit, offset: $reviewOffset, order_by: {updated_at: desc}, where: {status: {_neq: "rejected"}, monument: {status: {_eq: true}, details: {_contains: {mt_isActiveOnApp: "yes"}}}, monument_id: {_eq: $mID}}) {
+    id
+    comment
+    user_id
+    rating
+    monument_id
+    status
+    is_highlighted
+    updated_at
+    user {
+      avatar
+      username
+      id
+    }
+    monument {
+      name
+      location_name
+      id
+      is_active
+    }
+  }
+} 
+''';
+
+String eachUserReview = r'''
+query UserReview($reviewOffset: Int, $reviewLimit: Int) {
+  reviews(limit: $reviewLimit, offset: $reviewOffset, order_by: {updated_at: desc}, where: {status: {_neq: "rejected"}, monument: {status: {_eq: true}, details: {_contains: {mt_isActiveOnApp: "yes"}}},  user_id: {_eq: "OpiSdcxGQvVizCZRauIAO7sSx3Q2"}}) {
+    id
+    comment
+    user_id
+    rating
+    monument_id
+    status
+    is_highlighted
+    updated_at
+    user {
+      avatar
+      username
+      id
+    }
+    monument {
+      name
+      location_name
+      id
+      is_active
+    }
+  }
+}
+''';
+
+String deleteReview = r'''
+mutation DeleteReview($reviewId: Int) {
+ delete_reviews(where: {id: {_eq: $reviewId}}) {
+   affected_rows
+   returning {
+         id
+       }
+ }
+}
+''';

@@ -1,5 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:travelapp/MonumentBloc/blocs/home/monument.dart';
+import 'package:travelapp/bookmarkBloc/blocs/home/bookmark.dart';
 import 'package:travelapp/services/graphql_service.dart';
 
 class HomeBloc extends Bloc<HomeEvents, HomeStatesMonument> {
