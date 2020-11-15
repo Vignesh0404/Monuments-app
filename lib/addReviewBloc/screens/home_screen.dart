@@ -75,197 +75,182 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget _buildMonumentWidget() {
+    TextEditingController reviewComment = new TextEditingController();
+    TextEditingController reviewRating = new TextEditingController();
+    final formKey = new GlobalKey<FormState>();
     return Container(
-      child: ListView.builder(
-          itemCount: 1,
-          itemBuilder: (BuildContext context, int index) {
-            TextEditingController reviewComment = new TextEditingController();
-            TextEditingController reviewRating = new TextEditingController();
-            //String reviewComment;
-            //int reviewRating;
-            final formKey = new GlobalKey<FormState>();
-            //var item = data[index]['monument'];
-            //var rating = int.parse(data[index]['rating']);
-            return Form(
-              key: formKey,
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    TextFormField(
-                      decoration: InputDecoration(
-                          labelText: "Your Review",
-                          labelStyle: TextStyle(
-                              fontSize: 15,
-                              fontWeight: FontWeight.w400,
-                              color: Colors.black87),
-                          contentPadding:
-                              EdgeInsets.symmetric(vertical: 0, horizontal: 10),
-                          enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.grey[400])),
-                          border: OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.grey[400])),
-                          focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10),
-                              borderSide: BorderSide(color: Colors.black))),
-                      controller: reviewComment,
-                      validator: (value) =>
-                          value.isEmpty ? 'Please enter your rating' : null,
-                    ),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    TextFormField(
-                      maxLength: 1,
-                      keyboardType: TextInputType.number,
-                      decoration: InputDecoration(
-                          prefixText: "0/5 ",
-                          labelText: "Your Rating",
-                          labelStyle: TextStyle(
-                              fontSize: 15,
-                              fontWeight: FontWeight.w400,
-                              color: Colors.black87),
-                          contentPadding:
-                              EdgeInsets.symmetric(vertical: 0, horizontal: 10),
-                          enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.grey[400])),
-                          border: OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.grey[400])),
-                          focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10),
-                              borderSide: BorderSide(color: Colors.black))),
-                      controller: reviewRating,
-                      validator: (value) =>
-                          value.isEmpty ? 'Please enter your review' : null,
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Container(
-                      padding: EdgeInsets.only(top: 0, left: 0),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(50),
-                          border: Border(
-                            bottom: BorderSide(color: Colors.black),
-                            top: BorderSide(color: Colors.black),
-                            left: BorderSide(color: Colors.black),
-                            right: BorderSide(color: Colors.black),
-                          )),
-                      child: MaterialButton(
-                        minWidth: double.infinity,
-                        height: 60,
-                        onPressed: () async {
-                          showDialog(
-                              context: context,
-                              builder: (BuildContext context) {
-                                return Dialog(
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(7),
+
+        //String reviewComment;
+        //int reviewRating;
+        //final formKey = new GlobalKey<FormState>();
+        //var item = data[index]['monument'];
+        //var rating = int.parse(data[index]['rating']);
+        child: Form(
+      key: formKey,
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            TextFormField(
+              decoration: InputDecoration(
+                  labelText: "Your Review",
+                  labelStyle: TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.w400,
+                      color: Colors.black87),
+                  contentPadding:
+                      EdgeInsets.symmetric(vertical: 0, horizontal: 10),
+                  enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.grey[400])),
+                  border: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.grey[400])),
+                  focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: BorderSide(color: Colors.black))),
+              controller: reviewComment,
+              validator: (value) =>
+                  value.isEmpty ? 'Please enter your rating' : null,
+            ),
+            SizedBox(
+              height: 15,
+            ),
+            TextFormField(
+              maxLength: 1,
+              keyboardType: TextInputType.number,
+              decoration: InputDecoration(
+                  prefixText: "0/5 ",
+                  labelText: "Your Rating",
+                  labelStyle: TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.w400,
+                      color: Colors.black87),
+                  contentPadding:
+                      EdgeInsets.symmetric(vertical: 0, horizontal: 10),
+                  enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.grey[400])),
+                  border: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.grey[400])),
+                  focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: BorderSide(color: Colors.black))),
+              controller: reviewRating,
+              validator: (value) =>
+                  value.isEmpty ? 'Please enter your review' : null,
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Container(
+              padding: EdgeInsets.only(top: 0, left: 0),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(50),
+                  border: Border(
+                    bottom: BorderSide(color: Colors.black),
+                    top: BorderSide(color: Colors.black),
+                    left: BorderSide(color: Colors.black),
+                    right: BorderSide(color: Colors.black),
+                  )),
+              child: MaterialButton(
+                minWidth: double.infinity,
+                height: 60,
+                onPressed: () async {
+                  showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return Dialog(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(7),
+                          ),
+                          child: Container(
+                            height: 165,
+                            width: double.infinity,
+                            child: Padding(
+                              padding: const EdgeInsets.all(10.0),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  SizedBox(height: 15),
+                                  Padding(
+                                    padding: EdgeInsets.only(left: 15),
+                                    child: Text('Add Review',
+                                        style: titleFontStyle),
                                   ),
-                                  child: Container(
-                                    height: 165,
-                                    width: double.infinity,
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(10.0),
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: <Widget>[
-                                          SizedBox(height: 15),
-                                          Padding(
-                                            padding: EdgeInsets.only(left: 15),
-                                            child: Text('Add Review',
-                                                style: titleFontStyle),
-                                          ),
-                                          SizedBox(
-                                            height: 15,
-                                          ),
-                                          Padding(
-                                            padding: EdgeInsets.only(
-                                                left: 15, right: 15),
-                                            child: Container(
-                                              width: double.infinity,
-                                              child: Text(
-                                                  'Are you sure you want to post this comment?',
-                                                  style: grey14w400),
-                                            ),
-                                          ),
-                                          Spacer(),
-                                          Padding(
-                                            padding:
-                                                EdgeInsets.only(right: 15.0),
-                                            child: Row(
-                                              children: <Widget>[
-                                                Spacer(),
-                                                GestureDetector(
-                                                  onTap: () {
-                                                    Navigator.of(context).pop();
-                                                  },
-                                                  child: Text('CANCEL',
-                                                      style: cancelButtonText),
-                                                ),
-                                                SizedBox(
-                                                  width: 16,
-                                                ),
-                                                GestureDetector(
-                                                    onTap: () {
-                                                      Navigator.of(context)
-                                                          .pop();
-                                                      HomeBloc()
-                                                        ..add(FetchHomeData(
-                                                            insertReview,
-                                                            variables: {
-                                                              "monumentId": int
-                                                                  .parse(widget
-                                                                      .id
-                                                                      .toString()),
-                                                              "comment":
-                                                                  reviewComment,
-                                                              "rating": int.parse(
-                                                                  reviewRating
-                                                                      .toString())
-                                                            }));
-                                                      Navigator.of(context)
-                                                          .pop();
-                                                    },
-                                                    child: Text(
-                                                      'CONFIRM',
-                                                      style: TextStyle(
-                                                          color: Colors
-                                                              .green.shade500,
-                                                          fontFamily:
-                                                              'OpenSans'),
-                                                    ))
-                                              ],
-                                            ),
-                                          ),
-                                          SizedBox(height: 15)
-                                        ],
-                                      ),
+                                  SizedBox(
+                                    height: 15,
+                                  ),
+                                  Padding(
+                                    padding:
+                                        EdgeInsets.only(left: 15, right: 15),
+                                    child: Container(
+                                      width: double.infinity,
+                                      child: Text(
+                                          'Are you sure you want to post this comment?',
+                                          style: grey14w400),
                                     ),
                                   ),
-                                );
-                              });
-                        },
-                        color: Color(0xFFE5CE7E),
-                        elevation: 0,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(50)),
-                        child: Text(
-                          "SUBMIT",
-                          style: TextStyle(
-                              fontWeight: FontWeight.w600, fontSize: 18),
-                        ),
-                      ),
-                    ),
-                    SizedBox(height: 25),
-                  ],
+                                  Spacer(),
+                                  Padding(
+                                    padding: EdgeInsets.only(right: 15.0),
+                                    child: Row(
+                                      children: <Widget>[
+                                        Spacer(),
+                                        GestureDetector(
+                                          onTap: () {
+                                            Navigator.of(context).pop();
+                                          },
+                                          child: Text('CANCEL',
+                                              style: cancelButtonText),
+                                        ),
+                                        SizedBox(
+                                          width: 16,
+                                        ),
+                                        GestureDetector(
+                                            onTap: () {
+                                              Navigator.of(context).pop();
+                                              HomeBloc()
+                                                ..add(FetchHomeData(
+                                                    insertReview,
+                                                    variables: {
+                                                      "monumentId": widget.id,
+                                                      "comment": reviewComment,
+                                                      "rating": reviewRating
+                                                    }));
+                                              Navigator.of(context).pop();
+                                              Navigator.of(context).pop();
+                                            },
+                                            child: Text(
+                                              'CONFIRM',
+                                              style: TextStyle(
+                                                  color: Colors.green.shade500,
+                                                  fontFamily: 'OpenSans'),
+                                            ))
+                                      ],
+                                    ),
+                                  ),
+                                  SizedBox(height: 15)
+                                ],
+                              ),
+                            ),
+                          ),
+                        );
+                      });
+                },
+                color: Color(0xFFE5CE7E),
+                elevation: 0,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(50)),
+                child: Text(
+                  "SUBMIT",
+                  style: TextStyle(fontWeight: FontWeight.w600, fontSize: 18),
                 ),
               ),
-            );
-          }),
-    );
+            ),
+            SizedBox(height: 25),
+          ],
+        ),
+      ),
+    ));
   }
 
   @override

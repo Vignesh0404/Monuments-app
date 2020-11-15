@@ -111,3 +111,28 @@ mutation DeleteReview($reviewId: Int) {
  }
 }
 ''';
+
+String updateReview = r'''
+mutation UpdateReview($reviewId: Int, $comment: String, $rating: Int ) {
+   update_reviews(where: {id: {_eq: $reviewId}}, _set: {comment: $comment, rating: $rating}) {
+       affected_rows
+   }
+}
+''';
+
+String insertBookmark = r'''
+mutation InsertMonumentBookmark (
+ $monumentId: Int,
+ $type: String
+) {
+ insert_bookmark(objects:
+   {
+     monument_id: $monumentId,
+     type: $type}) {
+   affected_rows
+   returning {
+         id
+       }
+ }
+}
+''';

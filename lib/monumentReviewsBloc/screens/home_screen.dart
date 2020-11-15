@@ -102,7 +102,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 var date = Jiffy("2020-11-13", "yyyy-MM-dd").fromNow();
                 String time = data[index]['updated_at'];
                 int i = 10;
-                String finalDate = time.substring(0, i);
+                String finalDate =
+                    time.substring(0, i) + ',' + time.substring(i + 1, 18);
                 print('date = ' + finalDate);
                 return Container(
                   child: Padding(
@@ -163,7 +164,10 @@ class _HomeScreenState extends State<HomeScreen> {
                           children: <Widget>[
                             Text(
                               //date,
-                              Jiffy(finalDate, "yyyy-MM-dd").fromNow(),
+                              'Posted ' +
+                                  Jiffy(finalDate, "yyyy-MM-dd,hh:mm:s")
+                                      .fromNow() +
+                                  ' ago',
                               //data[index]['updated_at'],
                               style: TextStyle(
                                   fontFamily: 'OpenSans',

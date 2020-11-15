@@ -70,6 +70,11 @@ class _HomeScreenState extends State<HomeScreen> {
             itemCount: 1,
             itemBuilder: (BuildContext context, int index) {
               var rating = data[index]['rating'].toString();
+              String date = data[index]['updated_at'];
+              int i = 10;
+              String finalDate =
+                  date.substring(0, i) + ',' + date.substring(i + 1, 18);
+              print('date = ' + finalDate);
               return Padding(
                 padding: const EdgeInsets.only(left: 16.0, right: 16),
                 child: Column(
@@ -115,7 +120,12 @@ class _HomeScreenState extends State<HomeScreen> {
                             SizedBox(
                               height: 5,
                             ),
-                            Text(data[index]['updated_at'], style: grey14w400)
+                            Text(
+                                'Posted ' +
+                                    Jiffy(finalDate, "yyyy-MM-dd,hh:mm:s")
+                                        .fromNow() +
+                                    ' ago',
+                                style: grey14w400)
                           ],
                         ),
                         Spacer(),
