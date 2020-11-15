@@ -60,6 +60,8 @@ class _HomeScreenState extends State<HomeScreen> {
           var mapLocation = item['details']['mt_mapLocation'];
           var desc = item['details']['mt_description'];
           var phoneNum = item['details']['phoneNumber'];
+          //var avgRating =
+          // item['reviews_aggregate']['aggregate']['avg']['rating'];
           //print(location);
           // print(galleryImage);
           // print(item['details']['mt_heroImg']);
@@ -116,7 +118,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 color: Colors.black,
                                 size: 20,
                               ),
-                              onPressed: null),
+                              onPressed: () {}),
                         )),
                     SizedBox(
                       height: 70,

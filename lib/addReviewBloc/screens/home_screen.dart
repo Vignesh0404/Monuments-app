@@ -81,6 +81,8 @@ class _HomeScreenState extends State<HomeScreen> {
           itemBuilder: (BuildContext context, int index) {
             TextEditingController reviewComment = new TextEditingController();
             TextEditingController reviewRating = new TextEditingController();
+            //String reviewComment;
+            //int reviewRating;
             final formKey = new GlobalKey<FormState>();
             //var item = data[index]['monument'];
             //var rating = int.parse(data[index]['rating']);
