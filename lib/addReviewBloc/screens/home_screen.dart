@@ -56,8 +56,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 elevation: 1.0,
                 bottomOpacity: 4,
                 backgroundColor: Colors.white,
-                title: Text('Add Review' + '' + widget.id.toString(),
-                    style: largeTitleFontStyle),
+                title: Text('Add Review', style: largeTitleFontStyle),
                 leading: IconButton(
                   icon: Icon(
                     Icons.arrow_back,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:travelapp/HomePageMonumentBloc/Monument.dart';
+import 'package:travelapp/bookmarkBloc/bookmark.dart';
 import 'package:travelapp/userReviewsBloc/bookmark.dart';
 
 import 'styles.dart';
@@ -33,7 +34,7 @@ class _MonumentsState extends State<Monuments> {
                 ),
                 onPressed: () {
                   Navigator.of(context).push(new MaterialPageRoute(
-                      builder: (BuildContext context) => new MyReviews()));
+                      builder: (BuildContext context) => new Bookmark()));
                 })
           ],
         ),

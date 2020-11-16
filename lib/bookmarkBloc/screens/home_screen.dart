@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:travelapp/bookmarkBloc/blocs/home/bookmark.dart';
+import 'package:travelapp/monumentReviewsBloc/monumentReview.dart';
 import 'package:travelapp/queries.dart';
+import 'package:travelapp/screens/monumentDetails.dart';
 import 'package:travelapp/screens/styles.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -20,24 +22,19 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return 
-    BlocBuilder<HomeBloc, HomeStatesMonument>(
+    return BlocBuilder<HomeBloc, HomeStatesMonument>(
       builder: (BuildContext context, HomeStatesMonument state) {
         if (state is Loading) {
-          return Scaffold(
-            appBar: _appBar(),
-            body:LinearProgressIndicator());
+          return Scaffold(appBar: _appBar(), body: LinearProgressIndicator());
         } else if (state is LoadDataFail) {
-          return Scaffold(body:Text(state.error));
+          return Scaffold(body: Text(state.error));
         } else {
           data = (state as LoadDataSuccess).data['bookmark'];
           // data = (state as LoadDataSuccess).data;
           print(data);
           // print(data);
           // return Container();
-          return Scaffold(
-            appBar: _appBar(),
-            body: _buildMonumentWidget());
+          return Scaffold(appBar: _appBar(), body: _buildMonumentWidget());
         }
       },
     );
@@ -54,34 +51,47 @@ class _HomeScreenState extends State<HomeScreen> {
   List<bool> _selected = List.generate(100, (i) => false);
   List<int> _selectedID = [];
   Widget _buildMonumentWidget() {
-      // print("------------------------------");
-      // print(data.length);
-      // print(_selectedID.length);
-      // print("------------------------------");
-    if(data.length==_selectedID.length)
-    {
+    // print("------------------------------");
+    // print(data.length);
+    // print(_selectedID.length);
+    // print("------------------------------");
+    if (data.length == _selectedID.length) {
       // print('Empty');
       return Center(child: Text("You haven't added any bookmarks yet"));
     }
-    if(data.toString()!="[]")
-    {
+    if (data.toString() != "[]") {
       print("Not empty");
-    return 
-      Container(
-        child:
-         ListView.builder(
-          // physics: NeverScrollableScrollPhysics(),
-          // shrinkWrap: true,
-          itemCount: data.length,
-          itemBuilder: (BuildContext context, int index) {
-            var item = data[index]['monument'];
-            // print(item);
-            // print(item);
-            // print(_selected);
-            if(!_selectedID.contains(data[index]['id']))
+      return Container(
+          child: ListView.builder(
+        // physics: NeverScrollableScrollPhysics(),
+        // shrinkWrap: true,
+        itemCount: data.length,
+        itemBuilder: (BuildContext context, int index) {
+          var item = data[index]['monument'];
+
+          var id = item['id'];
+          var heroImg = item['details']['mt_heroImg'][0];
+          var name = item['details']["mt_name"];
+          var location = item['details']["mt_location"];
+          var eraName = item['era']['name'];
+          var video = item['details']['mt_video'];
+          var galleryImage = item['details']['mt_gallery'];
+          var openFrom = item['details']['mt_openFrom'];
+          var openTill = item['details']['mt_openTill'];
+          var numberType = item['details']['mt_numberType'];
+          var mapLocation = item['details']['mt_mapLocation'];
+          var desc = item['details']['mt_description'];
+          var phoneNum = item['details']['phoneNumber'];
+          var rating = item['reviews_aggregate']["aggregate"]['avg']['rating'];
+          // print(item);
+          // print(item);
+          // print(_selected);
+          if (!_selectedID.contains(data[index]['id']))
             return GestureDetector(
                 // onTap: () {
-                //   print('Monument ' + item['id'].toString() + ' clicked');
+                //   Navigator.of(context).push(new MaterialPageRoute(
+                //       builder: (BuildContext context) => new MonumentReview()));
+                //   // print('Monument ' + item['id'].toString() + ' clicked');
                 // },
                 child: Container(
               color: _selected[index] ? Colors.grey[200] : null,
@@ -94,28 +104,52 @@ class _HomeScreenState extends State<HomeScreen> {
                             )
                           : Icon(Icons.check_box_outline_blank))
                       : null,
-                  leading: Container(
-                      height: 60,
-                      width: 90,
-                      decoration: BoxDecoration(
-                          image: (item['details']['mt_heroImg'] != null &&
-                                  item['details']['mt_heroImg'].length != 0 &&
-                                  item['details']['mt_heroImg'].toString() != "[null]")
-                              ? DecorationImage(
-                                  image: NetworkImage(
-                                      item['details']['mt_heroImg'][0]),
-                                  fit: BoxFit.cover)
-                              : DecorationImage(
-                                  image:
-                                      // NetworkImage(item['details']['mt_heroImg'][0]),
-                                      NetworkImage(
-                                          'https://images.pexels.com/photos/213780/pexels-photo-213780.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'),
-                                  fit: BoxFit.cover))),
+                  leading: GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (BuildContext context) => MonumentDetails(
+                              name: name,
+                              id: id,
+                              //index: item,
+                              heroImg: heroImg,
+                              location: location,
+                              eraName: eraName,
+                              video: video,
+                              galleryImage: galleryImage,
+                              // openFrom: openFrom,
+                              // openTill: openTill,
+                              // numberType: numberType,
+                              // mapLocation: mapLocation,
+                              desc: desc,
+                              rating: rating
+                              // phonNum: phoneNum,
+                              )));
+                    },
+                    child: Container(
+                        height: 60,
+                        width: 90,
+                        decoration: BoxDecoration(
+                            image: (item['details']['mt_heroImg'] != null &&
+                                    item['details']['mt_heroImg'].length != 0 &&
+                                    item['details']['mt_heroImg'].toString() !=
+                                        "[null]")
+                                ? DecorationImage(
+                                    image: NetworkImage(
+                                        item['details']['mt_heroImg'][0]),
+                                    fit: BoxFit.cover)
+                                : DecorationImage(
+                                    image:
+                                        // NetworkImage(item['details']['mt_heroImg'][0]),
+                                        NetworkImage(
+                                            'https://images.pexels.com/photos/213780/pexels-photo-213780.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'),
+                                    fit: BoxFit.cover))),
+                  ),
                   isThreeLine: true,
-                  title: Text(item['name'].toString(), style: titleFontStyle),
+                  title: Text(item['details']['mt_name'].toString(),
+                      style: titleFontStyle),
                   subtitle: (item['details']['mt_description'] != null)
                       ? Text(
-                          item['location_name'].toString() +
+                          item['details']['mt_location'].toString() +
                               '.' +
                               item['era']['name'].toString() +
                               '\n' +
@@ -125,7 +159,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           style: subtitleFontStyle,
                           maxLines: 2,
                         )
-                      : Text(item['location_name'].toString() +
+                      : Text(item['details']['mt_location'].toString() +
                           '.' +
                           item['era']['name'].toString() +
                           '\n'),
@@ -151,15 +185,14 @@ class _HomeScreenState extends State<HomeScreen> {
                     });
                   }),
             ));
-            else
+          else
             return Container();
-          },
-         
-         )
-    );}
-    else 
-    return 
-    Center(child: Text("You haven't added any bookmarks yet"),);
+        },
+      ));
+    } else
+      return Center(
+        child: Text("You haven't added any bookmarks yet"),
+      );
   }
 
   @override
@@ -221,7 +254,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                 _selectedCount = 0;
                                 _selected = List.generate(100, (i) => false);
                                 Navigator.of(context).pop();
-                                HomeBloc()..add(FetchHomeData(deleteMultipleBookmarks,variables:{"bookmarkId":_selectedID}));
+                                HomeBloc()
+                                  ..add(FetchHomeData(deleteMultipleBookmarks,
+                                      variables: {"bookmarkId": _selectedID}));
                                 setState(() {});
                               },
                               child: Text(
