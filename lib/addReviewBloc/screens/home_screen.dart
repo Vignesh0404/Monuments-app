@@ -213,8 +213,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                                     insertReview,
                                                     variables: {
                                                       "monumentId": widget.id,
-                                                      "comment": reviewComment,
-                                                      "rating": reviewRating
+                                                      "comment":
+                                                          reviewComment.text,
+                                                      "rating":
+                                                          reviewRating.text
                                                     }));
                                               Navigator.of(context).pop();
                                               Navigator.of(context).pop();
