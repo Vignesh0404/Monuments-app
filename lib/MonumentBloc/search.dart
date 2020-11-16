@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:travelapp/MonumentBloc/blocs/home/monument.dart';
 import 'package:travelapp/queries.dart';
+import 'package:travelapp/screens/monumentDetails.dart';
 import 'package:travelapp/screens/styles.dart';
 
 // void main() {
@@ -80,9 +81,41 @@ class SearchTabState extends State<SearchTab> {
         itemCount: data.length,
         itemBuilder: (BuildContext context, int index) {
           var item = data[index];
+          var id = item['id'];
+          var heroImg = item['details']['mt_heroImg'][0];
+          var name = item['details']["mt_name"];
+          var location = item['details']["mt_location"];
+          var eraName = item['era']['name'];
+          var video = item['details']['mt_video'];
+          var galleryImage = item['details']['mt_gallery'];
+          //var openFrom = item['details']['mt_openFrom'];
+          // var openTill = item['details']['mt_openTill'];
+          // var numberType = item['details']['mt_numberType'];
+          // var mapLocation = item['details']['mt_mapLocation'];
+          var desc = item['details']['mt_description'];
+          // var phoneNum = item['details']['phoneNumber'];
+          var rating = item['reviews_aggregate']["aggregate"]['avg']['rating'];
           return GestureDetector(
               onTap: () {
                 print('Monument ' + item['name'].toString() + ' clicked');
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (BuildContext context) => MonumentDetails(
+                        name: name,
+                        id: id,
+                        //index: item,
+                        heroImg: heroImg,
+                        location: location,
+                        eraName: eraName,
+                        video: video,
+                        galleryImage: galleryImage,
+                        // openFrom: openFrom,
+                        // openTill: openTill,
+                        // numberType: numberType,
+                        // mapLocation: mapLocation,
+                        desc: desc,
+                        rating: rating
+                        // phonNum: phoneNum,
+                        )));
               },
               child: ListTile(
                 // dense: true,
@@ -99,9 +132,10 @@ class SearchTabState extends State<SearchTab> {
                             : 'https://images.pexels.com/photos/213780/pexels-photo-213780.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
                       ),
                     )),
-                title: Text(item['name'].toString(), style: titleFontStyle),
+                title: Text(item['details']["mt_name"].toString(),
+                    style: titleFontStyle),
                 subtitle: Text(
-                    item['location_name'].toString()
+                    item['details']["mt_location"].toString()
                     // +item['monuments_x_tags'].toString()
                     ,
                     style: subtitleFontStyle),

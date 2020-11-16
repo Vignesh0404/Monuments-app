@@ -38,29 +38,30 @@ tags(order_by: {monuments_x_tags_aggregate:{count:desc}},where:{monuments_x_tags
     }
 }''';
 String basicSearch = r'''
-query search($text: String){
-  monuments(where:
-  {
-    _or: [
-      {name:{_ilike:$text}},
-      {location_name:{_ilike:$text}},
-      {monuments_x_tags:{tag:{name:{_ilike:$text}}}}
-    ],
-    is_active: {_eq: true},
-    details:{_contains:{mt_isActiveOnApp:"yes"}}
-  },limit:4
-  ){
+query search($text: String) {
+  monuments(where: {_or: [{name: {_ilike: $text}}, {location_name: {_ilike: $text}}, {monuments_x_tags: {tag: {name: {_ilike: $text}}}}], is_active: {_eq: true}, details: {_contains: {mt_isActiveOnApp: "yes"}}}, limit: 4) {
     id
     name
     location_name
     details
-    monuments_x_tags(where:{tag:{name:{_ilike:$text}}}){
-      tag{
+    monuments_x_tags(where: {tag: {name: {_ilike: $text}}}) {
+      tag {
         name
       }
     }
+    reviews_aggregate {
+      aggregate {
+        avg {
+          rating
+        }
+      }
+    }
+    era {
+      name
+    }
   }
-}''';
+}
+''';
 
 String bookmarkQuerynew = r'''
 query BookmarkList($bookmarkOffset: Int, $bookmarkLimit: Int) {
