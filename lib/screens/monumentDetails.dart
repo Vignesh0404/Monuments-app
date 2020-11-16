@@ -137,9 +137,7 @@ class _MonumentDetailsState extends State<MonumentDetails> {
                         onPressed: null)
                   ],
                 ),
-                Center(
-                    child: Text(widget.name + '-' + widget.id.toString(),
-                        style: white16)),
+                Center(child: Text(widget.name, style: white16)),
                 SizedBox(
                   height: 6,
                 ),

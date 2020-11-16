@@ -132,7 +132,6 @@ mutation InsertMonumentBookmark(
   }
 ''';
 
-
 String deleteMultipleBookmarks = r'''
 mutation DeleteMultipleBookmark($bookmarkId: [Int!]) {
   delete_bookmark(where: {id: {_in: $bookmarkId}, user_id: {_eq: "OpiSdcxGQvVizCZRauIAO7sSx3Q2"}}) {
@@ -166,9 +165,14 @@ query BookmarkList($bookmarkOffset: Int, $bookmarkLimit: Int) {
         id
         name
       }
+      reviews_aggregate {
+        aggregate {
+          avg {
+            rating
+          }
+        }
+      }
     }
   }
 }
 ''';
-
-
