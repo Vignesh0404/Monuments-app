@@ -12,16 +12,14 @@ import 'package:travelapp/Queries1.dart';
 class MonumentDetailsReview extends StatelessWidget {
   final int id;
   final String name;
-  MonumentDetailsReview({this.id, this.name});
+  final double rating;
+  MonumentDetailsReview({this.id, this.name, this.rating});
   @override
   Widget build(BuildContext context) {
     return BlocProvider<HomeBloc>(
       create: (BuildContext context) =>
           HomeBloc()..add(FetchHomeData(fetchReview, variables: {"mID": id})),
-      child: HomeScreen(
-        id: id,
-        name: name,
-      ),
+      child: HomeScreen(id: id, name: name, rating: rating),
     );
   }
 }

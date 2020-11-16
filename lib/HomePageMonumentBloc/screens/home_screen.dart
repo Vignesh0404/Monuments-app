@@ -60,6 +60,8 @@ class _HomeScreenState extends State<HomeScreen> {
           var mapLocation = item['details']['mt_mapLocation'];
           var desc = item['details']['mt_description'];
           var phoneNum = item['details']['phoneNumber'];
+          var rating = item['reviews_aggregate']["aggregate"]['avg']['rating'];
+          //print(rating);
           //var avgRating =
           // item['reviews_aggregate']['aggregate']['avg']['rating'];
           //print(location);
@@ -71,20 +73,21 @@ class _HomeScreenState extends State<HomeScreen> {
               onTap: () {
                 Navigator.of(context).push(MaterialPageRoute(
                     builder: (BuildContext context) => MonumentDetails(
-                          name: name,
-                          id: id,
-                          //index: item,
-                          heroImg: heroImg,
-                          location: location,
-                          eraName: eraName,
-                          video: video,
-                          galleryImage: galleryImage,
-                          // openFrom: openFrom,
-                          // openTill: openTill,
-                          // numberType: numberType,
-                          // mapLocation: mapLocation,
-                          desc: desc,
-                          // phonNum: phoneNum,
+                        name: name,
+                        id: id,
+                        //index: item,
+                        heroImg: heroImg,
+                        location: location,
+                        eraName: eraName,
+                        video: video,
+                        galleryImage: galleryImage,
+                        // openFrom: openFrom,
+                        // openTill: openTill,
+                        // numberType: numberType,
+                        // mapLocation: mapLocation,
+                        desc: desc,
+                        rating: rating
+                        // phonNum: phoneNum,
                         )));
               },
               child: Container(

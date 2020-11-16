@@ -9,10 +9,10 @@ import 'package:jiffy/jiffy.dart';
 import '../../Queries1.dart';
 
 class HomeScreen extends StatefulWidget {
-  HomeScreen({this.id, this.name});
+  HomeScreen({this.id, this.name, this.rating});
   final int id;
   final String name;
-
+  final double rating;
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
@@ -90,7 +90,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           decoration: greenReviewBox,
                           child: Center(
                               child: Text(
-                            '4.8',
+                            widget.rating.toString().substring(0, 3),
                             style: white12,
                           )),
                         )

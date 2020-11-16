@@ -19,6 +19,7 @@ class MonumentDetails extends StatefulWidget {
       this.galleryImage,
       this.heroImg,
       this.location,
+      this.rating,
       //this.mapLocation,
 
       // this.numberType,
@@ -32,6 +33,7 @@ class MonumentDetails extends StatefulWidget {
   final String location;
   final String eraName;
   final String video;
+  final double rating;
   // final List openFrom;
   // final List openTill;
   // final List numberType;
@@ -319,6 +321,7 @@ class _MonumentDetailsState extends State<MonumentDetails> {
             //Text('hello'),
             MonumentDetailsReview(
               id: widget.id,
+              rating: widget.rating,
             ),
             Padding(
               padding: const EdgeInsets.only(left: 16.0, right: 16),
