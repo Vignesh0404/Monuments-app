@@ -53,6 +53,7 @@ class EraBasedMonuments extends StatelessWidget {
         itemCount: data.length,
         itemBuilder: (BuildContext context, int index) {
           var item = data[index];
+
           print('idasda $id');
           //print(item['details']['mt_era']);
           //print(item['details']['mt_heroImg'].toString());

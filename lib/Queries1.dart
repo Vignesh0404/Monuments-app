@@ -34,6 +34,13 @@ query MyQuery($id: Int) {
       era{
         name
       }
+       reviews_aggregate {
+      aggregate {
+        avg {
+          rating
+        }
+      }
+    }
     }
   }
 }
@@ -46,6 +53,17 @@ mutation InsertReview($monumentId: Int, $comment: String, $rating: Int) {
      id,
    }
  }
+}
+''';
+
+String insertBookmark = r'''
+mutation InsertMonumentBookmark($monumentId: Int, $type: String) {
+  insert_bookmark(objects: {monument_id: $monumentId, type: $type, user_id: "OpiSdcxGQvVizCZRauIAO7sSx3Q2"}) {
+    affected_rows
+    returning {
+      id
+    }
+  }
 }
 ''';
 
@@ -117,22 +135,5 @@ mutation UpdateReview($reviewId: Int, $comment: String, $rating: Int ) {
    update_reviews(where: {id: {_eq: $reviewId}}, _set: {comment: $comment, rating: $rating}) {
        affected_rows
    }
-}
-''';
-
-String insertBookmark = r'''
-mutation InsertMonumentBookmark (
- $monumentId: Int,
- $type: String
-) {
- insert_bookmark(objects:
-   {
-     monument_id: $monumentId,
-     type: $type}) {
-   affected_rows
-   returning {
-         id
-       }
- }
 }
 ''';

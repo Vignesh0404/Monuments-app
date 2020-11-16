@@ -3,6 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:travelapp/MonumentBloc/blocs/home/monument.dart';
 import 'package:travelapp/screens/monumentDetails.dart';
 import 'package:flutter_icons/flutter_icons.dart';
+import 'package:travelapp/screens/styles.dart';
+
+import '../../Queries1.dart';
 
 class HomeScreen extends StatefulWidget {
   HomeScreen({Key key}) : super(key: key);
@@ -121,7 +124,72 @@ class _HomeScreenState extends State<HomeScreen> {
                                 color: Colors.black,
                                 size: 20,
                               ),
-                              onPressed: () {}),
+                              onPressed: () {
+                                print('bookmark selected');
+                                HomeBloc()
+                                  ..add(FetchHomeData(insertBookmark,
+                                      variables: {
+                                        'monumentId': id,
+                                        'type': 'monument'
+                                      }));
+                                showDialog(
+                                    context: context,
+                                    builder: (BuildContext context) {
+                                      return Dialog(
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(7),
+                                        ),
+                                        child: Container(
+                                          height: 55,
+                                          width: double.infinity,
+                                          child: Padding(
+                                            padding: const EdgeInsets.all(10.0),
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: <Widget>[
+                                                SizedBox(
+                                                  height: 5,
+                                                ),
+                                                Padding(
+                                                  padding: EdgeInsets.only(
+                                                      left: 15, right: 15),
+                                                  child: Center(
+                                                    child: Container(
+                                                      width: double.infinity,
+                                                      child: Center(
+                                                        child: Row(
+                                                          children: <Widget>[
+                                                            Text(
+                                                                '            Bookmark Added',
+                                                                style: TextStyle(
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .bold)),
+                                                            SizedBox(
+                                                              width: 5,
+                                                            ),
+                                                            Icon(
+                                                              Icons
+                                                                  .sentiment_very_satisfied,
+                                                              color:
+                                                                  Colors.green,
+                                                            )
+                                                          ],
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                                Spacer(),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                      );
+                                    });
+                              }),
                         )),
                     SizedBox(
                       height: 70,
