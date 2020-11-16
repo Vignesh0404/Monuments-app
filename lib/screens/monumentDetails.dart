@@ -82,8 +82,18 @@ class _MonumentDetailsState extends State<MonumentDetails> {
   Timer _timer;
   bool showPause = false;
 
+  bool flag = true;
   @override
   Widget build(BuildContext context) {
+    String firstHalf;
+    String secondHalf;
+    if (widget.desc.length > 200) {
+      firstHalf = widget.desc.substring(0, 200);
+      secondHalf = widget.desc.substring(200, widget.desc.length);
+    } else {
+      firstHalf = widget.desc;
+      secondHalf = "";
+    }
     return SafeArea(
       child: Scaffold(
           body: ListView(children: <Widget>[
@@ -200,7 +210,9 @@ class _MonumentDetailsState extends State<MonumentDetails> {
                           child: Icon(
                             !_controller.value.isPlaying
                                 ? Icons.play_arrow
-                                : showPause == true ? Icons.pause : null,
+                                : showPause == true
+                                    ? Icons.pause
+                                    : null,
                             size: 50,
                             color: Colors.white,
                           ),
@@ -225,11 +237,35 @@ class _MonumentDetailsState extends State<MonumentDetails> {
               padding: EdgeInsets.all(16),
               child: Column(
                 children: <Widget>[
-                  Text(
-                    widget.desc,
-                    maxLines: 4,
-                    overflow: TextOverflow.ellipsis,
-                  )
+                  // Text(
+                  //   widget.desc,
+                  //   maxLines: 4,
+                  //   overflow: TextOverflow.ellipsis,
+                  // ),
+                  Text(flag ? (firstHalf) : (firstHalf + secondHalf)),
+                  (widget.desc.length > 200)
+                      ? Align(
+                          alignment: Alignment.topRight,
+                          child: GestureDetector(
+                              onTap: () {
+                                setState(() {
+                                  flag = !flag;
+                                });
+                              },
+                              child: (flag)
+                                  ? Text(
+                                      'Show More',
+                                      textAlign: TextAlign.end,
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold),
+                                    )
+                                  : Text(
+                                      'Show Less',
+                                      textAlign: TextAlign.end,
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold),
+                                    )))
+                      : Text('')
                 ],
               ),
             ),
