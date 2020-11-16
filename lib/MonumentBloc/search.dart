@@ -52,21 +52,33 @@ class SearchTabState extends State<SearchTab> {
                 child: Scaffold(
                     backgroundColor: Color(0xFFEBEBEB),
                     body: SingleChildScrollView(
-                        child: Column(children: [
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
                       _searchBar(state),
-                      // _getData(state),
-                      // Text(data.toString()),
                       _buildMonumentWidget(),
                     ]))));
           }
         }));
   }
 
+  Widget _emptySearch(String text) {
+    return Center(child: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      // crossAxisAlignment: CrossAxisAlignment.end,
+        children:[
+          Text(text),
+          Text('chilssssssss'),
+          Text('efwijwe'),
+        ]));
+  }
+
   Widget _buildMonumentWidget() {
     if (data.length == 0 && _searchText.text != "")
-      return Center(child: Text('No results found for "${_searchText.text}"'));
+      return _emptySearch('No results found for "${_searchText.text}"');
     if (data.length == 0 && _searchText.text == "")
-      return Center(child: Text('Enter text for searching'));
+      return _emptySearch('Enter text for searching');
     return Container(
         child: Card(
       margin: EdgeInsets.only(right: 5, left: 5),
