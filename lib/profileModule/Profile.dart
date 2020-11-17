@@ -46,11 +46,6 @@ class _ProfileState extends State<Profile> {
                   print('Bookmarks clicked');
                 },
                 dense: true,
-                // leading: Icon(
-                //   Icons.bookmark_border,
-                //   color: Colors.black,
-                //   size: 24,
-                // ),
                 title: Row(children:[
                   Icon(
                   Icons.bookmark_border,
@@ -62,10 +57,6 @@ class _ProfileState extends State<Profile> {
                   'My Bookmarks',
                   style: titleFontStyle,
                 ),]),
-                // subtitle: Text(
-                //   '4 added',
-                //   style: subtitleFontStyle,
-                // ),
               ),
               ListTile(
                 onTap: () {
@@ -76,7 +67,7 @@ class _ProfileState extends State<Profile> {
                 dense: true,
                 
                 title:Row(children: [Icon(
-                  Icons.list,
+                  Icons.notes_rounded,
                   color: Colors.black,
                   size: 24,
                 ),
@@ -143,7 +134,9 @@ class _ProfileState extends State<Profile> {
             ]),),
               ListTile(
                 // leading: Text(''),
-                title: TextField(
+                title:Container(
+                  padding: EdgeInsets.only(left:34),
+                  child:  TextField(
                   cursorColor: Colors.black,
                   onChanged: (text) => setState(() {
                     print(text);
@@ -160,7 +153,7 @@ class _ProfileState extends State<Profile> {
                     enabledBorder: greyBorder,
                     border: greyCirclularBorder,
                   ),
-                ),
+                ),),
                 subtitle: Padding(
                   child: GestureDetector(
                     onTap: () {
@@ -245,7 +238,7 @@ class _ProfileState extends State<Profile> {
               
                 title: Row(children:[
                    Icon(
-                  Icons.exit_to_app,
+                  Icons.logout,
                   color: Colors.black,
                   size: 24,
                 ),SizedBox(

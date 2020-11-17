@@ -18,11 +18,11 @@ class ProfileName extends StatelessWidget {
                 itemBuilder: (BuildContext context, int i) {
                   String name = document[i]['name'].toString();
                   return ListTile(
-                    title: Text(name, style: appBarTextStyle),
+                    title: Text('${name[0].toUpperCase()}${name.substring(1)}', style: appBarTextStyle),
                     trailing: FlatButton(
                         color: Color(0xFFCEAF41),
                         shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10.0)),
+                            borderRadius: BorderRadius.circular(8.0)),
                         onPressed: () {
                           print('Edit Profile clicked');
                           Navigator.of(context).push(new MaterialPageRoute(
@@ -33,7 +33,7 @@ class ProfileName extends StatelessWidget {
                           'Edit',
                           style: TextStyle(
                             color: Colors.white,
-                            fontSize: 14,
+                            fontSize: 16,
                           ),
                         )),
                   );

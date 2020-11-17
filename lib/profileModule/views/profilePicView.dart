@@ -11,7 +11,7 @@ class ProfilePic extends StatelessWidget {
       children: <Widget>[
         Expanded(
           child: SizedBox(
-              height: 70,
+              height: 80,
               child: new ListView.builder(
                 itemCount: document.length,
                 itemBuilder: (BuildContext context, int i) {
@@ -21,7 +21,7 @@ class ProfilePic extends StatelessWidget {
                     title: Align(
                       alignment: Alignment.centerLeft,
                       child: CircleAvatar(
-                        radius: 30.0,
+                        radius: 36.0,
                         backgroundImage: (photoUrl == null)
                             ? Text(photoUrl)
                             // Icon(
