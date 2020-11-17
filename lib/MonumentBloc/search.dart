@@ -26,52 +26,58 @@ class SearchTabState extends State<SearchTab> {
   HomeBloc homeBloc = HomeBloc();
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<HomeBloc>(
-        create: (BuildContext context) => homeBloc
-          ..add(FetchHomeData(basicSearch,
-              variables: {"text": _searchText.text})),
-        child: BlocBuilder<HomeBloc, HomeStatesMonument>(
-            builder: (BuildContext context, HomeStatesMonument state) {
-          if (state is Loading) {
-            return SafeArea(
-                child: Scaffold(
-                    backgroundColor: Color(0xFFEBEBEB),
-                    body: Column(children: [
-                      _searchBar(state),
-                      // LinearProgressIndicator(),
-                    ])
-                    // appBar: _searchBar(),
-                    ));
-          } else if (state is LoadDataFail) {
-            return Text(state.error);
-          } else {
-            data = (state as LoadDataSuccess).data['monuments'];
+    return SafeArea(
+        child: BlocProvider<HomeBloc>(
+            create: (BuildContext context) => homeBloc
+              ..add(FetchHomeData(basicSearch,
+                  variables: {"text": _searchText.text})),
+            child: BlocBuilder<HomeBloc, HomeStatesMonument>(
+                builder: (BuildContext context, HomeStatesMonument state) {
+              if (state is Loading) {
+                return SafeArea(
+                    child: Scaffold(
+                        backgroundColor: Color(0xFFEBEBEB),
+                        body: Column(children: [
+                          _searchBar(state),
+                          // LinearProgressIndicator(),
+                        ])
+                        // appBar: _searchBar(),
+                        ));
+              } else if (state is LoadDataFail) {
+                return Text(state.error);
+              } else {
+                data = (state as LoadDataSuccess).data['monuments'];
 
-            // print(data);
-            return SafeArea(
-                child: Scaffold(
-                    backgroundColor: Color(0xFFEBEBEB),
-                    body: SingleChildScrollView(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                      _searchBar(state),
-                      _buildMonumentWidget(),
-                    ]))));
-          }
-        }));
+                // print(data);
+                return SafeArea(
+                    child: Scaffold(
+                        primary: false,
+                        resizeToAvoidBottomInset: false,
+                        backgroundColor: Color(0xFFEBEBEB),
+                        body: Column(
+                            // crossAxisAlignment: CrossAxisAlignment.center,
+                            // mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              _searchBar(state),
+                              // Spacer(),
+                              _buildMonumentWidget(),
+                              // Spacer()
+                            ])));
+              }
+            })));
   }
 
   Widget _emptySearch(String text) {
-    return Center(child: Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      // crossAxisAlignment: CrossAxisAlignment.end,
-        children:[
+    return Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          SizedBox(height: 40),
+          Image(
+            image: AssetImage('images/emptySearch.JPG'),
+          ),
           Text(text),
-          Text('chilssssssss'),
-          Text('efwijwe'),
-        ]));
+        ]);
   }
 
   Widget _buildMonumentWidget() {
@@ -135,6 +141,7 @@ class SearchTabState extends State<SearchTab> {
                     height: 90,
                     width: 70,
                     child: CircleAvatar(
+                      backgroundColor: Colors.yellow,
                       backgroundImage: NetworkImage(
                         (item['details']['mt_heroImg'] != null &&
                                 item['details']['mt_heroImg'].length != 0 &&
@@ -144,10 +151,11 @@ class SearchTabState extends State<SearchTab> {
                             : 'https://images.pexels.com/photos/213780/pexels-photo-213780.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
                       ),
                     )),
-                title: Text(item['details']["mt_name"].toString(),
+                title: Text(
+                    '${item['details']["mt_name"].toString()[0].toUpperCase()}${item['details']["mt_name"].toString().substring(1)}',
                     style: titleFontStyle),
                 subtitle: Text(
-                    item['details']["mt_location"].toString()
+                    '${item['details']["mt_location"].toString()[0].toUpperCase()}${item['details']["mt_location"].toString().substring(1)}'
                     // +item['monuments_x_tags'].toString()
                     ,
                     style: subtitleFontStyle),
@@ -180,17 +188,10 @@ class SearchTabState extends State<SearchTab> {
                 textInputAction: TextInputAction.go,
                 onChanged: (text) {
                   setState(() {
-                    // print(text.toString());
-                    // print('---------------');
-                    // print('------------');
                     print(homeBloc
                       ..add(FetchHomeData(basicSearch,
                           variables: {"text": _searchText.text})));
-                    // print('************');
                     data = (state as LoadDataSuccess).data['monuments'];
-                    // print(data);
-                    // print('------------');
-                    // var data1 = (LoadDataSuccess);
                   });
                 },
                 decoration: InputDecoration(
@@ -212,7 +213,6 @@ class SearchTabState extends State<SearchTab> {
                       print(homeBloc
                         ..add(FetchHomeData(basicSearch,
                             variables: {"text": _searchText.text})));
-                      // print('************');
                       data = (state as LoadDataSuccess).data['monuments'];
                     });
                   },

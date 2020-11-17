@@ -76,7 +76,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: <Widget>[
-                        Text(item['name'].toString(), style: white17w600),
+                        Text('${item['name'].toString()[0].toUpperCase()}${item['name'].toString().substring(1)}', style: white17w600),
                       ],
                     ),
                   )));

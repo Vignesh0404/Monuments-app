@@ -40,6 +40,11 @@ TextStyle titleFontStyle = TextStyle(
     color: Colors.black,
     fontSize: 16,
     fontWeight: FontWeight.w600);
+TextStyle largeTitleFontStyle18 = TextStyle(
+    fontFamily: 'OpenSans',
+    color: Colors.black,
+    fontSize: 18,
+    fontWeight: FontWeight.w600);
 TextStyle largeTitleFontStyle = TextStyle(
     fontSize: 20,
     color: Colors.black,

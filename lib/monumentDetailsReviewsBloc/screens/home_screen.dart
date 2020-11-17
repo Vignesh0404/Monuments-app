@@ -1,12 +1,8 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:travelapp/bookmarkBloc/blocs/home/bookmark.dart';
-import 'package:travelapp/queries.dart';
 import 'package:travelapp/screens/styles.dart';
 import 'package:jiffy/jiffy.dart';
-import '../../Queries1.dart';
 
 class HomeScreen extends StatefulWidget {
   HomeScreen({this.id, this.name, this.rating});
@@ -172,83 +168,3 @@ class _HomeScreenState extends State<HomeScreen> {
     super.dispose();
   }
 }
-
-/* 
-
-Column(
-                children: <Widget>[
-                  Row(
-                    children: <Widget>[
-                      Text('Reviews And Ratings', style: blackTextStyle),
-                      Spacer(),
-                      Container(
-                        height: 25,
-                        width: 25,
-                        decoration: greenReviewBox,
-                        child: Center(
-                            child: Text(
-                          '4.8',
-                          style: white12,
-                        )),
-                      )
-                    ],
-                  ),
-                  SizedBox(
-                    height: 15,
-                  ),
-                  Row(
-                    children: <Widget>[
-                      CircleAvatar(
-                        radius: 25.0,
-                        backgroundImage:
-                            NetworkImage('https://via.placeholder.com/150'),
-                        backgroundColor: Colors.transparent,
-                      ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Text(
-                            'Venky',
-                            style: blackTextStyle,
-                          ),
-                          Text("8 days ago", style: grey14w400)
-                        ],
-                      ),
-                      Spacer(),
-                      Container(
-                        height: 25,
-                        width: 25,
-                        decoration: greenReviewBox,
-                        child: Center(
-                            child: Text(
-                          '5.0',
-                          style: white12,
-                        )),
-                      )
-                    ],
-                  ),
-                  SizedBox(
-                    height: 9,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 55.0),
-                    child: Container(
-                        height: 1,
-                        width: double.infinity,
-                        color: Colors.grey.shade400),
-                  ),
-                  SizedBox(height: 10),
-                  Text(
-                    'Mandagapatu was known for its Proin gravida nibh vel velit auctor aliquet. Aenesollicitudin, lorem quis bibendauctor, nisi elit consequat ipsum, nec. Read more...',
-                    style: subtitleFontStyle,
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                ],
-              );
-
-              */

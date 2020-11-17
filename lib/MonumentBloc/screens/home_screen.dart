@@ -80,48 +80,75 @@ class _HomeScreenState extends State<HomeScreen> {
                         )));
                 print('Monument ' + item['name'].toString() + ' clicked');
               },
-              child: Container(
-                height: 30,
-                margin: EdgeInsets.symmetric(vertical: 7.0, horizontal: 7.0),
-                padding: EdgeInsets.all(10.0),
-                decoration: BoxDecoration(
-                    boxShadow: [BoxShadow(blurRadius: 1)],
-                    image: DecorationImage(
-                        image: NetworkImage(item['details']['mt_heroImg'][0]),
-                        fit: BoxFit.cover,
-                        colorFilter: ColorFilter.mode(
-                            Colors.black.withOpacity(0.3),
-                            BlendMode.hardLight)),
-                    borderRadius: BorderRadius.circular(5.0)),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: <Widget>[
-                    Align(
-                      alignment: Alignment.bottomLeft,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Text(item['name'].toString(), style: white17w600),
-                          SizedBox(
-                            height: 7,
-                          ),
-                          Row(
-                            children: <Widget>[
-                              Text(item['location_name'].toString(),
-                                  style: white14w400)
-                            ],
-                          )
-                        ],
-                      ),
-                    )
-                  ],
+              child: Stack(children: [
+                ShaderMask(
+                  shaderCallback: (Rect bounds) {
+                    return LinearGradient(
+                      begin: FractionalOffset.bottomCenter,
+                      end: FractionalOffset.topCenter,
+                      stops: [0.0, 1.0],
+                      // center: Alignment.bottomCenter,
+                      // radius: 1.0,
+                      colors: <Color>[Colors.black87,Colors.white],
+                      tileMode: TileMode.mirror,
+                    ).createShader(bounds);
+                  },
+                  child: Container(
+                      margin:
+                          EdgeInsets.symmetric(vertical: 7.0, horizontal: 7.0),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(5.0)),
+                      child: Container(
+                        height: 300,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(5.0)),
+                        child: ClipRRect(
+                            borderRadius: BorderRadius.circular(5.0),
+                            child: FadeInImage.assetNetwork(
+                              fadeInDuration: Duration(milliseconds:1),
+                              placeholder: 'images/emptyBookmark.JPG',
+                              image: item['details']['mt_heroImg'][0],
+                              fit: BoxFit.cover,
+                            )),
+                      )),
                 ),
-              ));
+                Container(
+                  margin: EdgeInsets.symmetric(vertical: 7.0, horizontal: 7.0),
+                  padding: EdgeInsets.all(10.0),
+                  decoration:
+                      BoxDecoration(borderRadius: BorderRadius.circular(5.0)),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: <Widget>[
+                      Align(
+                        alignment: Alignment.bottomLeft,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Text(
+                                '${item['name'].toString()[0].toUpperCase()}${item['name'].toString().substring(1)}',
+                                style: white17w600),
+                            SizedBox(
+                              height: 7,
+                            ),
+                            Row(
+                              children: <Widget>[
+                                Text(
+                                    '${item['location_name'].toString()[0].toUpperCase()}${item['location_name'].toString().substring(1)}',
+                                    style: white14w400)
+                              ],
+                            )
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
+                )
+              ]));
         },
       ),
     );
   }
-
 
   @override
   void dispose() {

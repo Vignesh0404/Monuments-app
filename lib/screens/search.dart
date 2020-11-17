@@ -17,6 +17,37 @@ class _SearchState extends State<Search> {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
+            appBar: AppBar(
+              automaticallyImplyLeading: true, // Don't show the leading button
+              titleSpacing: 7,
+              elevation: 0,
+              backgroundColor: Colors.white,
+              title: InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => SearchTab()),
+                  );
+                },
+                child: Container(
+                    padding: EdgeInsets.symmetric(horizontal: 0),
+                    height: 48,
+                    child: Material(
+                      elevation: 5,
+                      child: ListTile(
+                        dense: true,
+                        title: Text(
+                          'Search',
+                          style: loginFormStyle,
+                        ),
+                        trailing: Icon(
+                          Icons.search,
+                          color: Colors.grey,
+                        ),
+                      ),
+                    )),
+              ),
+            ),
             resizeToAvoidBottomInset: false,
             // resizeToAvoidBottomPadding: false,
             backgroundColor: Colors.white,
@@ -27,78 +58,39 @@ class _SearchState extends State<Search> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    // Replace this container with your Map widget
-                    Container(),
-                    Container(
-                      color: Colors.white,
-                      child: Material(
-                        elevation: 5,
-                        child: InkWell(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => SearchTab()),
-                            );
-                          },
-                          child: Row(
-                            children: <Widget>[
-                              Padding(
-                                padding: EdgeInsets.only(left: 12),
-                                child: Text(
-                                  'Search..',
-                                ),
-                              ),
-                              Spacer(),
-                              Padding(
-                                  padding: const EdgeInsets.only(right: 8.0),
-                                  child: IconButton(
-                                    icon: (_searchText.text.isEmpty)
-                                        ? Icon(Icons.search)
-                                        : Icon(Icons.close),
-                                    onPressed: () {
-                                      if (_searchText.text.isNotEmpty)
-                                        _searchText.text = '';
-                                    },
-                                  ))
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                    Container(height: 15),
-                    Padding(
-                      padding: EdgeInsets.all(5),
-                      child: Text(
-                        'Search by Most Popular Tags',
-                        style: titleFontStyle,
-                      ),
-                    ),
-                    Container(
-                        child: Wrap(children: <Widget>[
-                      returnChip('Basic Chip'),
-                      returnChip('Chip which is long'),
-                      returnChip('Chennai'),
-                      returnChip('Mahabalipuram'),
-                      returnChip('Chip'),
-                      returnChip('300'),
+                    // Container(height: 10),
+                    // Padding(
+                    //   padding: EdgeInsets.all(5),
+                    //   child: Text(
+                    //     'Search by Most Popular Tags',
+                    //     style: titleFontStyle,
+                    //   ),
+                    // ),
+                    // Container(
+                    //     child: Wrap(children: <Widget>[
+                    //   returnChip('Basic Chip'),
+                    //   returnChip('Chip which is long'),
+                    //   returnChip('Chennai'),
+                    //   returnChip('Mahabalipuram'),
+                    //   returnChip('Chip'),
+                    //   returnChip('300'),
 
-                      ///Add more Chips Dynammically
-                    ])),
+                    //   ///Add more Chips Dynammically
+                    // ])),
                     Padding(
-                      padding: EdgeInsets.all(5),
+                      padding: EdgeInsets.all(10),
                       child: Text(
-                        'Search by Most Viewed Monuments',
-                        style: titleFontStyle,
+                        'Most Viewed Monuments',
+                        style: largeTitleFontStyle18,
                       ),
                     ),
+                    // _searchBar(),
                     Monument(),
-
                     Padding(
-                      padding: EdgeInsets.all(5),
+                      padding: EdgeInsets.all(10),
                       child: Text(
                         'Search by Era',
-                        style: titleFontStyle,
+                        style: largeTitleFontStyle18,
                       ),
                     ),
                     Era(),
@@ -123,5 +115,43 @@ class _SearchState extends State<Search> {
               ),
               backgroundColor: const Color(0xFFF4F4F4),
             )));
+  }
+
+  Widget _searchBar() {
+    return Container(
+      color: Colors.white,
+      child: Material(
+        elevation: 5,
+        child: InkWell(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => SearchTab()),
+            );
+          },
+          child: Row(
+            children: <Widget>[
+              Padding(
+                padding: EdgeInsets.only(left: 12),
+                child: Text(
+                  'Search..',
+                ),
+              ),
+              Spacer(),
+              Padding(
+                  padding: const EdgeInsets.only(right: 8.0),
+                  child: IconButton(
+                    icon: (_searchText.text.isEmpty)
+                        ? Icon(Icons.search)
+                        : Icon(Icons.close),
+                    onPressed: () {
+                      if (_searchText.text.isNotEmpty) _searchText.text = '';
+                    },
+                  ))
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }

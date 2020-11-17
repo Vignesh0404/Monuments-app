@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_icons/flutter_icons.dart';
-//import 'package:travelapp/EraBasedMonuments/screens/home_screen.dart';
-import 'package:travelapp/HomePageMonumentBloc/Monument.dart';
 import 'package:travelapp/eraBasedMonuments/eraBasedMonument.dart';
 
 class TimePeriodSearch extends StatefulWidget {

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:travelapp/bookmarkBloc/blocs/home/bookmark.dart';
-import 'package:travelapp/monumentReviewsBloc/monumentReview.dart';
 import 'package:travelapp/queries.dart';
 import 'package:travelapp/screens/monumentDetails.dart';
 import 'package:travelapp/screens/styles.dart';

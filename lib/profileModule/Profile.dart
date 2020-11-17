@@ -46,19 +46,26 @@ class _ProfileState extends State<Profile> {
                   print('Bookmarks clicked');
                 },
                 dense: true,
-                leading: Icon(
+                // leading: Icon(
+                //   Icons.bookmark_border,
+                //   color: Colors.black,
+                //   size: 24,
+                // ),
+                title: Row(children:[
+                  Icon(
                   Icons.bookmark_border,
                   color: Colors.black,
-                  size: 36,
+                  size: 24,
                 ),
-                title: Text(
+                SizedBox(width: 10,),
+                  Text(
                   'My Bookmarks',
                   style: titleFontStyle,
-                ),
-                subtitle: Text(
-                  '4 added',
-                  style: subtitleFontStyle,
-                ),
+                ),]),
+                // subtitle: Text(
+                //   '4 added',
+                //   style: subtitleFontStyle,
+                // ),
               ),
               ListTile(
                 onTap: () {
@@ -67,38 +74,43 @@ class _ProfileState extends State<Profile> {
                   print('Reviews clicked');
                 },
                 dense: true,
-                leading: Icon(
+                
+                title:Row(children: [Icon(
                   Icons.list,
                   color: Colors.black,
-                  size: 36,
+                  size: 24,
                 ),
-                title: Text(
+                SizedBox(width:10),
+                Text(
                   'My Reviews',
                   style: titleFontStyle,
                 ),
-                subtitle: Text(
-                  '3 added',
-                  style: subtitleFontStyle,
-                ),
+                ]),
+                // subtitle: Text(
+                //   '3 added',
+                //   style: subtitleFontStyle,
+                // ),
               ),
               ListTile(
                 onTap: () {
                   print('Downloads clicked');
                 },
                 dense: true,
-                leading: Icon(
+                
+                title: Row(children: [Icon(
                   Icons.file_download,
                   color: Colors.black,
-                  size: 36,
+                  size: 24,
                 ),
-                title: Text(
+                SizedBox(width: 10,),
+                Text(
                   'My Downloads',
                   style: titleFontStyle,
-                ),
-                subtitle: Text(
-                  '2 added',
-                  style: subtitleFontStyle,
-                ),
+                ),],),
+                // subtitle: Text(
+                //   '2 added',
+                //   style: subtitleFontStyle,
+                // ),
               ),
               Padding(
                 padding: EdgeInsets.only(right: 15, left: 15),
@@ -108,22 +120,29 @@ class _ProfileState extends State<Profile> {
               ),
               ListTile(
                 dense: true,
-                leading: Icon(
+                // leading: 
+                title: Row(children:[
+                  
+                Icon(
                   Icons.chat_bubble_outline,
                   color: Colors.black,
-                  size: 36,
+                  size: 24,
                 ),
-                title: Text(
+                SizedBox(width: 10),
+                  Text(
                   'We would love to hear from you',
                   style: titleFontStyle,
                 ),
-                subtitle: Text(
+                ]),
+                subtitle: Row(children:[
+                  SizedBox(width:34),
+                  Text(
                   'Share your feedback and suggestions about the app',
                   style: subtitleFontStyle,
                 ),
-              ),
+            ]),),
               ListTile(
-                leading: Text(''),
+                // leading: Text(''),
                 title: TextField(
                   cursorColor: Colors.black,
                   onChanged: (text) => setState(() {
@@ -166,39 +185,48 @@ class _ProfileState extends State<Profile> {
                   print('Play Store rate clicked');
                 },
                 dense: true,
-                leading: Icon(
+              
+                title:Row(children: [Icon(
                   Icons.star_border,
                   color: Colors.black,
-                  size: 36,
+                  size: 24,
                 ),
-                title: Text(
+                SizedBox(width: 10,),
+                Text(
                   'Love the app?',
                   style: titleFontStyle,
                 ),
-                subtitle: Text(
+                ],),
+                subtitle: Row(children:[
+                  SizedBox(width: 34,),
+                  Text(
                   'Rate us on the Play Store',
                   style: subtitleFontStyle,
                 ),
-              ),
+            ]),),
               ListTile(
                 onTap: () {
                   print('Share clicked');
                 },
-                dense: true,
-                leading: Icon(
+                dense: true, 
+                title: Row(children:[
+                  Icon(
                   Icons.share,
                   color: Colors.black,
-                  size: 36,
+                  size: 24,
                 ),
-                title: Text(
+                SizedBox(width: 10,),
+                   Text(
                   'Spread the word!',
                   style: titleFontStyle,
-                ),
-                subtitle: Text(
+                ),]),
+                subtitle: Row(children:[
+                  SizedBox(width: 34,),
+                  Text(
                   'Share the app with friends',
                   style: subtitleFontStyle,
                 ),
-              ),
+                ]),),
               Padding(
                 padding: EdgeInsets.only(right: 15, left: 15),
                 child: Divider(
@@ -214,31 +242,36 @@ class _ProfileState extends State<Profile> {
                   print('Logout clicked');
                 },
                 dense: true,
-                leading: Icon(
+              
+                title: Row(children:[
+                   Icon(
                   Icons.exit_to_app,
                   color: Colors.black,
-                  size: 36,
+                  size: 24,
+                ),SizedBox(
+                  width:10
                 ),
-                title: Text(
+                  Text(
                   'Log out',
                   style: titleFontStyle,
                 ),
-              ),
+                ]),),
               ListTile(
                 onTap: () {
                   print('App Version clicked');
                 },
                 dense: true,
-                leading: Icon(
+                title: Row(children:[
+                  Icon(
                   Icons.info_outline,
                   color: Colors.grey,
-                  size: 36,
-                ),
-                title: Text(
+                  size: 24,
+                ),SizedBox(width:10),
+                  Text(
                   'App Version v0.01',
                   style: greytitleFontStyle,
                 ),
-              ),
+                ])),
               Container(
                 height: 15,
               )

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:travelapp/profileModule/editProfile/editprofile.dart';
 import 'package:travelapp/screens/styles.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:travelapp/loginModule/authentication/authentication.dart';
