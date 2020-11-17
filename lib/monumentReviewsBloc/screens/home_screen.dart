@@ -112,7 +112,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         Row(
                           children: <Widget>[
                             Text(
-                              data[index]['monument']['name'],
+                              data[index]['user']['username'],
                               style: TextStyle(
                                   fontFamily: 'OpenSans',
                                   fontWeight: FontWeight.bold,
