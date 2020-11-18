@@ -55,11 +55,11 @@ class EditProfileNameState extends State<EditProfileName> {
                         decoration: InputDecoration(
                             enabledBorder: UnderlineInputBorder(
                                 borderSide: BorderSide(
-                              color: Color(0xFFCFCFCF),
+                              color: Color(0xFFCEAF41),
                             )),
                             focusedBorder: UnderlineInputBorder(
                                 borderSide:
-                                    BorderSide(color: Colors.grey, width: 2))),
+                                    BorderSide(color: Color(0xFFCEAF41), width: 2))),
                         controller: _loginName,
                         onChanged: (text) {
                           // print(text);
@@ -82,7 +82,7 @@ class EditProfileNameState extends State<EditProfileName> {
       Container(
         height: 10,
       ),
-      _showSaveChanges ? displaySaveButton() : Container(height: 48)
+      _showSaveChanges ? displaySaveButton() : disabledSaveButton()
     ]);
   }
 
@@ -90,13 +90,35 @@ class EditProfileNameState extends State<EditProfileName> {
     return Padding(
         padding: EdgeInsets.only(right: 15, left: 15),
         child: FlatButton(
+            color: Color(0xFFCEAF41),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(8.0),
             ),
-            color: Color(0xFFCEAF41),
             onPressed: () {
               print('Save Changes clicked:' + _loginName.text);
               _updateUsername();
+            },
+            child: Center(
+                child: Padding(
+                    padding: EdgeInsets.only(top: 14, bottom: 15),
+                    child: Text(
+                      'SAVE CHANGES',
+                      style: TextStyle(color: Colors.white, fontSize: 14),
+                    )))));
+  }
+
+
+  Widget disabledSaveButton() {
+    return Padding(
+        padding: EdgeInsets.only(right: 15, left: 15),
+        child: FlatButton(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(8.0),
+            ),
+            color: Color(0x88EED172),
+            onPressed: () {
+              print('Disabled Save Changes clicked:' + _loginName.text);
+              // _updateUsername();
             },
             child: Center(
                 child: Padding(

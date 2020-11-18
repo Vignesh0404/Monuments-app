@@ -136,33 +136,94 @@ class SearchTabState extends State<SearchTab> {
                         )));
               },
               child: ListTile(
-                // dense: true,
-                leading: Container(
-                    height: 90,
-                    width: 70,
-                    child: CircleAvatar(
-                      backgroundColor: Colors.yellow,
-                      backgroundImage: NetworkImage(
-                        (item['details']['mt_heroImg'] != null &&
-                                item['details']['mt_heroImg'].length != 0 &&
-                                item['details']['mt_heroImg'].toString() !=
-                                    "[null]")
-                            ? item['details']['mt_heroImg'][0]
-                            : 'https://images.pexels.com/photos/213780/pexels-photo-213780.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
-                      ),
-                    )),
-                title: Text(
-                    '${item['details']["mt_name"].toString()[0].toUpperCase()}${item['details']["mt_name"].toString().substring(1)}',
-                    style: titleFontStyle),
-                subtitle: Text(
-                    '${item['details']["mt_location"].toString()[0].toUpperCase()}${item['details']["mt_location"].toString().substring(1)}'
-                    // +item['monuments_x_tags'].toString()
-                    ,
-                    style: subtitleFontStyle),
-              ));
+                  // dense: true,
+                  leading: Container(
+                      height: 90,
+                      width: 70,
+                      child: CircleAvatar(
+                        backgroundColor: Color(0xFFCEAF41),
+                        backgroundImage: NetworkImage(
+                          (item['details']['mt_heroImg'] != null &&
+                                  item['details']['mt_heroImg'].length != 0 &&
+                                  item['details']['mt_heroImg'].toString() !=
+                                      "[null]")
+                              ? item['details']['mt_heroImg'][0]
+                              : 'https://images.pexels.com/photos/213780/pexels-photo-213780.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+                        ),
+                      )),
+                  title: _coloredText(item['details']["mt_name"].toString()),
+                  subtitle:
+                      _coloredsubText(item['details']["mt_location"].toString())
+                  // Text(
+                  //     '${item['details']["mt_location"].toString()[0].toUpperCase()}${item['details']["mt_location"].toString().substring(1)}'
+                  //     // +item['monuments_x_tags'].toString()
+                  //     ,
+                  //     style: subtitleFontStyle),
+                  ));
         },
       ),
     ));
+  }
+
+  Widget _coloredText(String text) {    
+    int len = _searchText.text.length;
+    int loc;
+    if (len > 0)
+      loc = text.toUpperCase().indexOf(_searchText.text.toUpperCase());
+    else
+      loc = -1;
+    if (loc == -1)
+      return Text(
+        '${text[0].toUpperCase()}${text.substring(1)}',
+        style: titleFontStyle,
+      );
+    else {
+      return RichText(
+          text: TextSpan(children: [
+        TextSpan(
+            text:
+                "${text[0].toUpperCase()}${text.substring(loc + 1, loc + len)}",
+            style: goldtitleFontStyle),
+        TextSpan(text: "${text.substring(loc + len)}", style: titleFontStyle)
+      ]));
+    }
+  }
+
+  Widget _coloredsubText(String text) {
+    int len = _searchText.text.length;
+
+    int loc;
+    if (len > 0)
+      loc = text.toUpperCase().indexOf(_searchText.text.toUpperCase());
+    else
+      loc = -1;
+    if (loc < 0)
+      return Text(
+        '${text[0].toUpperCase()}${text.substring(1)}',
+        style: subtitleFontStyle,
+      );
+    else {
+      return RichText(
+          text: TextSpan(children: [
+        TextSpan(
+            text:
+                '${text[0].toUpperCase()}${text.substring(loc + 1, loc + len)}',
+            style: TextStyle(
+              fontFamily: 'OpenSans',
+              fontSize: 14,
+              fontWeight: FontWeight.w400,
+              color: Color(0xFFCEAF41),
+            )),
+        TextSpan(
+            text: '${text.substring(loc + len)}',
+            style: TextStyle(
+              fontFamily: 'OpenSans',
+              fontSize: 14,
+              fontWeight: FontWeight.w400,
+              color: Colors.black,
+            ))
+      ]));
+    }
   }
 
   Widget _searchBar(HomeStatesMonument state) {

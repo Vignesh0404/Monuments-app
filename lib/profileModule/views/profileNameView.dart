@@ -18,7 +18,7 @@ class ProfileName extends StatelessWidget {
                 itemBuilder: (BuildContext context, int i) {
                   String name = document[i]['name'].toString();
                   return ListTile(
-                    title: Text('${name[0].toUpperCase()}${name.substring(1)}', style: appBarTextStyle),
+                    title: Text(name, style: appBarTextStyle),
                     trailing: FlatButton(
                         color: Color(0xFFCEAF41),
                         shape: RoundedRectangleBorder(

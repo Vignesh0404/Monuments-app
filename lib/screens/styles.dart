@@ -35,9 +35,20 @@ TextStyle grey14w400 = TextStyle(
     fontWeight: FontWeight.w400);
 TextStyle subtitleFontStyle = TextStyle(
     fontFamily: 'OpenSans', fontSize: 14, fontWeight: FontWeight.w400);
+TextStyle goldsubtitleFontStyle = TextStyle(
+  fontFamily: 'OpenSans',
+  fontSize: 14,
+  fontWeight: FontWeight.w400,
+  color: Color(0xFFCEAF41),
+);
 TextStyle titleFontStyle = TextStyle(
     fontFamily: 'OpenSans',
     color: Colors.black,
+    fontSize: 16,
+    fontWeight: FontWeight.w600);
+TextStyle goldtitleFontStyle = TextStyle(
+    fontFamily: 'OpenSans',
+    color: Color(0xFFCEAF41),
     fontSize: 16,
     fontWeight: FontWeight.w600);
 TextStyle largeTitleFontStyle18 = TextStyle(

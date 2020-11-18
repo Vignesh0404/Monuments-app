@@ -45,27 +45,33 @@ class EditPicState extends State<EditPic> {
       children: <Widget>[
         Expanded(
           child: SizedBox(
-              height: 70,
+              height: 80,
               child: new ListView.builder(
                 itemCount: document.length,
                 itemBuilder: (BuildContext context, int i) {
                   String photoUrl = document[i]['photo'].toString();
-                  return ListTile(
-                    title: GestureDetector(
-                      onTap: () => _pickImage(),
-                      child: Text(
-                        'Update Photo',
-                        style: titleFontStyle,
+                  return Row(
+                    children: [
+                      SizedBox(width:15),
+                      CircleAvatar(
+                        radius: 35.0,
+                        backgroundImage: (imageFile == null)
+                            ? NetworkImage(photoUrl)
+                            : FileImage(imageFile),
+                        backgroundColor: Color(0xFFCEAF41),
                       ),
-                    ),
-                    // subtitle: Text(imageFile.toString()),
-                    leading: CircleAvatar(
-                      radius: 30.0,
-                      backgroundImage: (imageFile == null)
-                          ? NetworkImage(photoUrl)
-                          : FileImage(imageFile),
-                      backgroundColor: Colors.transparent,
-                    ),
+                      SizedBox(width:15),
+                      GestureDetector(
+                        onTap: () => _pickImage(),
+                        child: Text(
+                          'Update Photo',
+                          style: titleFontStyle,
+                        ),
+                      ),
+                    ],
+                    // title:
+                    // // subtitle: Text(imageFile.toString()),
+                    // leading:
                   );
                 },
               )),

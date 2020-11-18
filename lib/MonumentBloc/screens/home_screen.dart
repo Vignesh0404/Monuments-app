@@ -23,7 +23,21 @@ class _HomeScreenState extends State<HomeScreen> {
     return BlocBuilder<HomeBloc, HomeStatesMonument>(
       builder: (BuildContext context, HomeStatesMonument state) {
         if (state is Loading) {
-          return Text("Loading..");
+          return Column(children: [
+            SizedBox(height: 20),
+            SizedBox(
+                height: 65,
+                width: 65,
+                child: Center(
+                  child: CircularProgressIndicator(
+                    valueColor:
+                        AlwaysStoppedAnimation<Color>(Color(0xFFCEAF41)),
+                  ),
+                )),
+            SizedBox(
+              height: 20,
+            )
+          ]);
         } else if (state is LoadDataFail) {
           return Text(state.error);
         } else {
@@ -89,7 +103,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       stops: [0.0, 1.0],
                       // center: Alignment.bottomCenter,
                       // radius: 1.0,
-                      colors: <Color>[Colors.black87,Colors.white],
+                      colors: <Color>[Colors.black87, Colors.white],
                       tileMode: TileMode.mirror,
                     ).createShader(bounds);
                   },
@@ -105,7 +119,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: ClipRRect(
                             borderRadius: BorderRadius.circular(5.0),
                             child: FadeInImage.assetNetwork(
-                              fadeInDuration: Duration(milliseconds:1),
+                              fadeInDuration: Duration(milliseconds: 1),
                               placeholder: 'images/emptyBookmark.JPG',
                               image: item['details']['mt_heroImg'][0],
                               fit: BoxFit.cover,

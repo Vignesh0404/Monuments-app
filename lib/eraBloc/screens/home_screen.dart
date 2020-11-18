@@ -23,7 +23,21 @@ class _HomeScreenState extends State<HomeScreen> {
     return BlocBuilder<HomeBloc, HomeStatesEra>(
       builder: (BuildContext context, HomeStatesEra state) {
         if (state is Loading) {
-          return Text('Loading..');
+          return Column(children: [
+            SizedBox(height: 20),
+            SizedBox(
+                height: 65,
+                width: 65,
+                child: Center(
+                  child: CircularProgressIndicator(
+                    valueColor:
+                        AlwaysStoppedAnimation<Color>(Color(0xFFCEAF41)),
+                  ),
+                )),
+            SizedBox(
+              height: 20,
+            )
+          ]);
         } else if (state is LoadDataFail) {
           return Text(state.error);
         } else {
@@ -76,7 +90,9 @@ class _HomeScreenState extends State<HomeScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: <Widget>[
-                        Text('${item['name'].toString()[0].toUpperCase()}${item['name'].toString().substring(1)}', style: white17w600),
+                        Text(
+                            '${item['name'].toString()[0].toUpperCase()}${item['name'].toString().substring(1)}',
+                            style: white17w600),
                       ],
                     ),
                   )));

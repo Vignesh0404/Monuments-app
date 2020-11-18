@@ -29,7 +29,7 @@ class ProfilePic extends StatelessWidget {
                             //     color: Colors.black,
                             //   )
                             : NetworkImage(photoUrl),
-                        backgroundColor: Colors.transparent,
+                        backgroundColor: Color(0xFFCEAF41),
                       ),
                     ),
                   );

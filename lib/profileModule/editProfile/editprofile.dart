@@ -27,19 +27,21 @@ class _EditProfileState extends State<EditProfile> {
     return SafeArea(
         child: Scaffold(
             backgroundColor: Colors.white,
+            
             appBar: AppBar(
+            titleSpacing: 0,
               elevation: 0,
               bottomOpacity: 4,
               backgroundColor: Colors.white,
               title: Text(
                 'Edit Profile',
                 style: largeTitleFontStyle,),
-              leading: IconButton(
-                icon: Icon(
+              leading: GestureDetector(
+                child: Icon(
                   Icons.arrow_back,
                   color: Colors.black,
                 ),
-                onPressed: () {
+                onTap: () {
                   Navigator.of(context).pop();
                 },
               ),
