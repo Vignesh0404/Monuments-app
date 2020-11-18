@@ -122,7 +122,7 @@ class _ProfileState extends State<Profile> {
               Padding(
                 padding: EdgeInsets.only(right: 15, left: 15),
                 child: Divider(
-                  color: Colors.black,
+                  color: Color(0xFFC4C4C4),
                 ),
               ),
               ListTile(
@@ -253,7 +253,7 @@ class _ProfileState extends State<Profile> {
               Padding(
                 padding: EdgeInsets.only(right: 15, left: 15),
                 child: Divider(
-                  color: Colors.black,
+                  color: Color(0xFFC4C4C4),
                 ),
               ),
               // Text(token),

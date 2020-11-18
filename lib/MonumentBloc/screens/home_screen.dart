@@ -25,7 +25,7 @@ class _HomeScreenState extends State<HomeScreen> {
         if (state is Loading) {
           return Column(children: [
             SizedBox(height: 20),
-            SizedBox(
+            Center(child:SizedBox(
                 height: 65,
                 width: 65,
                 child: Center(
@@ -33,7 +33,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     valueColor:
                         AlwaysStoppedAnimation<Color>(Color(0xFFCEAF41)),
                   ),
-                )),
+                )),),
             SizedBox(
               height: 20,
             )

@@ -57,7 +57,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
                     color: Color(0xFF777672),
                   ),
                   activeIcon: Icon(
-                    FlutterIcons.map_faw5s,
+                    FlutterIcons.map_ent,
                     color: Color(0xFFCEAF41),
                   ),
                   title: Text(
@@ -66,11 +66,11 @@ class _BottomNavigationState extends State<BottomNavigation> {
                   )),
               BottomNavigationBarItem(
                   icon: Icon(
-                    FlutterIcons.search_location_faw5s,
+                    Icons.search_rounded,
                     color: Color(0xFF777672),
                   ),
                   activeIcon: Icon(
-                    FlutterIcons.map_search_outline_mco,
+                    Icons.search_rounded,
                     color: Color(0xFFCEAF41),
                   ),
                   title: Text(
@@ -79,12 +79,12 @@ class _BottomNavigationState extends State<BottomNavigation> {
                   )),
               BottomNavigationBarItem(
                   icon: Icon(
-                    Icons.account_circle,
+                    Icons.person_outline_rounded,
                     size: 26,
                     color: Color(0xFF777672),
                   ),
                   activeIcon: Icon(
-                    FlutterIcons.account_alert_outline_mco,
+                    Icons.person_outline_rounded,
                     size: 26,
                     color: Color(0xFFCEAF41),
                   ),

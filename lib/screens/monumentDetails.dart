@@ -3,7 +3,7 @@ import 'package:flutter_icons/flutter_icons.dart';
 import 'package:travelapp/addReviewBloc/addReview.dart';
 import 'package:travelapp/monumentDetailsReviewsBloc/monumentDetailsReview.dart';
 import 'package:travelapp/monumentReviewsBloc/monumentReview.dart';
-
+import 'dart:math';
 import 'styles.dart';
 import 'package:video_player/video_player.dart';
 import 'dart:async';
@@ -290,11 +290,13 @@ class _MonumentDetailsState extends State<MonumentDetails> {
                     },
                     child: Row(
                       children: <Widget>[
-                        Icon(
-                          FlutterIcons.direction_ent,
+                        Transform.rotate(
+                            angle: -45 * pi / 180,
+                          child:Icon(
+                          Icons.arrow_forward_rounded,
                           color: Colors.black,
                           size: 18,
-                        ),
+                        ),),
                         SizedBox(width: 1),
                         Text('Directions', style: blackTextStyle)
                       ],
