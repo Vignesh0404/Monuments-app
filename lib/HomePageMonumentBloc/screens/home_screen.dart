@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:travelapp/MonumentBloc/blocs/home/monument.dart';
+import 'package:travelapp/screens/errorPage.dart';
 import 'package:travelapp/screens/monumentDetails.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:travelapp/screens/styles.dart';
@@ -26,7 +27,11 @@ class _HomeScreenState extends State<HomeScreen> {
     return BlocBuilder<HomeBloc, HomeStatesMonument>(
       builder: (BuildContext context, HomeStatesMonument state) {
         if (state is Loading) {
-          return LinearProgressIndicator();
+          return Center(
+            child: CircularProgressIndicator(
+              backgroundColor: Color(0xFFCEAF41),
+            ),
+          );
         } else if (state is LoadDataFail) {
           return Text(state.error);
         } else {
@@ -71,173 +76,114 @@ class _HomeScreenState extends State<HomeScreen> {
           // print(galleryImage);
           // print(item['details']['mt_heroImg']);
           return Padding(
-            padding: EdgeInsets.only(left: 12, right: 12, top: 1),
+            padding: EdgeInsets.only(left: 5, right: 5, top: 1),
             child: GestureDetector(
-              onTap: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (BuildContext context) => MonumentDetails(
-                        name: name,
-                        id: id,
-                        //index: item,
-                        heroImg: heroImg,
-                        location: location,
-                        eraName: eraName,
-                        video: video,
-                        galleryImage: galleryImage,
-                        // openFrom: openFrom,
-                        // openTill: openTill,
-                        // numberType: numberType,
-                        // mapLocation: mapLocation,
-                        desc: desc,
-                        rating: rating
-                        // phonNum: phoneNum,
-                        )));
-              },
-              child: Container(
-                margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 1.0),
-                padding: EdgeInsets.all(10.0),
-                //height: 30,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                    boxShadow: [BoxShadow(blurRadius: 1)],
-                    image: DecorationImage(
-                        image: NetworkImage(heroImg),
-                        fit: BoxFit.cover,
-                        colorFilter: new ColorFilter.mode(
-                            Colors.black.withOpacity(0.3),
-                            BlendMode.hardLight)),
-                    borderRadius: BorderRadius.circular(5.0)),
-                child: Column(
-                  children: <Widget>[
-                    Align(
-                        alignment: Alignment.topRight,
+                onTap: () {
+                  galleryImage[2] == 0
+                      ? Navigator.of(context).push(MaterialPageRoute(
+                          builder: (BuildContext context) => ErrorPage()))
+                      : Navigator.of(context).push(MaterialPageRoute(
+                          builder: (BuildContext context) => MonumentDetails(
+                              name: name,
+                              id: id,
+                              //index: item,
+                              heroImg: heroImg,
+                              location: location,
+                              eraName: eraName,
+                              video: video,
+                              galleryImage: galleryImage,
+                              // openFrom: openFrom,
+                              // openTill: openTill,
+                              // numberType: numberType,
+                              // mapLocation: mapLocation,
+                              desc: desc,
+                              rating: rating
+                              // phonNum: phoneNum,
+                              )));
+                },
+                child: Stack(children: [
+                  ShaderMask(
+                    shaderCallback: (Rect bounds) {
+                      return LinearGradient(
+                        begin: FractionalOffset.bottomCenter,
+                        end: FractionalOffset.topCenter,
+                        stops: [0.0, 1.0],
+                        // center: Alignment.bottomCenter,
+                        // radius: 1.0,
+                        colors: <Color>[Colors.black87, Colors.white],
+                        tileMode: TileMode.mirror,
+                      ).createShader(bounds);
+                    },
+                    child: Container(
+                        margin: EdgeInsets.symmetric(
+                            vertical: 7.0, horizontal: 7.0),
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(5.0)),
                         child: Container(
-                          height: 35,
-                          width: 35,
+                          height: 150,
+                          width: double.infinity,
                           decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: Colors.grey.shade300),
-                          child: IconButton(
-                              alignment: Alignment.topLeft,
-                              icon: Icon(
-                                FlutterIcons.bookmark_border_mdi,
-                                color: Colors.black,
-                                size: 20,
-                              ),
-                              onPressed: () {
-                                print('bookmark selected');
-                                HomeBloc()
-                                  ..add(FetchHomeData(insertBookmark,
-                                      variables: {
-                                        'monumentId': id,
-                                        'type': 'monument'
-                                      }));
-                                showDialog(
-                                    context: context,
-                                    builder: (BuildContext context) {
-                                      return Dialog(
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(7),
-                                        ),
-                                        child: Container(
-                                          height: 55,
-                                          width: double.infinity,
-                                          child: Padding(
-                                            padding: const EdgeInsets.all(10.0),
-                                            child: Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: <Widget>[
-                                                SizedBox(
-                                                  height: 5,
-                                                ),
-                                                Padding(
-                                                  padding: EdgeInsets.only(
-                                                      left: 15, right: 15),
-                                                  child: Center(
-                                                    child: Container(
-                                                      width: double.infinity,
-                                                      child: Center(
-                                                        child: Row(
-                                                          children: <Widget>[
-                                                            Text(
-                                                                '            Bookmark Added',
-                                                                style: TextStyle(
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .bold)),
-                                                            SizedBox(
-                                                              width: 5,
-                                                            ),
-                                                            Icon(
-                                                              Icons
-                                                                  .sentiment_very_satisfied,
-                                                              color:
-                                                                  Colors.green,
-                                                            )
-                                                          ],
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ),
-                                                Spacer(),
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-                                      );
-                                    });
-                              }),
+                              borderRadius: BorderRadius.circular(5.0)),
+                          child: ClipRRect(
+                              borderRadius: BorderRadius.circular(5.0),
+                              child: FadeInImage.assetNetwork(
+                                fadeInDuration: Duration(milliseconds: 1),
+                                placeholder: 'images/emptyBookmark.JPG',
+                                image: item['details']['mt_heroImg'][0],
+                                fit: BoxFit.cover,
+                              )),
                         )),
-                    SizedBox(
-                      height: 70,
-                    ),
-                    Align(
-                      alignment: Alignment.bottomLeft,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Text(name,
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 17,
-                                  fontFamily: 'OpenSans',
-                                  fontWeight: FontWeight.bold)),
-                          SizedBox(
-                            height: 7,
-                          ),
-                          Row(
+                  ),
+                  Container(
+                    margin:
+                        EdgeInsets.symmetric(vertical: 7.0, horizontal: 7.0),
+                    padding: EdgeInsets.all(10.0),
+                    decoration:
+                        BoxDecoration(borderRadius: BorderRadius.circular(5.0)),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: <Widget>[
+                        Align(
+                          alignment: Alignment.bottomLeft,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
-                              Text(location,
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 14,
-                                      fontFamily: 'OpenSans',
-                                      fontWeight: FontWeight.w400)),
-                              Text(' • ',
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 14,
-                                      fontFamily: 'OpenSans',
-                                      fontWeight: FontWeight.bold)),
-                              Text(eraName,
-                                  overflow: TextOverflow.ellipsis,
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 12,
-                                      fontFamily: 'OpenSans',
-                                      fontWeight: FontWeight.w400))
+                              SizedBox(
+                                height: 85,
+                              ),
+                              Text(
+                                  '${item['name'].toString()[0].toUpperCase()}${item['name'].toString().substring(1)}',
+                                  style: white17w600),
+                              SizedBox(
+                                height: 7,
+                              ),
+                              Row(
+                                children: <Widget>[
+                                  Text(
+                                      '${item['location_name'].toString()[0].toUpperCase()}${item['location_name'].toString().substring(1)}',
+                                      style: white14w400),
+                                  Text(' • ',
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 14,
+                                          fontFamily: 'OpenSans',
+                                          fontWeight: FontWeight.bold)),
+                                  Text(eraName,
+                                      overflow: TextOverflow.ellipsis,
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 12,
+                                          fontFamily: 'OpenSans',
+                                          fontWeight: FontWeight.w400))
+                                ],
+                              )
                             ],
-                          )
-                        ],
-                      ),
-                    )
-                  ],
-                ),
-              ),
-            ),
+                          ),
+                        )
+                      ],
+                    ),
+                  )
+                ])),
           );
         },
       ),

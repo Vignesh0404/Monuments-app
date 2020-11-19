@@ -84,13 +84,15 @@ class _MonumentDetailsState extends State<MonumentDetails> {
   bool flag = true;
   @override
   Widget build(BuildContext context) {
+    Color _iconColor = Colors.black;
+    String bookmark = 'Bookmark';
     String firstHalf;
     String secondHalf;
     if (widget.desc.length > 200) {
       firstHalf = widget.desc.substring(0, 200);
       secondHalf = widget.desc.substring(200, widget.desc.length);
     } else {
-      firstHalf = widget.desc;
+      firstHalf = widget.desc[0].toUpperCase() + widget.desc.substring(1);
       secondHalf = "";
     }
     return SafeArea(
@@ -136,7 +138,10 @@ class _MonumentDetailsState extends State<MonumentDetails> {
                         onPressed: null)
                   ],
                 ),
-                Center(child: Text(widget.name, style: white16)),
+                Center(
+                    child: Text(
+                        widget.name[0].toUpperCase() + widget.name.substring(1),
+                        style: white16)),
                 SizedBox(
                   height: 6,
                 ),
@@ -144,7 +149,10 @@ class _MonumentDetailsState extends State<MonumentDetails> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      Text(widget.location, style: white14w400),
+                      Text(
+                          widget.location[0].toUpperCase() +
+                              widget.location.substring(1),
+                          style: white14w400),
                       Text(' • ', style: white17bold),
                       Text(widget.eraName, style: white14w400)
                     ],
@@ -272,16 +280,19 @@ class _MonumentDetailsState extends State<MonumentDetails> {
                 FlatButton(
                     onPressed: () {
                       print('bookmark clicked');
+                      setState(() {
+                        _iconColor = Colors.orange;
+                      });
                     },
                     child: Row(
                       children: <Widget>[
                         Icon(
                           FlutterIcons.bookmark_border_mdi,
-                          color: Colors.black,
+                          color: _iconColor,
                           size: 18,
                         ),
                         SizedBox(width: 1),
-                        Text('Bookmark', style: blackTextStyle)
+                        Text(bookmark, style: blackTextStyle)
                       ],
                     )),
                 FlatButton(
@@ -291,12 +302,13 @@ class _MonumentDetailsState extends State<MonumentDetails> {
                     child: Row(
                       children: <Widget>[
                         Transform.rotate(
-                            angle: -45 * pi / 180,
-                          child:Icon(
-                          Icons.arrow_forward_rounded,
-                          color: Colors.black,
-                          size: 18,
-                        ),),
+                          angle: -45 * pi / 180,
+                          child: Icon(
+                            Icons.arrow_forward_rounded,
+                            color: Colors.black,
+                            size: 18,
+                          ),
+                        ),
                         SizedBox(width: 1),
                         Text('Directions', style: blackTextStyle)
                       ],

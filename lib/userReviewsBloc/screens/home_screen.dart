@@ -26,7 +26,9 @@ class _HomeScreenState extends State<HomeScreen> {
     return BlocBuilder<HomeBloc, HomeStatesMonument>(
       builder: (BuildContext context, HomeStatesMonument state) {
         if (state is Loading) {
-          return Scaffold(body: LinearProgressIndicator());
+          return Scaffold(
+              body: CircularProgressIndicator(
+                  backgroundColor: Color(0xFFCEAF41)));
         } else if (state is LoadDataFail) {
           return Scaffold(
               appBar: AppBar(
@@ -67,6 +69,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   },
                 ),
               ),
+              backgroundColor: Colors.white,
               body: _buildMonumentWidget());
         }
       },
@@ -79,7 +82,20 @@ class _HomeScreenState extends State<HomeScreen> {
       return Center(
         child: Column(
           children: <Widget>[
-            Text("'You haven't posted any reviews yet"),
+            SizedBox(
+              height: 100,
+            ),
+            Image.asset(
+              'images/emptyReviews.JPG',
+              scale: 2,
+            ),
+            SizedBox(
+              height: 5,
+            ),
+            Text(
+              "'You haven't posted any reviews yet",
+              style: TextStyle(fontSize: 14, color: Color(0xFF565656)),
+            ),
             SizedBox(
               height: 5,
             )
@@ -137,8 +153,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                         // SizedBox(height: 0.5),
                         Text(
-                          data[index]['monument']['location_name'] +
-                              data[index]['id'].toString(),
+                          data[index]['monument']['location_name'],
                           style: TextStyle(
                               fontFamily: 'OpenSans',
                               fontWeight: FontWeight.w400,
@@ -184,10 +199,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                             )));
                               },
                               child: Text(
-                                'EDIT',
+                                'Edit',
                                 style: TextStyle(
-                                    color: Colors.grey.shade700,
-                                    fontWeight: FontWeight.w600),
+                                    color: Colors.black,
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w300),
                               ),
                             ),
                             Spacer(),

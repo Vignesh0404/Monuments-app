@@ -22,7 +22,8 @@ class EraBasedMonuments extends StatelessWidget {
         child: BlocBuilder<HomeBloc, HomeStatesMonument>(
           builder: (BuildContext context, HomeStatesMonument state) {
             if (state is Loading) {
-              return LinearProgressIndicator();
+              return CircularProgressIndicator(
+                  backgroundColor: Color(0xFFCEAF41));
             } else if (state is LoadDataFail) {
               return Text(state.error);
             } else {

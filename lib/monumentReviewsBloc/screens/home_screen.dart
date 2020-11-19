@@ -25,7 +25,9 @@ class _HomeScreenState extends State<HomeScreen> {
     return BlocBuilder<HomeBloc, HomeStatesMonument>(
       builder: (BuildContext context, HomeStatesMonument state) {
         if (state is Loading) {
-          return Scaffold(body: LinearProgressIndicator());
+          return Scaffold(
+              body: CircularProgressIndicator(
+                  backgroundColor: Color(0xFFCEAF41)));
         } else if (state is LoadDataFail) {
           return Scaffold(
               appBar: AppBar(
