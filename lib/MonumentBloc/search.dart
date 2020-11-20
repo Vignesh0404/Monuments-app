@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:travelapp/MonumentBloc/blocs/home/monument.dart';
 import 'package:travelapp/queries.dart';
 import 'package:travelapp/screens/monumentDetails.dart';
@@ -24,6 +25,7 @@ class SearchTabState extends State<SearchTab> {
   var data;
   TextEditingController _searchText = TextEditingController();
   HomeBloc homeBloc = HomeBloc();
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -54,6 +56,9 @@ class SearchTabState extends State<SearchTab> {
                         primary: false,
                         resizeToAvoidBottomInset: false,
                         backgroundColor: Color(0xFFEBEBEB),
+                        appBar: AppBar(
+                          
+                        ),
                         body: Column(
                             // crossAxisAlignment: CrossAxisAlignment.center,
                             // mainAxisAlignment: MainAxisAlignment.center,
@@ -72,10 +77,11 @@ class SearchTabState extends State<SearchTab> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          SizedBox(height: 40),
-          Image(
-            image: AssetImage('images/emptySearch.JPG'),
-          ),
+          SizedBox(height: 80),
+          SvgPicture.asset('images/emptySearch.svg'),
+          // Image(
+          //   image: AssetImage('images/emptySearch.JPG'),
+          // ),
           Text(text),
         ]);
   }
@@ -165,7 +171,7 @@ class SearchTabState extends State<SearchTab> {
     ));
   }
 
-  Widget _coloredText(String text) {    
+  Widget _coloredText(String text) {
     int len = _searchText.text.length;
     int loc;
     if (len > 0)
@@ -227,6 +233,7 @@ class SearchTabState extends State<SearchTab> {
   }
 
   Widget _searchBar(HomeStatesMonument state) {
+    Widget searchIcon = SvgPicture.asset('images/searchTabIcon.svg');
     return Container(
       margin: EdgeInsets.all(5),
       color: Colors.white,
@@ -265,7 +272,7 @@ class SearchTabState extends State<SearchTab> {
                 padding: const EdgeInsets.only(right: 8.0),
                 child: IconButton(
                   icon: (_searchText.text.isEmpty)
-                      ? Icon(Icons.search)
+                      ? searchIcon
                       : Icon(Icons.close),
                   onPressed: () {
                     setState(() {

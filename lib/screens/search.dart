@@ -3,6 +3,7 @@ import 'package:travelapp/MonumentBloc/Monument.dart';
 import 'package:travelapp/MonumentBloc/search.dart';
 import 'package:travelapp/screens/styles.dart';
 import 'package:travelapp/eraBloc/era.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class Search extends StatefulWidget {
   Search({Key key}) : super(key: key);
@@ -13,6 +14,7 @@ class Search extends StatefulWidget {
 
 class _SearchState extends State<Search> {
   final TextEditingController _searchText = TextEditingController();
+    Widget searchIcon = SvgPicture.asset('images/searchTabIcon.svg');
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -40,10 +42,8 @@ class _SearchState extends State<Search> {
                           'Search',
                           style: loginFormStyle,
                         ),
-                        trailing: Icon(
-                          Icons.search,
-                          color: Colors.grey,
-                        ),
+                        trailing: 
+                          searchIcon,
                       ),
                     )),
               ),
@@ -142,7 +142,7 @@ class _SearchState extends State<Search> {
                   padding: const EdgeInsets.only(right: 8.0),
                   child: IconButton(
                     icon: (_searchText.text.isEmpty)
-                        ? Icon(Icons.search)
+                        ? searchIcon
                         : Icon(Icons.close),
                     onPressed: () {
                       if (_searchText.text.isNotEmpty) _searchText.text = '';

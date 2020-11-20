@@ -4,7 +4,7 @@ import 'package:travelapp/profileModule/Profile.dart';
 import 'package:travelapp/screens/monuments.dart';
 import 'package:travelapp/screens/search.dart';
 import 'package:travelapp/screens/styles.dart';
-import 'package:flutter_icons/flutter_icons.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class BottomNavigation extends StatefulWidget {
   BottomNavigation({Key key}) : super(key: key);
@@ -27,7 +27,14 @@ class _BottomNavigationState extends State<BottomNavigation> {
       currentIndex = index;
     });
   }
-
+  Widget searchIcon = SvgPicture.asset('images/searchIcon.svg',color:Color(0xFF777672));
+  Widget monumentIcon = SvgPicture.asset('images/monumentIcon.svg',color:Color(0xFF777672));
+  Widget regionsIcon = SvgPicture.asset('images/regionsIcon.svg',color:Color(0xFF777672));
+  Widget searchIconActive = SvgPicture.asset('images/searchIcon.svg',color:Color(0xFFCEAF41));
+  Widget profileIcon = SvgPicture.asset('images/profileIcon.svg',color:Color(0xFF777672));
+  Widget monumentIconActive = SvgPicture.asset('images/monumentIcon.svg',color:Color(0xFFCEAF41));
+  Widget regionsIconActive = SvgPicture.asset('images/regionsIcon.svg',color:Color(0xFFCEAF41));
+  Widget profileIconActive = SvgPicture.asset('images/profileIcon.svg',color:Color(0xFFCEAF41));
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -40,54 +47,29 @@ class _BottomNavigationState extends State<BottomNavigation> {
             type: BottomNavigationBarType.fixed,
             items: [
               BottomNavigationBarItem(
-                  icon: Icon(FlutterIcons.place_of_worship_faw5s,
-                      color: Color(0xFF777672)),
-                  activeIcon: Icon(
-                    FlutterIcons.monument_faw5s,
-                    color: Color(0xFFCEAF41),
-                    //size: 23,
-                  ),
+                  icon: monumentIcon,
+                  activeIcon: monumentIconActive,
                   title: Text(
                     '   Monuments',
                     style: normalTextStyle,
                   )),
               BottomNavigationBarItem(
-                  icon: Icon(
-                    FlutterIcons.map_ent,
-                    color: Color(0xFF777672),
-                  ),
-                  activeIcon: Icon(
-                    FlutterIcons.map_ent,
-                    color: Color(0xFFCEAF41),
-                  ),
+                  icon: regionsIcon,
+                  activeIcon: regionsIconActive,
                   title: Text(
                     'Regions',
                     style: normalTextStyle,
                   )),
               BottomNavigationBarItem(
-                  icon: Icon(
-                    Icons.search_rounded,
-                    color: Color(0xFF777672),
-                  ),
-                  activeIcon: Icon(
-                    Icons.search_rounded,
-                    color: Color(0xFFCEAF41),
-                  ),
+                  icon: searchIcon,
+                  activeIcon: searchIconActive,
                   title: Text(
                     'Search',
                     style: normalTextStyle,
                   )),
               BottomNavigationBarItem(
-                  icon: Icon(
-                    Icons.person_outline_rounded,
-                    size: 26,
-                    color: Color(0xFF777672),
-                  ),
-                  activeIcon: Icon(
-                    Icons.person_outline_rounded,
-                    size: 26,
-                    color: Color(0xFFCEAF41),
-                  ),
+                  icon: profileIcon,
+                  activeIcon: profileIconActive,
                   title: Text(
                     'Profile',
                     style: normalTextStyle,

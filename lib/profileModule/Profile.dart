@@ -9,6 +9,7 @@ import 'package:travelapp/bookmarkBloc/bookmark.dart';
 import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
 import 'package:travelapp/userReviewsBloc/bookmark.dart';
 import 'dart:math' as math;
+import 'package:flutter_svg/flutter_svg.dart';
 
 class Profile extends StatefulWidget {
   Profile({Key key}) : super(key: key);
@@ -25,6 +26,15 @@ class _ProfileState extends State<Profile> {
     getToken();
     super.initState();
   }
+
+  Widget bookmarkIcon = SvgPicture.asset('images/bookmarkIcon.svg');
+  Widget starIcon = SvgPicture.asset('images/starIcon.svg');
+  Widget infoIcon = SvgPicture.asset('images/infoIcon.svg');
+  Widget feedbackIcon = SvgPicture.asset('images/feedbackIcon.svg');
+  Widget shareIcon = SvgPicture.asset('images/shareIcon.svg');
+  Widget logoutIcon = SvgPicture.asset('images/logoutIcon.svg');
+  Widget downloadIcon = SvgPicture.asset('images/downloadIcon.svg');
+  Widget reviewIcon = SvgPicture.asset('images/reviewIcon.svg');
 
   Widget build(BuildContext context) {
     final user = context.bloc<AuthenticationBloc>().state.user;
@@ -48,13 +58,9 @@ class _ProfileState extends State<Profile> {
                 },
                 dense: true,
                 title: Row(children: [
-                  Icon(
-                    Icons.bookmark_border,
-                    color: Colors.black,
-                    size: 24,
-                  ),
+                  bookmarkIcon,
                   SizedBox(
-                    width: 10,
+                    width: 12,
                   ),
                   Text(
                     'My Bookmarks',
@@ -69,20 +75,10 @@ class _ProfileState extends State<Profile> {
                   print('Reviews clicked');
                 },
                 dense: true,
-
                 title: Row(children: [
-                  SizedBox(width:3),
-                  Transform(
-                    alignment: Alignment.center,
-                    transform: Matrix4.rotationX(math.pi),
-                    child: FaIcon(FontAwesomeIcons.alignLeft,size:20,color: Colors.black,)
-                    // Icon(
-                    //   Icons.notes_rounded,
-                    //   color: Colors.black,
-                    //   size: 24,
-                    // ),
-                  ),
-                  SizedBox(width: 13),
+                  // SizedBox(width: 3),
+                  reviewIcon,
+                  SizedBox(width: 10),
                   Text(
                     'My Reviews',
                     style: titleFontStyle,
@@ -94,21 +90,9 @@ class _ProfileState extends State<Profile> {
                   print('Downloads clicked');
                 },
                 dense: true,
-
                 title: Row(
                   children: [
-                    Transform.rotate(
-                    alignment: Alignment.center,
-                    // transform: Matrix4.rotationY(math.pi),
-                      angle: 90 * math.pi / 180,
-
-                    child: 
-                    Icon(
-                      Icons.login_rounded,
-                      color: Colors.black,
-                      size: 24,
-                    ),
-                  ),
+                    downloadIcon,
                     SizedBox(
                       width: 10,
                     ),
@@ -129,11 +113,7 @@ class _ProfileState extends State<Profile> {
                 dense: true,
                 // leading:
                 title: Row(children: [
-                  Icon(
-                    Icons.chat_bubble_outline,
-                    color: Colors.black,
-                    size: 24,
-                  ),
+                  feedbackIcon,
                   SizedBox(width: 10),
                   Text(
                     'We would love to hear from you',
@@ -197,11 +177,7 @@ class _ProfileState extends State<Profile> {
                 dense: true,
                 title: Row(
                   children: [
-                    Icon(
-                      Icons.star_border,
-                      color: Colors.black,
-                      size: 24,
-                    ),
+                    starIcon,
                     SizedBox(
                       width: 10,
                     ),
@@ -227,11 +203,7 @@ class _ProfileState extends State<Profile> {
                 },
                 dense: true,
                 title: Row(children: [
-                  Icon(
-                    Icons.share_outlined,
-                    color: Colors.black,
-                    size: 24,
-                  ),
+                  shareIcon,
                   SizedBox(
                     width: 10,
                   ),
@@ -266,11 +238,7 @@ class _ProfileState extends State<Profile> {
                 },
                 dense: true,
                 title: Row(children: [
-                  Icon(
-                    Icons.logout,
-                    color: Colors.black,
-                    size: 24,
-                  ),
+                  logoutIcon,
                   SizedBox(width: 10),
                   Text(
                     'Log out',

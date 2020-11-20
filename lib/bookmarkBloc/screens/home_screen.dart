@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:travelapp/bookmarkBloc/blocs/home/bookmark.dart';
 import 'package:travelapp/queries.dart';
 import 'package:travelapp/screens/monumentDetails.dart';
@@ -247,9 +248,7 @@ class _HomeScreenState extends State<HomeScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-          Image(
-            image: AssetImage('images/emptyBookmark.JPG'),
-          ),
+          SvgPicture.asset('images/emptyBookmark.svg'),
           Text("You haven't added any bookmarks yet")
         ]));
   }
@@ -370,7 +369,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
                     return showDeleteAlert(context);
                   },
-                )
+                ),
+                SizedBox(width:15.5)
               ],
             ),
       titleSpacing: 0,
