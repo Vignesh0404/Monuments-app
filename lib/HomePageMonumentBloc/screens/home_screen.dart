@@ -3,10 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:travelapp/MonumentBloc/blocs/home/monument.dart';
 import 'package:travelapp/screens/errorPage.dart';
 import 'package:travelapp/screens/monumentDetails.dart';
-import 'package:flutter_icons/flutter_icons.dart';
 import 'package:travelapp/screens/styles.dart';
 
-import '../../Queries1.dart';
+// import '../../Queries1.dart';
 
 class HomeScreen extends StatefulWidget {
   HomeScreen({Key key}) : super(key: key);

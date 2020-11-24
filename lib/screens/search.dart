@@ -13,7 +13,7 @@ class Search extends StatefulWidget {
 }
 
 class _SearchState extends State<Search> {
-  final TextEditingController _searchText = TextEditingController();
+  // final TextEditingController _searchText = TextEditingController();
     Widget searchIcon = SvgPicture.asset('images/searchTabIcon.svg');
   @override
   Widget build(BuildContext context) {
@@ -115,43 +115,5 @@ class _SearchState extends State<Search> {
               ),
               backgroundColor: const Color(0xFFF4F4F4),
             )));
-  }
-
-  Widget _searchBar() {
-    return Container(
-      color: Colors.white,
-      child: Material(
-        elevation: 5,
-        child: InkWell(
-          onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => SearchTab()),
-            );
-          },
-          child: Row(
-            children: <Widget>[
-              Padding(
-                padding: EdgeInsets.only(left: 12),
-                child: Text(
-                  'Search..',
-                ),
-              ),
-              Spacer(),
-              Padding(
-                  padding: const EdgeInsets.only(right: 8.0),
-                  child: IconButton(
-                    icon: (_searchText.text.isEmpty)
-                        ? searchIcon
-                        : Icon(Icons.close),
-                    onPressed: () {
-                      if (_searchText.text.isNotEmpty) _searchText.text = '';
-                    },
-                  ))
-            ],
-          ),
-        ),
-      ),
-    );
   }
 }

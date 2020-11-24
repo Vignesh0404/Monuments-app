@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:travelapp/screens/styles.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:travelapp/loginModule/authentication/authentication.dart';
@@ -8,7 +7,6 @@ import 'package:travelapp/profileModule/streams/profileNameStream.dart';
 import 'package:travelapp/bookmarkBloc/bookmark.dart';
 import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
 import 'package:travelapp/userReviewsBloc/bookmark.dart';
-import 'dart:math' as math;
 import 'package:flutter_svg/flutter_svg.dart';
 
 class Profile extends StatefulWidget {

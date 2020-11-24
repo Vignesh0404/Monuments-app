@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:travelapp/screens/login.dart';
-import 'package:travelapp/screens/signup.dart';
+// import 'package:travelapp/screens/login.dart';
+// import 'package:travelapp/screens/signup.dart';
 import 'styles.dart';
 
 class Welcome extends StatelessWidget {
@@ -45,8 +45,8 @@ class Welcome extends StatelessWidget {
                   borderRadius: BorderRadius.circular(20)),
               child: FlatButton(
                   onPressed: () {
-                    Navigator.of(context).push(new MaterialPageRoute(
-                        builder: (BuildContext context) => new Login()));
+                    // Navigator.of(context).push(new MaterialPageRoute(
+                    //     builder: (BuildContext context) => new Login()));
                   },
                   color: Color(0xFFCEAF41),
                   child: Center(
@@ -71,10 +71,10 @@ class Welcome extends StatelessWidget {
               children: <Widget>[
                 Text('Yet to register?', style: blackTextStyle),
                 GestureDetector(
-                  onTap: () {
-                    Navigator.of(context).push(new MaterialPageRoute(
-                        builder: (BuildContext context) => new SignUp()));
-                  },
+                  // onTap: () {
+                  //   Navigator.of(context).push(new MaterialPageRoute(
+                  //       builder: (BuildContext context) => new SignUp()));
+                  // },
                   child: Text(' Sign up!', style: goldTextStyle),
                 )
               ],
