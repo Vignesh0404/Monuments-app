@@ -56,9 +56,6 @@ class SearchTabState extends State<SearchTab> {
                         primary: false,
                         resizeToAvoidBottomInset: false,
                         backgroundColor: Color(0xFFEBEBEB),
-                        appBar: AppBar(
-                          
-                        ),
                         body: Column(
                             // crossAxisAlignment: CrossAxisAlignment.center,
                             // mainAxisAlignment: MainAxisAlignment.center,
