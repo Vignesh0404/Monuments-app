@@ -4,7 +4,7 @@
 </h1>
 <p align="center">
 <a href=""><img title="Flutter" src="https://img.shields.io/badge/Flutter-2-blue?style=for-the-badge&logo=flutter"></a>
-<a href=""><img title="License" src="https://img.shields.io/badge/License-NFN-brightgreen?style=for-the-badge&logo="></a>
+<a href=""><img title="License" src="https://img.shields.io/badge/License-NFN LABS-brightgreen?style=for-the-badge&logo="></a>
 </p>
 
 ## Getting Started
