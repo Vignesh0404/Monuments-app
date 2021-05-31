@@ -11,7 +11,7 @@
 **Monument Universe - branded MonU** - is an intuitively designed App that fills in as a virtual tour guide to historically rich monuments in South India, providing users insights on their architectural brilliance. While doing so, it also gives them relevant insights on the rulers who architected these monuments. 
 <br>
 ## Tech Stack
-<img height="52" src="https://upload.wikimedia.org/wikipedia/commons/1/17/Google-flutter-logo.png" /></a>  <img height="52" src="https://miro.medium.com/max/901/1*GkrYGz_r9W6AVgEloQpJFQ.png" /></a>  <img height="62" src="https://soshace.com/wp-content/uploads/2021/02/cover-photo-879.png" /></a> <img height="52" src="https://firebase.google.com/downloads/brand-guidelines/PNG/logo-standard.png" /></a>
+<img height="52" src="https://upload.wikimedia.org/wikipedia/commons/1/17/Google-flutter-logo.png" /></a>  <img height="52" src="https://miro.medium.com/max/901/1*GkrYGz_r9W6AVgEloQpJFQ.png" /></a>  <img height="62" src="https://soshace.com/wp-content/uploads/2021/02/cover-photo-879.png" /></a> <img height="52" src="https://firebase.google.com/downloads/brand-guidelines/PNG/logo-standard.png" /></a> <img height="52" src="https://raw.githubusercontent.com/felangel/bloc/master/docs/assets/bloc_logo_full.png" /></a>
 ## Implementation
 - NFN Labs helped the team from design to deployment. With custom Admin interface for Monument Listings as well as consumer iOS & Android Apps which allow you to view monument details, videos, image galleries, bookmark monuments, offline downloads, search monuments by tags, popularity, era and a lot more.
 <h1 align="center">
@@ -89,6 +89,12 @@
 <ul><li><details>
 <summary>Expand to install flutter and other dependencies</b></summary>
 <li>Follow this to install <strong><a href="https://flutter.dev/docs/get-started/install">Flutter</a></strong></li>
+</ul></li></ul></details></li></ul>
+
+<ul><li><details>
+<summary>Bloc State Management Library</b></summary>
+  <li><Strong>BLoC (Business Logic Component)</Strong> is an architectural pattern based on separate components (BLoC components). BLoC components contain only business logic, which can easily be shared between different Dart apps. </li>
+<li>To know more, click here <strong><a href="https://bloclibrary.dev/#/">bloc</a></strong></li>
 </ul></li></ul></details></li></ul>
   
 - Flutter Compiler (2.0 Recommended)
