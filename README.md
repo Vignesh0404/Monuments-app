@@ -1,4 +1,3 @@
-## INTERNSHIP TASK 1
 <h1 align="center">
   <img src="https://github.com/Vignesh0404/NFN-LABS-Monuments/blob/main/output/herro.PNG">
 </h1>
